@@ -73,3 +73,6 @@ Table images {
   updatedAt timestamp [not null]
 } 
 Ref: images.spotId > spots.id
+<!-- 
+// user icon
+// <i class="far fa-user-circle"></i> -->

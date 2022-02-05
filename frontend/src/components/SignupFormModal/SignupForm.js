@@ -34,43 +34,47 @@ function SignupForm() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
+      <label id="modal_signup_label_email">
         Email
-        <input
+        <input id="modal_signup_text_input"
           type="text"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
-      <label>
+      <label id="modal_signup_label_username">
         Username
-        <input
+        <input id="modal_signup_text_input"
           type="text"
+          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
       </label>
-      <label>
+      <label id="modal_signup_label_password">
         Password
-        <input
+        <input id="modal_signup_text_input"
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <label>
+      <label id="modal_signup_label_confirmpassword">
         Confirm Password
-        <input
+        <input id="modal_signup_text_input"
           type="password"
+          placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button id="modal_signup_button" type="submit">Sign Up</button>
     </form>
   );
 }
