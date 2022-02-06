@@ -25,12 +25,15 @@ function Navigation({ isLoaded }){
 
   return (
       <nav className='navBar'>
-        <ul>
-            <li>
+        <div className='left_container'>
+          <img id="bnb_sf_logo" src="/bnb_sf_logo_long.png" alt="bnb_sf_logo"></img>
+        </div>
+        <div className='right_container'>
+          <ul>
                 <NavLink exact to="/">Home</NavLink>
                 {isLoaded && sessionLinks}
-            </li>
-        </ul>
+          </ul>
+        </div>
       </nav>  
   );
 }
