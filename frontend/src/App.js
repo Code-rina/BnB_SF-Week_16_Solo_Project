@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Switch } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Navigation from "./components/Navigation";
+import Home from './components/Home'
 import { useDispatch } from 'react-redux'
 import * as sessionActions from "./store/session";
 
@@ -18,6 +19,9 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       <Switch>
+        <Route exact="/">
+          <Home />
+        </Route>
       </Switch>
     </>
   );

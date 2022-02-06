@@ -1,0 +1,20 @@
+.main_container {
+    flex-direction: column;
+    display: flex;
+    background-color:white;
+}
+
+.first_photo_container {
+    margin-top: 20px;
+    display: flex;
+    /* width: 900px;
+    height: 600px; */
+    justify-content: center;
+    align-items: center;
+
+}
+
+#sf_view {
+    border-radius: 20px;
+    width: 70%;
+}

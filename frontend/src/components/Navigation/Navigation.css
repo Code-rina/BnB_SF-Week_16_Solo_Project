@@ -1,5 +1,61 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+  }
+
 .navBar {
-    background-color: rgb(237, 237, 237);
-    height: 40px;
-    margin: 10px;
+    background-color: white;
+    box-shadow: 0px 10px 15px -8px rgb(238, 237, 237);
+    height: 85px;
+    width: 100%;
+    margin: 0 auto;
 }
+.active {
+    color:black;
+    padding-right: 20px;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.left_container {
+    width: 500px;
+    float: left;
+    margin-left: 30px;
+}
+#bnb_sf_logo {
+    height: 70px;
+    margin: auto;
+}
+
+.right_container {
+    width: 300px;
+    float: right;
+    margin: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+ul {
+    margin: auto;
+}
+
+.profile-dropdown {
+    margin: 10px;
+    font-size: 14px;
+}
+
+#logout_button {
+    background-color: #FF5A5F;
+    font-size: 14px;
+    color: white;
+    margin-top:15px;
+    width: 200px;
+    height: 40px;
+    border-color: white;
+    border: 1px solid;
+    border-radius: 10px;
+    float:none;
+}
+  
+#logout_button:hover {
+    background-color:#fc642D;
+  }
