@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route } from 'react-router-dom'
 import Navigation from "./components/Navigation";
 import Home from './components/Home'
+import Footer from './components/Footer'
 import { useDispatch } from 'react-redux'
 import * as sessionActions from "./store/session";
 
@@ -23,6 +24,7 @@ function App() {
           <Home />
         </Route>
       </Switch>
+      <Footer />
     </>
   );
 }
