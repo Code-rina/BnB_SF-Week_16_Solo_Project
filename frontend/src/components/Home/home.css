@@ -7,6 +7,7 @@
     flex-direction: column;
     display: flex;
     padding-top: 80px;
+    padding-bottom: 60px;
     background-color:white;
 }
 
@@ -29,7 +30,7 @@
 
 .im_flex_container {
     position: absolute;
-    top: 100%;
+    top: 97%;
     justify-content: center;
     align-items: center;
     margin: auto;
@@ -40,7 +41,7 @@
     color: white;
     font-weight: 500;
     position: absolute;
-    top: 90%;
+    top: 87%;
     justify-content: center;
     align-items: center;
     margin:auto;
@@ -70,12 +71,12 @@
     color: white;
     font-weight: 500;
     position: absolute;
-    top: 360%;
+    top: 326%;
     left: 8%;
     /* bottom: 90%; */
-    justify-content: center;
-    align-items: center;
-    margin:auto;
+    /* justify-content: center;
+    align-items: center; */
+    /* margin:auto; */
 }
 
 .become_host_button {
@@ -86,7 +87,7 @@
     font-size: 18px;
     font-weight: 620;
     color:#9d2ba4;
-    transform: translate(-165%, 580%);
+    transform: translate(-165%, 590%);
 }
 
 .im_flex_button:hover,
