@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 256]
+        len: [3, 256]  
       }
     },
     hashedPassword: {
@@ -48,7 +48,9 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Spot, { foreignKey: 'userId' })
+    User.hasMany(models.Booking, { foreignKey: 'userId'})
+    User.hasMany(models.Review, { foreignKey: 'userId'})
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function

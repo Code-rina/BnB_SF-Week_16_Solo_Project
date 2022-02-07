@@ -23,6 +23,21 @@ function App() {
         <Route exact="/">
           <Home />
         </Route>
+        {/* <Route path="/spots">
+          <Spots />
+        </Route>
+        <Route path="/spots/host">
+          <HostForm />
+        </Route>
+        <Route path="/spots/:spotId">
+          <SpotDetail />
+        </Route>
+        <Route path="/spots/:spotId/host">
+          <EditHostForm />
+        </Route> */}
+        <Route>
+          <h1>Page Not Found</h1>
+        </Route>
       </Switch>
       <Footer />
     </>

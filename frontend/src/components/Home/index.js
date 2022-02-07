@@ -11,7 +11,7 @@ function Home(){
         <div className="main_container">
             <div className="first_photo_container">
                 <img id="sf_view" src="https://www.outfrontmedia.com/-/media/images/ofm/markets/san-francisco/san-francisco-hero.jpg" alt="sf_view"></img>
-                    <div className="not_sure_where">Not sure where to stay at? Perfect.</div>
+                    <div className="not_sure_where">Not sure where to stay? Perfect.</div>
                     <div className="im_flex_container">
                         <Link to="/spots">
                             <button className="im_flex_button">I'm flexible</button>
