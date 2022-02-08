@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { check } = require = ('express-validator');
+const { check } = require('express-validator');
 const router = express.Router()
 const { handleValidationErrors } = require('../../utils/validation')
 const db = require('../../db/models');
@@ -62,7 +62,7 @@ const hostFormValidator = [
         .exists({ checkFalsy: true })
         .notEmpty()
         .withMessage('Please provide a url for your image'),
-    handleValidationErrors
+    handleValidationErrors,
 ];
 
 // Getting all spots
@@ -72,7 +72,7 @@ router.get(
         const allSpots = await Spot.findAll({
             include: [Image, Amenity, User]
         })
-        return res.json(spot)
+        return res.json(allSpots)
     })
     )
 
@@ -102,3 +102,5 @@ router.post(
         
     })
 )
+
+module.exports = router;

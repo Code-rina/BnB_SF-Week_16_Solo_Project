@@ -24,7 +24,7 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       <Switch>
-        <Route exact="/">
+        <Route exact path="/">
           <Home />
         </Route>
         <Route path="/spots">
