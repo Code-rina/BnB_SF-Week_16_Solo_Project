@@ -61,7 +61,7 @@ const hostFormValidator = [
     check('image.url')
         .exists({ checkFalsy: true })
         .notEmpty()
-        .withMessage('Please provide a url for your image'),
+        .withMessage('Please provide url for your image'),
     handleValidationErrors,
 ];
 
@@ -95,11 +95,23 @@ router.post(
     asyncHandler(async (req, res) => {
         const {image, amenities, spots } = req.body
         const id = await Spot.create(spots)
-        const newImageUrl = {
+        const newUrlImage = {
             spotId: id.id,
             url: image.url
         }
-        
+        await Image.create(newUrlImage)
+        const newListAmenity = {
+            spotId: id.id,
+            parking: amenities.parking,
+            kitchen: amenities.kitchen,
+            patio: amenities.patio,
+            gym: amenities.gym,
+            pool: amenities.pool,
+            hotTub: amenities.hotTub,
+            pets: amenities.pets
+        }
+        await Amenity.create(newListAmenity)
+        return res.json({id})
     })
 )
 
