@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from './components/Home'
 import Footer from './components/Footer'
-import { useDispatch } from 'react-redux'
-import * as sessionActions from "./store/session";
+import Spots from './components/Spots'
+import SpotDetail from './components/SpotDetail'
+import HostForm from './components/HostForm'
+import EditHostForm from './components/EditHostForm'
 
 
 
@@ -23,7 +27,7 @@ function App() {
         <Route exact="/">
           <Home />
         </Route>
-        {/* <Route path="/spots">
+        <Route path="/spots">
           <Spots />
         </Route>
         <Route path="/spots/host">
@@ -34,7 +38,7 @@ function App() {
         </Route>
         <Route path="/spots/:spotId/host">
           <EditHostForm />
-        </Route> */}
+        </Route>
         <Route>
           <h1>Page Not Found</h1>
         </Route>
