@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {addSpot} from '../../store/spots'
@@ -265,7 +265,10 @@ function HostForm(){
         />
       </label>
       </div>
-      <button id="submit_form_button" type="submit">Submit</button>
+      <button id="submit_form_button" 
+      type="submit" 
+      disabled={errorValidator > 0}>Submit</button>
+            <Link id="cancel_form_button" exact="true" to="/">Cancel</Link>
             </form>
             </div>
   );
