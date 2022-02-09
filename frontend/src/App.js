@@ -27,16 +27,16 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/spots">
+        <Route exact path="/spots">
           <Spots />
         </Route>
-        <Route path="/spots/host">
+        <Route exact path="/spots/host">
           <HostForm />
         </Route>
-        <Route path="/spots/:spotId">
+        <Route exact path="/spots/:spotId">
           <SpotDetail />
         </Route>
-        <Route path="/spots/:spotId/host">
+        <Route exact path="/spots/:spotId/host">
           <EditHostForm />
         </Route>
         <Route>
