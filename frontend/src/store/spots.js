@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 const LOAD_ALL = 'spots/loadAll';
 const LOAD_ONE = 'spot/lostOne';
-// export const ADD_SPOT = "spots/ADD_SPOT"
+// const ADD_SPOT = "spots/ADD_SPOT"
 // export const REMOVE_SPOT = "spots/REMOVE_SPOT"
 
 const loadAll = (spotslist) => ({
@@ -15,10 +15,7 @@ const loadOne = (spot) => ({
     spot
 })
 
-//  const addOneSpot = (spot) => ({
-//      type: ADD_SPOT,
-//      spot,
-//  });
+
 
 //  const removeOneSpot = (spotId) => ({
 //      type: REMOVE_SPOT,
@@ -42,6 +39,7 @@ export const getOneSpot = (id) => async (dispatch) => {
         dispatch(loadOne(spot))
     }
 }
+
 
 
 const initialState = { 

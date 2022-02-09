@@ -29,7 +29,7 @@ module.exports = {
   },
   {
     spotId: 4,
-    url: "https://a0.muscache.com/im/pictures/monet/Select-24230206/original/4fddb1c9-4095-490d-8b25-e26806658560?im_w=1200",
+    url: "https://cdn.onekindesign.com/wp-content/uploads/2012/01/San-Francisco-Loft-01-1-Kind-Design.jpg",
     createdAt: new Date(),
     updatedAt: new Date()
   },
