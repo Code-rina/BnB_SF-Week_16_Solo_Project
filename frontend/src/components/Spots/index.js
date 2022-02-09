@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { getAllSpots } from '../../store/spots'
-import { useDispatch } from 'react-redux';
-import './spots.css';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import { Redirect } from "react-router-dom";
+import { getAllSpots } from "../../store/spots"
+// import { Link, Route, useParams } from 'react-router-dom';
+import "./spots.css"
 
-
-function Spots(){
+function Spots() {
     const dispatch = useDispatch()
-    const allSpots = useSelector(state => state.spots.spotsList)
+    const allSpots = useSelector(state => state.spots.spotslist)
+
+
 
     useEffect(() => {
         dispatch(getAllSpots())
@@ -18,7 +17,7 @@ function Spots(){
 
     return (
         <div className="main_container">
-            {allSpots?.map}
+            
             <div className="top_spots_container">
                 <div className="top_left"></div> 
                 <div className="top_middle"></div> 

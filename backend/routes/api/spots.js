@@ -1,12 +1,11 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
-const router = express.Router()
 const { handleValidationErrors } = require('../../utils/validation')
 const db = require('../../db/models');
-const { requireAuth } = require('../../utils/auth');
-
+const { requireAuth, setTokenCookie } = require('../../utils/auth');
 const { Spot, Amenity, User, Image } = db;
+const router = express.Router()
 
 const hostFormValidator = [
     check('spots.address')
@@ -69,10 +68,10 @@ const hostFormValidator = [
 router.get(
     '/',
     asyncHandler(async (req, res) => {
-        const allSpots = await Spot.findAll({
+        const spots = await Spot.findAll({
             include: [Image, Amenity, User]
         })
-        return res.json(allSpots)
+        return res.json(spots)
     })
     )
 
@@ -81,38 +80,12 @@ router.get(
     '/:id', 
     asyncHandler(async (req, res) => {
         const spotId = parseInt(req.params.id, 10)
-        const oneSpot = await Spot.findByPk(spotId, {
+        const spot = await Spot.findByPk(spotId, {
             include: [Image, Amenity, User]
         })
         return res.json(spot)
     })
 )
 
-router.post(
-    '/host',
-    requireAuth,
-    hostFormValidator,
-    asyncHandler(async (req, res) => {
-        const {image, amenities, spots } = req.body
-        const id = await Spot.create(spots)
-        const newUrlImage = {
-            spotId: id.id,
-            url: image.url
-        }
-        await Image.create(newUrlImage)
-        const newListAmenity = {
-            spotId: id.id,
-            parking: amenities.parking,
-            kitchen: amenities.kitchen,
-            patio: amenities.patio,
-            gym: amenities.gym,
-            pool: amenities.pool,
-            hotTub: amenities.hotTub,
-            pets: amenities.pets
-        }
-        await Amenity.create(newListAmenity)
-        return res.json({id})
-    })
-)
 
 module.exports = router;
