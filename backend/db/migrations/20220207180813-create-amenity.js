@@ -19,7 +19,7 @@ module.exports = {
       },
       kitchen: {
         allowNull: false,
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN  
       },
       patio: {
         allowNull: false,

@@ -87,6 +87,69 @@ router.get(
     })
 )
 
+//Creating a host form
+router.post(
+    '/host',
+    requireAuth,
+    hostFormValidator,
+    asyncHandler(async (req, res) => {
+        const {image, amenities, spots } = req.body
+        const id = await Spot.create(spots)
+        const newUrlImage = {
+            spotId: id.id,
+            url: image.url
+        }
+        await Image.create(newUrlImage)
+        const newListAmenity = {
+            spotId: id.id,
+            parking: amenities.parking,
+            kitchen: amenities.kitchen,
+            patio: amenities.patio,
+            gym: amenities.gym,
+            pool: amenities.pool,
+            hotTub: amenities.hotTub,
+            pets: amenities.pets
+        }
+        await Amenity.create(newListAmenity)
+        return res.json({id})
+    })
+)
+
+router.put(
+    '/:id/host',
+    requireAuth,
+    hostFormValidator,
+    asyncHandler(async (req, res) => {
+        const spotId = parseInt(req.params.id, 10)
+        const currentSpot = await Spot.findByPk(spotId)
+
+        const {image, spots, amenities} = req.body
+        const newUrlImage = {
+            id: image.id,
+            spotId: id.id,
+            url: image.url
+        }
+        const currentImage = await Image.findByPk(image.id);
+
+        await currentImage.update(newUrlImage)
+
+        const newListAmenity = {
+            id: amenities.id,
+            spotId: id.id,
+            parking: amenities.parking,
+            kitchen: amenities.kitchen,
+            patio: amenities.patio,
+            gym: amenities.gym,
+            pool: amenities.pool,
+            hotTub: amenities.hotTub,
+            pets: amenities.pets
+        }
+        const currentAmenity = await Amenity.findByPk(amenities.id)
+        await currentAmenity.update(newListAmenity)
+
+        return res.json({id})
+    }))
+
 
 
 
