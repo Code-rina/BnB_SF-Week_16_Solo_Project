@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
   Spot.associate = function(models) {
     Spot.belongsTo(models.User, { foreignKey: 'userId' })
     Spot.hasMany(models.Booking, { foreignKey: 'spotId' })
-    Spot.hasMany(models.Amenity, { foreignKey: 'spotId' })
+    Spot.hasMany(models.Amenity, { onDelete: 'cascade', hooks:true, foreignKey: 'spotId' })
     Spot.hasMany(models.Review, { foreignKey: 'spotId' } )
-    Spot.hasMany(models.Image, { foreignKey: 'spotId' })
+    Spot.hasMany(models.Image, { onDelete: 'cascade', hooks:true, foreignKey: 'spotId' })
   };
   return Spot;
 };
