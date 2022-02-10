@@ -62,7 +62,7 @@ module.exports = {
       {
         email: 'richardkreibich@user.io',
         username: 'richardkreibich',
-        hashedPassword: bcrypt.hashSync('password8')
+        hashedPassword: bcrypt.hashSync('password12')
       },
     ], {});
   },
