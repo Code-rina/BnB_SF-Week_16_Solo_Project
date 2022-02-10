@@ -71,6 +71,6 @@ module.exports = {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Users', {
       username: { [Op.in]: ['Jane Fonda', 'Kaja Wiener', 'Mary Poppins'] }
-    }, {});
+    }, {});   
   }
 };
