@@ -81,7 +81,7 @@ export const removeSpot = (payload, id) => async (dispatch) => {
     })
     if (res.ok) {
         const spot = await res.json()
-        await dispatch(removeOneSpot(spot))
+        await dispatch(removeOneSpot(id))
         return spot
     }
 }

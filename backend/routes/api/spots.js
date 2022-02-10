@@ -158,17 +158,17 @@ router.put(
     asyncHandler(async (req, res) => {
         const {id, Images, Amenities} = req.body
         const spotId = parseInt(req.params.id, 10)
-        const imageId = Images[0].id;
-        const amenitiesId = Amenities[0].id;
+        // const imageId = Images[0].id;
+        // const amenitiesId = Amenities[0].id;
 
         const currentSpot = await Spot.findByPk(spotId)
-        const currentImage = await Image.findByPk(imageId)
-        const currentAmenity = await Amenity.findByPk(amenitiesId)
+        // const currentImage = await Image.findByPk(imageId)
+        // const currentAmenity = await Amenity.findByPk(amenitiesId)
 
         // console.log(currentSpot, currentImage, currentAmenity)
-        if(currentSpot && currentImage & currentAmenity) {
-            await currentAmenity.destroy();
-            await currentImage.destroy();
+        if(currentSpot) {
+            // await currentAmenity.destroy();
+            // await currentImage.destroy();
             await currentSpot.destroy();
 
             res.json({message: "Successfuly deleted"});
