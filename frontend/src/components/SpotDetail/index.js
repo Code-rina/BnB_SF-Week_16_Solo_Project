@@ -5,37 +5,38 @@ import { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {getOneSpot} from '../../store/spots'
+import {removeSpot} from '../../store/spots'
 import './spotsdetail.css';
 
 
 function SpotDetail(){
-  const sessionUser = useSelector(state => state.session.user);
-  const dispatch = useDispatch()
-  const {spotId} = useParams()
-  const history = useHistory()
-  const oneSpot = useSelector(state => state.spots[spotId])
+    const dispatch = useDispatch()
+    const {spotId} = useParams()
+    const history = useHistory()
+    const sessionUser = useSelector(state => state.session.user);
+    const oneSpot = useSelector(state => state.spots[spotId])
 
 useEffect(()=> {
     dispatch(getOneSpot(spotId))
 }, [dispatch, spotId])
 
-// const deleteButton = async (e) => {
-//     e.preventDefault()
-//     let deleteForm;
-//     try {
-//         deleteForm = await dispatch(removeSpot(oneSpot, spotId))
-//     }catch(error) {
-//         throw new Error("Something went wrong")
-//     }
-//     if(deleteForm.message === "Your submission was deleted") {
-//         history.push("/spots")
-//     }
-// }
+const deleteButton = async (e) => {
+    e.preventDefault()
+    let deleteForm;
+    try {
+        deleteForm = await dispatch(removeSpot(oneSpot, spotId))
+    }catch(error) {
+        throw new Error("Something went wrong")
+    }
+    if(deleteForm.message === "Successfuly deleted") {
+        history.push("/spots")
+    }
+}
 
     return (
         <div className="main_spotdetail_container">
             <h1 id="detail_title">{oneSpot?.title}</h1>
-            <img className="detail_spot_image" src={oneSpot?.Images[0].url} alt="cabin" />
+            <img className="detail_spot_image" src={oneSpot?.Images[0].url} alt="detail_img" />
             <h2 id="hosted_by">Hosted By: {oneSpot?.User?.username}</h2>
             <p id="spot_price">{`$${oneSpot?.price}`} <>/night</></p>
             <div>
@@ -46,17 +47,17 @@ useEffect(()=> {
             </div>
             {sessionUser?.id === oneSpot?.userId &&
             <div id="edit_delete_btn">
-                <Link className="edit_spot_button" to="{`/spots/${spotId}/host`}">Edit</Link>
-                {/* <button className="delete_spot_button" onClick={deleteButton}>Delete</button> */}
+                <Link className="edit_spot_button" to={`/spots/${spotId}/host`}>Edit</Link>
+                <button className="delete_spot_button" onClick={deleteButton}>Delete</button>
             </div>
             }
             <div id="information">
                 <h3><i class="fa-thin fa-house"></i>Entire Home</h3>
-                <p class="details">You'll have the entire home to yourself.</p>
+                <p className="details">You'll have the entire home to yourself.</p>
                 <h3><i class="fa-thin fa-sparkles"></i>Enhanced Clean</h3>
-                <p class="details">This Host committed to BnB SF's  enhanced cleaning process.</p>
+                <p className="details">This Host committed to BnB SF's  enhanced cleaning process.</p>
                 <h3><i class="fa-thin fa-key"></i>Great check-in experience</h3>
-                <p class="details">100% of recent guests gave the check-in process a 5-star rating.</p>
+                <p className="details">100% of recent guests gave the check-in process a 5-star rating.</p>
                 <h3><i class="fa-thin fa-calendar"></i>Free cancellation for 48 hours</h3>
             <p id="description">{oneSpot?.description}</p>  
             </div>   

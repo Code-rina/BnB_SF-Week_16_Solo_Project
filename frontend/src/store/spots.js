@@ -3,7 +3,7 @@ import { csrfFetch } from './csrf';
 const LOAD_ALL = 'spots/LOAD_ALL';
 const LOAD_ONE = 'spots/LOAD_ONE';
 const ADD_SPOT = "spots/ADD_SPOT"
-// export const REMOVE_SPOT = "spots/REMOVE_SPOT"
+const REMOVE_SPOT = "spots/REMOVE_SPOT"
 
 const loadAll = (list) => ({
     type: LOAD_ALL,
@@ -20,10 +20,10 @@ const addOneSpot = (spot) => ({
     spot,
 });
 
-//  const removeOneSpot = (spotId) => ({
-//      type: REMOVE_SPOT,
-//      spotId,
-//  })
+ const removeOneSpot = (spotId) => ({
+     type: REMOVE_SPOT,
+     spotId,
+ })
 
 export const getAllSpots = () => async (dispatch) => {
     const res = await csrfFetch(`/api/spots`);
@@ -73,6 +73,19 @@ export const editSpot = (spot, id) => async (dispatch) => {
     return payload;
 }
 
+export const removeSpot = (payload, id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${id}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': "application/json"},
+        body: JSON.stringify(payload,id)
+    })
+    if (res.ok) {
+        const spot = await res.json()
+        await dispatch(removeOneSpot(spot))
+        return spot
+    }
+}
+
 
 const initialState = { 
     list : [],
@@ -108,6 +121,11 @@ const spotsReducer = (state = initialState, action) => {
             return newState;
         }
         return {...state, [action.spot.id]: {...state[action.spot.id], ...action.spot}}
+    }
+    case REMOVE_SPOT: {
+        const newState = {...state}
+        delete newState[action.spotId];
+        return newState;
     }
     default:
         return state;

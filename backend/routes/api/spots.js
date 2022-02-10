@@ -126,7 +126,7 @@ router.put(
         const {image, spots, amenities} = req.body
 
         const id = await currentSpot.update(spots)
-        
+
         const newUrlImage = {
             id: image.id,
             spotId: id.id,
@@ -151,6 +151,32 @@ router.put(
         await currentAmenity.update(newListAmenity)
 
         return res.json({id})
+    }))
+
+    router.delete(
+    '/:id',
+    asyncHandler(async (req, res) => {
+        const {id, Images, Amenities} = req.body
+        const spotId = parseInt(req.params.id, 10)
+        const imageId = Images[0].id;
+        const amenitiesId = Amenities[0].id;
+
+        const currentSpot = await Spot.findByPk(spotId)
+        const currentImage = await Image.findByPk(imageId)
+        const currentAmenity = await Amenity.findByPk(amenitiesId)
+
+        // console.log(currentSpot, currentImage, currentAmenity)
+        if(currentSpot && currentImage & currentAmenity) {
+            await currentAmenity.destroy();
+            await currentImage.destroy();
+            await currentSpot.destroy();
+
+            res.json({message: "Successfuly deleted"});
+        // } else {
+        //     console.log("We could not delete your form")
+        } 
+        res.json({message: "Deleting was unsuccessful"})
+        // }
     }))
 
 
