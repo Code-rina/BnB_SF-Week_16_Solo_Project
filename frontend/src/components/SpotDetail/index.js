@@ -52,27 +52,30 @@ const deleteButton = async (e) => {
             </div>
             }
             <div id="information">
-                <h3><i class="fa-thin fa-house"></i>Entire Home</h3>
+                <h3><i className="fa-thin fa-house"></i>Entire Home</h3>
                 <p className="details">You'll have the entire home to yourself.</p>
-                <h3><i class="fa-thin fa-sparkles"></i>Enhanced Clean</h3>
+                <h3><i className="fa-thin fa-sparkles"></i>Enhanced Clean</h3>
                 <p className="details">This Host committed to BnB SF's  enhanced cleaning process.</p>
-                <h3><i class="fa-thin fa-key"></i>Great check-in experience</h3>
+                <h3><i className="fa-thin fa-key"></i>Great check-in experience</h3>
                 <p className="details">100% of recent guests gave the check-in process a 5-star rating.</p>
-                <h3><i class="fa-thin fa-calendar"></i>Free cancellation for 48 hours</h3>
-            <p id="description">{oneSpot?.description}</p>  
+                <h3><i className="fa-thin fa-calendar"></i>Free cancellation for 48 hours</h3>
             </div>   
+            <p id="description">{oneSpot?.description}
+            <h2 id="spot"></h2></p> 
+
             <h3>What amenities this place offers</h3> 
             <div className="icons_amenities">
                 <div className="left_side_amenities">
-                    <p>{(oneSpot?.Amenities[0]?.parking) ? <p><i class="fa-thin fa-square-parking"></i>   Parking</p>: ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.kitchen) ? <p><i class="fa-thin fa-oven"></i>   Kitchen</p>: ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.patio) ? <p><i class="fa-thin fa-cloud-sun"></i>   Patio</p>: ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.pets) ? <p><i class="fa-thin fa-paw"></i>   Pets</p>: ''}</p>
+
+                    <p>{(oneSpot?.Amenities[0]?.parking) ? <p><i className="fa-thin fa-square-parking"></i>   Parking</p>: ''}</p>
+                    <p>{(oneSpot?.Amenities[0]?.kitchen) ? <p><i className="fa-thin fa-oven"></i>   Kitchen</p>: ''}</p>
+                    <p>{(oneSpot?.Amenities[0]?.patio) ? <p><i className="fa-thin fa-cloud-sun"></i>   Patio</p>: ''}</p>
+                    <p>{(oneSpot?.Amenities[0]?.pets) ? <p><i className="fa-thin fa-paw"></i>   Pets</p>: ''}</p>
                 </div>
                 <div className="right_side_amenities">
-                    <p>{(oneSpot?.Amenities[0]?.gym) ? <p><i class="fa-thin fa-dumbbell"></i>   Gym</p>: ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.pool) ? <p><i class="fa-thin fa-person-swimming"></i>   Pool</p>: ''}</p>
-                    <p>{(oneSpot?.Amenities[0]?.hotTub) ? <p><i class="fa-thin fa-hot-tub-person"></i>   Hot Tub</p>: ''}</p>
+                    <p>{(oneSpot?.Amenities[0]?.gym) ? <p><i className="fa-thin fa-dumbbell"></i>   Gym</p>: ''}</p>
+                    <p>{(oneSpot?.Amenities[0]?.pool) ? <p><i className="fa-thin fa-person-swimming"></i>   Pool</p>: ''}</p>
+                    <p>{(oneSpot?.Amenities[0]?.hotTub) ? <p><i className="fa-thin fa-hot-tub-person"></i>   Hot Tub</p>: ''}</p>
                 </div>
             </div>
             

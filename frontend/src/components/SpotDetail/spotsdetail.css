@@ -1,15 +1,112 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
 .main_spotdetail_container {
-    margin: 20px;
+    margin: 8% 20% ;
     border-bottom: 1px solid grey;
-    padding-top: 80px;
-    padding-bottom: 60px;
-    padding-left: 60px;
-    object-fit: cover; 
 }
 
 .detail_spot_image {
+    height: 80%;
+    object-fit: cover;
     width: 100%;
+    border-radius: 25px;
+   
 }
+#detail_title {
+    margin-top: 75px;
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+#hosted_by {
+    margin-top: 75px;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font-size: 22px;   
+}
+
+#spot_price {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    text-align: end;
+}
+
+#detail {
+    position: relative;
+    padding-bottom: 55px;
+    border-bottom: 0.5px solid grey;
+}
+
+#edit_delete_btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit_spot_button,
+.delete_spot_button {
+    left: 60px;
+    color: #d93b30;
+    padding: 8px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    margin: 8px 6px;
+    cursor: pointer;
+}
+
+/* .fa-thin fa-house,
+.fa-thin fa-sparkles,
+.fa-thin fa-key,
+.fa-thin fa-calendar {
+
+} */
+
+.icons_amenities {
+    display: flex;
+    flex-direction: row;
+}
+
+/* .left_side_amenities {
+
+} */
+.fa-thin fa-square-parking,
+.fa-thin fa-oven,
+.fa-thin fa-cloud-sun,
+.fa-thin fa-paw,
+.fa-thin fa-dumbbell,
+.fa-thin fa-person-swimming,
+.fa-thin fa-hot-tub-person {
+    font-family: 'Montserrat', sans-serif;
+    color: black !important;
+    font-weight: 300 !important;
+    font-size: 14px !important;
+    line-height: 24px !important;
+    border-bottom: 1px solid grey;
+    padding-bottom: 20px;
+    position: relative;
+}
+#spot {
+    font-size: 15px;
+   font-weight: 300;
+   text-align: end;
+   margin-right: 20px;
+}
+
+ h1 {
+    margin-top: 65px;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 35px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+ }
 
 #information {
     margin-left: 60px;
