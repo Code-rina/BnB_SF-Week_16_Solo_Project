@@ -99,12 +99,14 @@ useEffect(()=> {
     return (
         <div className="host_form">
             <form onSubmit={handleSubmit}>
+            <div id="form_container">
                 <h3>Host Form</h3>
       <ul>
         {errorValidator.map(error => (
           <li className="error_list" key={error}>{error}</li>
         ))}
       </ul>
+      </div>
       <label id="form_label_address">
         Address
         <input id="form_address_text_input"

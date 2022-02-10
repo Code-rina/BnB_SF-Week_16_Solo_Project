@@ -1,0 +1,20 @@
+.main_spotdetail_container {
+    margin: 20px;
+    border-bottom: 1px solid grey;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    padding-left: 60px;
+}
+
+.detail_spot_image {
+    width: 100%;
+}
+
+#information {
+    margin-left: 60px;
+}
+
+/* #detail, 
+#details {
+    margin-left: 150px;
+} */

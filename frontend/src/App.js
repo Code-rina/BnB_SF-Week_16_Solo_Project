@@ -20,9 +20,10 @@ function App() {
   }, [dispatch]);
 
 
-  return isLoaded && (
+  return (
     <>
       <Navigation isLoaded={isLoaded} />
+      {isLoaded && (
       <Switch>
         <Route exact path="/">
           <Home />
@@ -43,6 +44,7 @@ function App() {
           <h1>Page Not Found</h1>
         </Route>
       </Switch>
+      )}
       <Footer />
     </>
   );
