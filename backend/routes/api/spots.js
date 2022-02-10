@@ -124,6 +124,9 @@ router.put(
         const currentSpot = await Spot.findByPk(spotId)
 
         const {image, spots, amenities} = req.body
+
+        const id = await currentSpot.update(spots)
+        
         const newUrlImage = {
             id: image.id,
             spotId: id.id,

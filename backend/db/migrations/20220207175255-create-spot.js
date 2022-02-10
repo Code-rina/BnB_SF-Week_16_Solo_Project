@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      zipCode: {
+      zipCode: { 
         allowNull: false,
         type: Sequelize.INTEGER
       },

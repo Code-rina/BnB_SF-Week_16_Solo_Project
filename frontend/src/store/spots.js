@@ -5,9 +5,9 @@ const LOAD_ONE = 'spots/LOAD_ONE';
 const ADD_SPOT = "spots/ADD_SPOT"
 // export const REMOVE_SPOT = "spots/REMOVE_SPOT"
 
-const loadAll = (spotslist) => ({
+const loadAll = (list) => ({
     type: LOAD_ALL,
-    spotslist
+    list
 })
 
 const loadOne = (spot) => ({
@@ -42,38 +42,53 @@ export const getOneSpot = (id) => async (dispatch) => {
         dispatch(loadOne(spot))
     }
 }
-export const addSpot = (payload) => async (dispatch) => {
+export const addSpot = (spot) => async (dispatch) => {
     const res = await csrfFetch(`/api/spots/host`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(spot)
     })
-    // if (!res.ok) {
-    //     let error = await res.json();
-    //     return error;
-    // }
-    const spot = await res.json()
-    dispatch(addOneSpot(spot))
-    return spot;
+    if (!res.ok) {
+        let error = await res.json();
+        return error;
+    }
+    const payload = await res.json()
+    dispatch(addOneSpot(payload))
+    return payload;
+}
+
+export const editSpot = (spot, id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${id}/host`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(spot)
+    })
+    if(!res.ok) {
+        let error = await res.json();
+        return error
+    }
+    const payload = await res.json();
+    await dispatch(addOneSpot(payload))
+
+    return payload;
 }
 
 
-
 const initialState = { 
-    spotslist : [],
+    list : [],
  };
 
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_ALL: {
             const allSpots = {}
-            action.spotslist.forEach(spot => {
+            action.list.forEach(spot => {
                 allSpots[spot.id] = spot
             });
             return{
                 ...allSpots,
-                ...state.spotslist, 
-                spotslist: action.spotslist
+                ...state.list, 
+                list: action.list
             }
         }
         case LOAD_ONE: {
@@ -87,11 +102,12 @@ const spotsReducer = (state = initialState, action) => {
         case ADD_SPOT: {
             if(!state[action.spot.id]) {
                 const newState = {...state, [action.spot.id]: action.spot}
-            const list = newState.spotslist.map(id => newState[id]);
-            list.push(action.spot)
-            newState.spotslist = list;
+            const spotList = newState.list.map(id => newState[id]);
+            spotList.push(action.spot)
+            newState.list = action.list;
             return newState;
         }
+        return {...state, [action.spot.id]: {...state[action.spot.id], ...action.spot}}
     }
     default:
         return state;

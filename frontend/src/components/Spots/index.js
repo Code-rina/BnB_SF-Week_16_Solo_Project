@@ -7,7 +7,7 @@ import "./spots.css"
 
 function Spots() {
     const dispatch = useDispatch()
-    const allSpots = useSelector(state => state.spots.spotslist)
+    const allSpots = useSelector(state => state.spots.list)
 
 
 
