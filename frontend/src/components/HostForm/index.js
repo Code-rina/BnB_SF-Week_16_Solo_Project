@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {addSpot} from '../../store/spots'
+import {useEffect} from 'react'
 import './hostform.css';
 
 
@@ -25,13 +26,13 @@ function HostForm(){
     const [bedrooms, setBedrooms] = useState("");
     const [bathrooms, setBathrooms] = useState("");
     const [url, setUrl] = useState("");
-    const [kitchen, setKitchen] = useState("");
-    const [parking, setParking] = useState("");
-    const [patio, setPatio] = useState("");
-    const [pool, setPool] = useState("");
-    const [gym, setGym] = useState("");
-    const [hotTub, setHotTub] = useState("");
-    const [pets, setPets] = useState("");
+    const [kitchen, setKitchen] = useState(false);
+    const [parking, setParking] = useState(false);
+    const [patio, setPatio] = useState(false);
+    const [pool, setPool] = useState(false);
+    const [gym, setGym] = useState(false);
+    const [hotTub, setHotTub] = useState(false);
+    const [pets, setPets] = useState(false);
     const [errorValidator, setErrorValidator] = useState([])
 
 
@@ -67,21 +68,38 @@ function HostForm(){
             }
         }
         let spotCreated;
-        try {
-            spotCreated = await dispatch(addSpot(payload));
-        } catch (error) {
-            throw new Error("Something went wrong")
-        }
+        spotCreated = await dispatch(addSpot(payload));
+        // try {
+        // } catch (error) {
+        //     throw new Error("Something went wrong")
+        // }
         if (spotCreated) {
             history.push(`/spots/${spotCreated.id.id}`)
         }
     };
 
+useEffect(()=> {
+    const errors = []
+    if(address?.length > 255 || address?.length === 0) errors.push("Address must be less than 255 characters");
+    if(city?.length > 255 || city?.length === 0) errors.push("City must be less than 255 characters");
+    if((zipCode?.length > 0 && zipCode?.length > 6) || zipCode?.length === 0) errors.push("Please provide a valid Zip Code");
+    if(state?.length > 30 || state?.length === 0) errors.push("Please provide a valid state name");
+    if(country?.length > 100 || country?.length === 0) errors.push("Please provide a valid country name");
+    if(title?.length > 50 || title?.length === 0) errors.push("Title must be less than 50 characters");
+    if(description?.length === 0) errors.push("Please provide a description");
+    if(price < 1 && price !== 0) errors.push("Please provide a valid price");
+    if(guests < 1 && guests !== 0) errors.push("Please provide a guest count");
+    if(bedrooms < 1 && bedrooms !== 0) errors.push("Please provide a bedroom count");
+    if(bathrooms < 1 && bathrooms !== 0) errors.push("Please provide a bathroom count");
+    if(url?.length > 255 || url?.length === 0 || !url?.includes("http" || "https")) errors.push("Please provide a valid Url address");
+    setErrorValidator(errors)
+}, [address, city, zipCode, state, country, title, description, price, guests, bedrooms, bathrooms, url])
+
 
     return (
         <div className="host_form">
             <form onSubmit={handleSubmit}>
-                <h1>Host Form</h1>
+                <h3>Host Form</h3>
       <ul>
         {errorValidator.map(error => (
           <li className="error_list" key={error}>{error}</li>

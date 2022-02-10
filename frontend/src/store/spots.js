@@ -48,6 +48,10 @@ export const addSpot = (payload) => async (dispatch) => {
         headers: {'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
+    // if (!res.ok) {
+    //     let error = await res.json();
+    //     return error;
+    // }
     const spot = await res.json()
     dispatch(addOneSpot(spot))
     return spot;
@@ -83,9 +87,9 @@ const spotsReducer = (state = initialState, action) => {
         case ADD_SPOT: {
             if(!state[action.spot.id]) {
                 const newState = {...state, [action.spot.id]: action.spot}
-            const spotList = newState.list.map(id => newState[id]);
-            spotList.push(action.spot)
-            newState.list = action.list;
+            const list = newState.spotslist.map(id => newState[id]);
+            list.push(action.spot)
+            newState.spotslist = list;
             return newState;
         }
     }
