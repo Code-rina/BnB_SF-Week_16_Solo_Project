@@ -26,7 +26,7 @@ router.get('/:artistId(\\d+)', asyncHandler(async function (req, res) {
         },
         include: [
             { model: User }
-        ]
+        ] 
     })
-    res.json(reviews);
+    res.json(reviews); 
 }))
