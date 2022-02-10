@@ -287,7 +287,7 @@ useEffect(()=> {
       </div>
       <button id="submit_form_button" 
       type="submit" 
-      disabled={errorValidator > 0}>Submit</button>
+      disabled={errorValidator.length > 0}>Submit</button>
             <Link id="cancel_form_button" exact="true" to="/">Cancel</Link>
             </form>
             </div>

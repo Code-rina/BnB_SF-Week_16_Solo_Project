@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-// import {states} from '../../store/utils'
 import {editSpot} from "../../store/spots"
 import {getOneSpot} from "../../store/spots"
 import './edithostform.css';
@@ -12,8 +11,8 @@ function EditHostForm(){
     const dispatch = useDispatch()
     const history = useHistory()
     const session = useSelector(state => state.session)
-    const spotInfo = useSelector(state => state.spots[spotId])
     const {spotId} = useParams()
+    const spotInfo = useSelector(state => state.spots[spotId])
 
     const [address, setAddress] = useState(spotInfo?.address);
     const [city, setCity] = useState(spotInfo?.city);
@@ -42,6 +41,7 @@ function EditHostForm(){
         
         const payload = {
             amenities: {
+                id: spotInfo?.Amenities[0]?.id,
                 parking,
                 kitchen,
                 patio,
@@ -65,7 +65,7 @@ function EditHostForm(){
                 bathrooms
             },
             image: {
-                id: spotInfo?.Image[0]?.id,
+                id: spotInfo?.Images[0]?.id,
                 url
             }
         }
