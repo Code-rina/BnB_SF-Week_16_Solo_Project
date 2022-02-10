@@ -11,25 +11,25 @@ module.exports = {
    return queryInterface.bulkInsert('Images', [
      {
      spotId: 1,
-     url: "https://photos.zillowstatic.com/fp/2fa5a5fa084a68af7ffc10811984f9d0-cc_ft_768.webp",
+     url: "https://a0.muscache.com/im/pictures/4d6d2120-37ab-4d15-a5b5-64ba2ca84920.jpg?im_w=1200",
      createdAt: new Date(),
      updatedAt: new Date()
    },
    {
     spotId: 2,
-    url: "https://photos.zillowstatic.com/fp/cc2c8550c9da0a4b322f554f0b091e05-cc_ft_768.webp",
+    url: "https://a0.muscache.com/im/pictures/31acb5cd-16c3-47c9-99c0-6b8bfc8fc43c.jpg?im_w=1440",
     createdAt: new Date(),
     updatedAt: new Date()
   },
   {
     spotId: 3,
-    url: "https://photos.zillowstatic.com/fp/ae12399736d94a4122f0953cd4bc613e-uncropped_scaled_within_1536_1152.webp",
+    url: "https://a0.muscache.com/im/pictures/33426b6c-ae21-4abe-acc5-2a6eac7c010e.jpg?im_w=1200",
     createdAt: new Date(),
     updatedAt: new Date()
   },
   {
     spotId: 4,
-    url: "https://cdn.onekindesign.com/wp-content/uploads/2012/01/San-Francisco-Loft-01-1-Kind-Design.jpg",
+    url: "https://a0.muscache.com/im/pictures/miso/Hosting-45926638/original/35b11206-c91f-4d82-a3c6-9cde6782cde4.png?im_w=1200",
     createdAt: new Date(),
     updatedAt: new Date()
   },
