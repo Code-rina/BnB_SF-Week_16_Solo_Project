@@ -6,62 +6,62 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [
       {
         email: 'demo@user.io',
-        username: 'Demo-lition',
+        username: 'Jane Fonda',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
         email: 'user1@user.io',
-        username: 'FakeUser1',
+        username: 'Kaja Wiener',
         hashedPassword: bcrypt.hashSync('password2')
       },
       {
         email: 'user2@user.io',
-        username: 'FakeUser2',
+        username: 'Mary Poppins',
         hashedPassword: bcrypt.hashSync('password3')
       },
       {
         email: 'bill.adams@user.io',
-        username: 'billadams',
+        username: 'Bill Adams',
         hashedPassword: bcrypt.hashSync('password4')
       },
       {
         email: 'adam.lovett@user.io',
-        username: 'adamlovett',
+        username: 'Adam Lovett',
         hashedPassword: bcrypt.hashSync('password5')
       },
       {
         email: 'jdrichards@user.io',
-        username: 'jdrichards',
+        username: 'JD Richards',
         hashedPassword: bcrypt.hashSync('password6')
       },
       {
         email: 'geoffotieno@user.io',
-        username: 'geoffreyotieno',
+        username: 'Geoffrey Otieno',
         hashedPassword: bcrypt.hashSync('password7')
       },
       {
         email: 'thanhnguyen@user.io',
-        username: 'thanhnguyen',
+        username: 'Thanh Nguyen',
         hashedPassword: bcrypt.hashSync('password8')
       },
       {
         email: 'jordynsechrist@user.io',
-        username: 'jordynsechrist',
+        username: 'Jordyn Sechrist',
         hashedPassword: bcrypt.hashSync('password9')
       },
       {
         email: 'justinkreibich@user.io',
-        username: 'justinkreibich',
+        username: 'Justin Kreibich',
         hashedPassword: bcrypt.hashSync('password10')
       },
       {
         email: 'susanweiner@user.io',
-        username: 'susanweiner',
+        username: 'Susan Weiner',
         hashedPassword: bcrypt.hashSync('password11')
       },
       {
         email: 'richardkreibich@user.io',
-        username: 'richardkreibich',
+        username: 'Richard Kreibich',
         hashedPassword: bcrypt.hashSync('password12')
       },
     ], {});
