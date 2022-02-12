@@ -1,42 +1,34 @@
-/* const express = require('express');
-const asyncHandler = require('express-async-handler');
-const { check } = require('express-validator');
 
-const { handleValidationErrors } = require('../../utils/validation');
-const { User, Review } = require('../../db/models');
-
-const router = express.Router();
-
-const reviewValidator = [
-    check('review')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a review.')
-        .isLength({ max: 255 })
-        .withMessage('Review cannot be longer than 255 characters.'),
-    check('rating')
-        .isInt({ min: 1, max: 5 })
-        .withMessage('Rating must be a number between 1 and 5.'),
-    handleValidationErrors,
-];
+   
+const router = require("express").Router();
+const asyncHandler = require("express-async-handler");
+const { check } = require("express-validator");
+const csrf = require("csurf");
+const { User, Spot, Image, Review } = require("../../db/models");
+const csrfProtection = csrf({ cookie: true });
 
 router.get(
-    '/:id',
-     asyncHandler(async (req, res) => {
+  "/spots/:id/",
+  asyncHandler(async (req, res) => {
     const reviews = await Review.findAll({
-        where: {
-            userId: req.params.userId
-        },
-        include: [
-            { model: User }
-        ] 
-    })
-    res.json(reviews); 
-}))
+      where: {
+        spotId: req.params.id,
+      },
+    });
+    return res.json(reviews);
+  })
+);
+
+router.post(
+  "/spots/:id/",
+  asyncHandler(async (req, res) => {
+      const { userId, spotId, rating, review } = req.body
+    const reviews = await Review.create({userId, spotId, rating, review});
+    console.log('********************', reviews)
+    return res.json(reviews);
+  })
+);
+module.exports = router;
 
 
 
-
-
-
-
-*/
