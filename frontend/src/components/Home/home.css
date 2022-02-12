@@ -3,7 +3,7 @@
     /* font-family: 'Roboto', sans-serif; */
   }
 
-.main_container {
+.main_home_container {
     flex-direction: column;
     display: flex;
     padding-top: 80px;
@@ -71,7 +71,7 @@
     color: white;
     font-weight: 500;
     position: absolute;
-    top: 326%;
+    top: 328%;
     left: 8%;
     /* bottom: 90%; */
     /* justify-content: center;

@@ -8,7 +8,7 @@ import './home.css';
 function Home(){
 //   const sessionUser = useSelector(state => state.session.user);
     return (
-        <div className="main_container">
+        <div className="main_home_container">
             <div className="first_photo_container">
                 <img id="sf_view" src="https://www.outfrontmedia.com/-/media/images/ofm/markets/san-francisco/san-francisco-hero.jpg" alt="sf_view"></img>
                     <div className="not_sure_where">Not sure where to stay? Perfect.</div>

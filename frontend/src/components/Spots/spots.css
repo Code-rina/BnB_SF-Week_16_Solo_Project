@@ -1,3 +1,113 @@
-h1 {
-    font-size: 200px;
+* {
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+  }
+
+.main_container {
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+    margin-top: 30px;
+    grid-gap: 40px;
+    margin-left: 0;
+    margin-bottom: 3%;
 }
+
+.all_container {
+    display: flex;
+    margin-top: 80px;
+    margin-top: 80px;
+    flex-direction: column;
+    grid-column-start: 1 / span 1;
+    width: 100%;
+    margin-left: 2%;
+}
+.spots_container {
+    border-bottom: rgb(235,235,235) 2px solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    height: 100%;
+    width: 100%;
+    padding: 25px 0;
+}
+
+.information {
+    position: relative;
+    /* grid-column-start: 2 / span 1; */
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: hide;
+}
+
+#spot_image {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    grid-column-start: 1 / span 1;
+    width:  450px;
+    height: 300px;
+    object-fit: cover;
+    margin-left: 2%;
+    border: 1px solid white;
+    box-shadow: 10px 10px 15px 5px lightgray;
+}
+
+#spot_name {
+    font-size: 25px;
+    font-weight: 200 !important;
+    margin-bottom: 10px;
+    /* margin-left: 90px; */
+}
+
+#line {
+    border-bottom: rgb(235,235,235) 2px solid;
+    /* box-shadow: 2px 2px -2px 1px lightgray; */
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+#detail_p_tag {
+    margin:0 !important;
+    font-size: 20px;
+    font-weight: 100 !important;
+    align-items: center;
+}
+
+.detail_container_all {
+    margin-left: 90px;
+    margin-top: 30px;
+}
+
+.amenities_container_all {
+    margin-left: -50px;
+    margin-top: 40px;
+}
+
+#amenities_all {
+    font-size: 17px;
+    font-weight: 100 !important; 
+    margin-left: 50px;
+}
+
+body {
+    margin-left: 0;
+}
+
+ul.details {
+    /* border: blue 1px solid; */
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+} 
+  
+#price {
+    position: absolute;
+    top: 90%;
+    right: 10%;
+    font-size: 18px;
+    font-weight: 100;
+  }
