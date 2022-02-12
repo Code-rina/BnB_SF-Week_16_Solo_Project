@@ -23,7 +23,7 @@ module.exports = {
       },
       review: {
         type: Sequelize.TEXT
-      },
+      },    
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

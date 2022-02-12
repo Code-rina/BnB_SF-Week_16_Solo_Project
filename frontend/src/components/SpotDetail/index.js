@@ -6,19 +6,34 @@ import { Link, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {getOneSpot} from '../../store/spots'
 import {removeSpot} from '../../store/spots'
+import Reviews from "../CreateReview/createReview";
+import {getReviews} from '../../store/reviews'
+import {createReview} from '../../store/reviews'
 import './spotsdetail.css';
 
 
 function SpotDetail(){
     const dispatch = useDispatch()
+    const userId = useSelector((state) => state.session.user?.id);
     const {spotId} = useParams()
+    const {id} = useParams()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user);
     const oneSpot = useSelector(state => state.spots[spotId])
-
+    const review = useSelector((state) => {
+        return state.reviews;
+      });
+console.log(review)
+      const reviewsObj = Object.values(review);
+console.log(reviewsObj)
 useEffect(()=> {
     dispatch(getOneSpot(spotId))
-}, [dispatch, spotId])
+    dispatch(getReviews(id))
+}, [dispatch, id])
+
+const handleReviewSubmit = () => {
+    dispatch(createReview());
+  };
 
 const deleteButton = async (e) => {
     e.preventDefault()
@@ -62,7 +77,6 @@ const deleteButton = async (e) => {
             </div>   
             <p id="description">{oneSpot?.description}
             <h2 id="spot"></h2></p> 
-
             <h3>What amenities this place offers</h3> 
             <div className="icons_amenities">
                 <div className="left_side_amenities">
@@ -78,7 +92,15 @@ const deleteButton = async (e) => {
                     <p>{(oneSpot?.Amenities[0]?.hotTub) ? <p><i className="fa-thin fa-hot-tub-person"></i>   Hot Tub</p>: ''}</p>
                 </div>
             </div>
-            
+            <h2> User Reviews</h2>
+                    {reviewsObj.map((review) => (
+                    <div key={review.id}>
+                    {review?.review}
+                    </div>
+                    ))}
+                <div hidden={!userId}>
+                    {/* <Reviews /> */}
+          </div>
         </div>
     )
 }

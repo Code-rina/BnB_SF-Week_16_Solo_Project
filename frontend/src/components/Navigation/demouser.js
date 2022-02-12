@@ -8,7 +8,7 @@ const DemoUser = () => {
     const handleClick = e => {
         e.preventDefault()
 
-        const credential = 'Demo-lition'
+        const credential = 'Jane Fonda'
         const password = 'password'
 
         dispatch(sessionActions.login({credential,password}))
