@@ -100,13 +100,15 @@ useEffect(()=> {
         <div className="host_form">
             <form onSubmit={handleSubmit}>
             <div id="form_container">
-                <h3>Host Form</h3>
-      <ul>
+              <div id="host_form_top">
+                <h3 id="top_title">Become a Host</h3>
+      <ul id="errors_form">
         {errorValidator.map(error => (
           <li className="error_list" key={error}>{error}</li>
         ))}
       </ul>
       </div>
+      <div id="host_form_left">
       <label id="form_label_address">
         Address
         <input id="form_address_text_input"
@@ -289,8 +291,11 @@ useEffect(()=> {
       type="submit" 
       disabled={errorValidator.length > 0}>Submit</button>
             <Link id="cancel_form_button" exact="true" to="/">Cancel</Link>
+            </div>
+            </div>
             </form>
             </div>
+         
   );
       
 }

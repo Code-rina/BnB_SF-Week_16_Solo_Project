@@ -7,6 +7,7 @@ const { requireAuth, setTokenCookie } = require('../../utils/auth');
 const { Spot, Amenity, User, Image, Review } = db;
 const csrf = require("csurf");
 const router = express.Router()
+const csrfProtection = csrf({ cookie: true });
 
 
 const hostFormValidator = [
