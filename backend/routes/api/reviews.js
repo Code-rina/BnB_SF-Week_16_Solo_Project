@@ -10,9 +10,10 @@ router.get(
   asyncHandler(async (req, res) => {
     const reviews = await Review.findAll({
       where: {
-        spotId: req.params.id,
+        spotId: parseInt(req.params.id, 10),
       },
     });
+    // console.log("reviews", reviews)
     return res.json(reviews);
   })
 );
@@ -33,7 +34,7 @@ router.put(
 
     const reviewId = await Review.findByPk(id)
     const updatedReview = await reviewId.update(req.body)
-    console.log('11111', updatedReview)
+    // console.log('11111', updatedReview)
     return res.json(updatedReview)
   })
 );
@@ -42,6 +43,7 @@ router.delete(
   "/spots/:id/",
   asyncHandler(async (req, res) => {
     const reviewId = Number(req.params.id);
+    console.log("reviewId", reviewId)
     Review.destroy({
       where: {
         id: reviewId,
