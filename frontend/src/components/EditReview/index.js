@@ -62,8 +62,9 @@ const EditReview = ({ reviews, hideForm }) => {
             />
           </div> */}
           <div className="review">
-            <label>Edit Review</label>
+            <label id="ed_rev">Edit Your Review</label>
             <textarea
+            id="texty"
               type="text"
               placeholder="Review"
               value={review}
@@ -71,11 +72,11 @@ const EditReview = ({ reviews, hideForm }) => {
             />
           </div>
           <button
-            className="edit-spot-button"
+            className="edit-review-button"
             type="submit"
             // disabled={errorValidator.length > 0}
           >
-            Edit
+            Edit Review
           </button>
           {/* <button
             className="cancel-edit-button"

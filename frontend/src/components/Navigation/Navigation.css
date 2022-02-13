@@ -11,6 +11,7 @@
     margin: auto;
     position: fixed;
     top: 0;
+    z-index:1;
 }
 .active {
     color:black;

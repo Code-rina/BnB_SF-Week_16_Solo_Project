@@ -48,7 +48,7 @@ function Reviews() {
   return (
     <div className="reviews_main_container">
       <div className="all_reviews_container">
-        <h3>Share your review</h3>
+        {/* <h3>Share your review</h3> */}
         <form className="reviews_form" onSubmit={handleSubmit}>
           <ul>
             {errors.map((error, index) => (
@@ -59,10 +59,11 @@ function Reviews() {
             <StarRating onChange={log} />
           </div>
           <div className="review">
-            <label> Review </label>
+            <label id="ed_rev">Write a Review </label>
             <textarea
+            id="texty"
               type="text"
-              placeholder="Review"
+              placeholder="Write Your Review here..."
               // required
               value={review}
               onChange={(e) => setReview(e.target.value)}
@@ -73,7 +74,7 @@ function Reviews() {
             type="submit"
             //   disabled={errorValidator.length > 0}
           >
-            Submit
+            Submit a Review
           </button>
           <button
             className="cancel-review-button"
