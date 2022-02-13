@@ -19,6 +19,13 @@
     font-weight: 300;
     font-size: 16px;
 }
+#demo_button {
+    background-color: #FF5A5F;
+    border-radius: 10px;
+    border-color: white;
+    margin-top:2px;
+    color: white;
+  }
 
 .left_container {
     width: 500px;
