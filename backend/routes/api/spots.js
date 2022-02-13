@@ -4,8 +4,11 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation')
 const db = require('../../db/models');
 const { requireAuth, setTokenCookie } = require('../../utils/auth');
-const { Spot, Amenity, User, Image } = db;
+const { Spot, Amenity, User, Image, Review } = db;
+const csrf = require("csurf");
 const router = express.Router()
+const csrfProtection = csrf({ cookie: true });
+
 
 const hostFormValidator = [
     check('spots.address')
@@ -27,7 +30,7 @@ const hostFormValidator = [
         .notEmpty()
         .isLength({ max: 30 })
         .withMessage('Please provide a state.'),
-    check('spots.country')
+    check('spots.country') 
         .exists({ checkFalsy: true })
         .notEmpty()
         .isLength({ max: 100 })
@@ -64,6 +67,7 @@ const hostFormValidator = [
     handleValidationErrors,
 ];
 
+
 // Getting all spots
 router.get(
     '/',
@@ -74,6 +78,7 @@ router.get(
         return res.json(spots)
     })
     )
+
 
 // Getting one spot
 router.get(
@@ -179,6 +184,21 @@ router.put(
         // }
     }))
 
+//Creating a new review on a specific spot
+router.post(
+    "/spots/:id",
+    asyncHandler(async (req, res) => {
+      const review = await Review.create(req.body);
+  
+      console.log;
+  
+      const newReview = await Review.findByPk(review.id, {
+        include: [User],
+      });
+      res.json(newReview);
+    })
+  );
+  
 
 
 

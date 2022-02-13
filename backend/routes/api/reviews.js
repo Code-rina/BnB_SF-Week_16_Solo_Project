@@ -1,32 +1,57 @@
-// const express = require('express');
-// const asyncHandler = require('express-async-handler');
-// const { check } = require('express-validator');
+const router = require("express").Router();
+const asyncHandler = require("express-async-handler");
+const { check } = require("express-validator");
+const csrf = require("csurf");
+const { User, Spot, Image, Review } = require("../../db/models");
+const csrfProtection = csrf({ cookie: true });
 
-// const { handleValidationErrors } = require('../../utils/validation');
-// const { User, Review } = require('../../db/models');
+router.get(
+  "/spots/:id/",
+  asyncHandler(async (req, res) => {
+    const reviews = await Review.findAll({
+      where: {
+        spotId: parseInt(req.params.id, 10),
+      },
+    });
+    // console.log("reviews", reviews)
+    return res.json(reviews);
+  })
+);
 
-// const router = express.Router();
+router.post(
+  "/spots/:id/",
+  asyncHandler(async (req, res) => {
+    const { userId, spotId, rating, review } = req.body;
+    const reviews = await Review.create({ userId, spotId, rating, review });
+    return res.json(reviews);
+  })
+);
 
-// const reviewValidator = [
-//     check('review')
-//         .exists({ checkFalsy: true })
-//         .withMessage('Please provide a review.')
-//         .isLength({ max: 255 })
-//         .withMessage('Review cannot be longer than 255 characters.'),
-//     check('rating')
-//         .isInt({ min: 1, max: 5 })
-//         .withMessage('Rating must be a number between 1 and 5.'),
-//     handleValidationErrors,
-// ];
+router.put(
+  "/spots/:id/",
+  asyncHandler(async (req, res) => {
+    const { userId, spotId, rating, review, id} = req.body;
 
-// router.get('/:artistId(\\d+)', asyncHandler(async function (req, res) {
-//     const reviews = await Review.findAll({
-//         where: {
-//             artistId: req.params.artistId
-//         },
-//         include: [
-//             { model: User }
-//         ] 
-//     })
-//     res.json(reviews); 
-// }))
+    const reviewId = await Review.findByPk(id)
+    const updatedReview = await reviewId.update(req.body)
+    // console.log('11111', updatedReview)
+    return res.json(updatedReview)
+  })
+);
+
+router.delete(
+  "/spots/:id/",
+  asyncHandler(async (req, res) => {
+    const reviewId = Number(req.params.id);
+    console.log("reviewId", reviewId)
+    Review.destroy({
+      where: {
+        id: reviewId,
+      },
+    });
+    return res.json(reviewId);
+  })
+);
+
+module.exports = router;
+

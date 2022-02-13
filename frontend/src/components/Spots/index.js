@@ -16,13 +16,12 @@ function Spots() {
     }, [])
 
     return (
-        <div className="main-container">
             <div className="all_container">
                 {allSpots?.map(spot => (
                     <div key={`${spot?.title}1`} className="spots_container">
                         <div key={`${spot?.title}2`} className="image_container">
                             <Link key={`${spot?.title}13`} to={`/spots/${spot.id}`}>
-                                <img key={`${spot?.title}3`} crossOrigin="anonymous" id='spot-image' key={spot?.id} src={spot?.Images[0]?.url} />
+                                <img key={`${spot?.title}3`} crossOrigin="anonymous" id='spot_image' key={spot?.id} src={spot?.Images[0]?.url} />
                             </Link>
                         </div>
                         <div key={`${spot?.title}4`} className="information">
@@ -35,13 +34,14 @@ function Spots() {
                                        {`${spot?.guests} guests • ${spot?.bedrooms} beds • ${spot?.bathrooms} `}
                                        {(spot?.bathrooms !== 1) ? "baths" : "bath"}
                                    </p>
-                               </div>
+                            
                                <div className="amenities_container_all">
                                    <p id='amenities_all'>
                                        {(spot?.Amenities[0]?.parking) ? 'Parking • ' : (spot?.Amenities[0]?.fireplace) ? 'Fireplace • ' : ''}
                                     {(spot?.Amenities[0]?.privateBeachAccess) ? 'Private beach access • ' : (spot?.Amenities[0]?.pool) ? 'Pool • ' : ''}
                                        {(spot?.Amenities[0]?.pets) ? 'Pets • ' : (spot?.Amenities[0]?.pets) ? 'Pets • ' : ''}
                                        {(spot?.Amenities[0]?.hotTub) ? 'Hot tub' : (spot?.Amenities[0]?.kitchen) ? 'Kitchen' : ''}</p>
+                               </div>
                                </div>
                             <ul key={`${spot?.title}7`} className="details">
                                 <li id="price" key={`${spot?.title}8`}>${spot?.price} / night</li>
@@ -50,7 +50,6 @@ function Spots() {
                     </div>
                 ))}
             </div>
-           </div>
     )
 }
 export default Spots;

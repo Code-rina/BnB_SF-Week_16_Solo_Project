@@ -1,0 +1,12 @@
+h3 {
+    font-size: 300px;
+}
+* {
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+}

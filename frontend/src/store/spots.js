@@ -5,6 +5,7 @@ const LOAD_ONE = 'spots/LOAD_ONE';
 const ADD_SPOT = "spots/ADD_SPOT"
 const REMOVE_SPOT = "spots/REMOVE_SPOT"
 
+
 const loadAll = (list) => ({
     type: LOAD_ALL,
     list
@@ -24,6 +25,8 @@ const addOneSpot = (spot) => ({
      type: REMOVE_SPOT,
      spotId,
  })
+
+
 
 export const getAllSpots = () => async (dispatch) => {
     const res = await csrfFetch(`/api/spots`);
@@ -87,6 +90,7 @@ export const removeSpot = (payload, id) => async (dispatch) => {
 }
 
 
+
 const initialState = { 
     list : [],
  };
@@ -127,6 +131,7 @@ const spotsReducer = (state = initialState, action) => {
         delete newState[action.spotId];
         return newState;
     }
+    
     default:
         return state;
     }
