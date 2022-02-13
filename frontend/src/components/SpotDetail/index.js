@@ -6,19 +6,45 @@ import { Link, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {getOneSpot} from '../../store/spots'
 import {removeSpot} from '../../store/spots'
+import Reviews from "../CreateReview/createReview";
+import EditReview from "../EditReview";
+import {getReviews} from '../../store/reviews'
+import {deleteReview} from '../../store/reviews'
+import {createReview} from '../../store/reviews'
 import './spotsdetail.css';
 
 
 function SpotDetail(){
     const dispatch = useDispatch()
+    const userId = useSelector((state) => state.session.user?.id);
     const {spotId} = useParams()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user);
     const oneSpot = useSelector(state => state.spots[spotId])
+    const review = useSelector((state) => {
+      // console.log(state)
+        return state.reviews;
+      });
+
+// console.log(review)
+
+      const reviewsObj = Object.values(review);
+// console.log(reviewsObj)
 
 useEffect(()=> {
     dispatch(getOneSpot(spotId))
+    dispatch(getReviews(spotId))
+    // console.log(spotId)
 }, [dispatch, spotId])
+
+const handleDeleteReview = (id) => {
+    reviewsObj.forEach(async (review) => {
+      if (id === review.id) {
+        return await dispatch(deleteReview(review?.id));
+      }
+    });
+    history.replace(`/spots/${spotId}`);
+  };
 
 const deleteButton = async (e) => {
     e.preventDefault()
@@ -78,7 +104,28 @@ const deleteButton = async (e) => {
                     <p>{(oneSpot?.Amenities[0]?.hotTub) ? <p><i className="fa-thin fa-hot-tub-person"></i>   Hot Tub</p>: ''}</p>
                 </div>
             </div>
-            
+            <h2> User Reviews</h2>
+      {reviewsObj.map((review) => (
+        <div key={review.id}>
+          {review?.review}
+          {review.userId === userId && (
+            <div>
+              <EditReview reviews={review} />
+            </div>
+          )}
+          {review.userId === userId && (
+            <button
+              className="delete-review-button"
+              onClick={() => handleDeleteReview(review?.id)}
+            >
+              Delete Review
+            </button>
+          )}
+        </div>
+      ))}
+      <div hidden={!userId}>
+        <Reviews />
+      </div>
         </div>
     )
 }
