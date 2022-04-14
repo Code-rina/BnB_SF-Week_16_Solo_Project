@@ -77,7 +77,7 @@ router.get(
         })
         return res.json(spots)
     })
-    )
+)
 
 
 // Getting one spot

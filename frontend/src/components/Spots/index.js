@@ -9,7 +9,7 @@ function Spots() {
     const dispatch = useDispatch()
     const allSpots = useSelector(state => state.spots.list)
 
-
+    
 
     useEffect(() => {
         dispatch(getAllSpots())
