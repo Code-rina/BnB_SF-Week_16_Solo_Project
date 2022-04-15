@@ -7,7 +7,7 @@ import {useDispatch} from 'react-redux'
 import {getOneSpot} from '../../store/spots'
 import {removeSpot} from '../../store/spots'
 import Reviews from "../CreateReview/createReview";
-import EditReview from "../EditReview";
+import EditReviewModal from "../EditReview/index";
 import {getReviews} from '../../store/reviews'
 import {deleteReview} from '../../store/reviews'
 import {createReview} from '../../store/reviews'
@@ -110,19 +110,19 @@ const deleteButton = async (e) => {
       {reviewsObj.map((review) => (
         <div key={review.id}>
           {review?.review}
-          {review.userId === userId && (
+          {review?.userId === userId ?
             <div>
-              <EditReview reviews={review} />
+              <EditReviewModal reviews={review} />
             </div>
-          )}
-          {review.userId === userId && (
+          : null}
+          {review?.userId === userId ?
             <button
               className="delete-review-button"
               onClick={() => handleDeleteReview(review?.id)}
             >
               Delete Review
             </button>
-          )}
+          : null}
         </div>
       ))}
       <div hidden={!userId}>

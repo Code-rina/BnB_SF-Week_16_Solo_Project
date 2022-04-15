@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { updateReview } from "../../store/reviews";
 
-const EditReview = ({ reviews, hideForm }) => {
+const EditReviewForm = ({ reviews, hideForm }) => {
   const dispatch = useDispatch();
   const { spotId } = useParams();
   const user = useSelector((state) => state.session.user);
@@ -91,4 +91,4 @@ const EditReview = ({ reviews, hideForm }) => {
   );
 };
 
-export default EditReview;
+export default EditReviewForm;
