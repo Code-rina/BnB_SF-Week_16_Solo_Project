@@ -29,7 +29,7 @@ function Home(){
                             <button className="become_host_button">Become a Host</button>
                         </Link>
                     </div>
-            </div>
+            </div>   
         </div>
     )
 }

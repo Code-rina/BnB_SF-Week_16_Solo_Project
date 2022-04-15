@@ -1,0 +1,208 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%; 
+    
+}
+
+.host_form {
+    padding-top: 80px;
+    padding-bottom: 60px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+h3 {
+    font-size: 30px;
+    text-align: center;
+}
+
+#form_container {
+    border: 1px solid lightgray;
+    box-shadow: 20px 20px 35px 10px lightgray;
+    border-radius: 8px;
+    margin: 6% 25%;
+    width: 50%;  
+}
+.checkboxes {
+    grid-row:2; 
+    grid-column-start:2 / span 1 ;
+    margin: 0;
+    border-radius: 4px;
+    position: relative;
+    height: 230px;
+    margin-top: 30px;
+    padding: 0 80px;
+}
+
+#host_form_top {
+    grid-column-start:1;
+    grid-column-end: 3;
+    column-span: auto;
+    border-radius: 8px;
+}
+
+#top_title {
+    padding-top: 5px;
+}
+
+#errors_form {
+    display: inline;
+    text-align: left;
+}
+
+.error_list {
+    font-size: 13px;
+    display: flex;
+    padding-left: 35%;
+    color: #d93b30;
+    margin-bottom: 2px;
+}
+
+#host_form_left {
+    grid-row: 2;
+    grid-column-start:1 / span 1 ;
+    padding: 0;
+    margin: 0 ;
+    border-radius: 8px;
+    padding-bottom: 15px;
+    padding-bottom: 0px;
+    width: 100%;
+}
+#form_label_address,
+#form_label_city,
+#form_label_zipCode,
+#form_label_state,
+#form_label_country,
+#form_label_title,
+#form_label_description,
+#form_label_price,
+#form_label_guests,
+#form_label_bedrooms,
+#form_label_bathrooms,
+#form_label_url {
+  margin-left: 20px;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  height: 30px;
+}
+
+textarea {
+    margin-top: 15px;
+    width: 200%;
+    height: 80px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-left: 25px;
+    resize: none;
+}
+
+#form_label_kitchen,
+#form_label_parking,
+#form_label_patio,
+#form_label_pool,
+#form_label_gym,
+#form_label_hottub,
+#form_label_pets {
+    display: flex;
+    justify-content: space-between;
+}
+
+#submit_form_button,
+#cancel_form_button {
+    left: 50px;
+    list-style: none;
+    background: none;
+    border: none;
+    color: white;
+    background-color: #FF5A5F;
+    border-color: white;
+    border: 1px solid;
+    border-radius: 10px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 6px 4px;
+    transition-duration: 0.4s;
+    margin-bottom:50px;
+    margin-left: 21%;
+    cursor: pointer; 
+    margin-right: 16px;
+    font-weight: 400;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#submit_form_button:hover,
+#cancel_form_button:hover {
+    background-color:#d93b30;
+}
+
+
+label {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    margin-right: 10%;
+    margin-left: 15%;
+    font-size: 16px;
+}
+
+
+#form_address_text_input,
+#form_city_text_input,
+#form_zipCode_text_input,
+#form_state_text_input,
+#form_country_text_input,
+#form_title_text_input,
+#form_description_text_input,
+#form_price_text_input,
+#form_guests_text_input,
+#form_bedrooms_text_input,
+#form_bathrooms_text_input,
+#form_url_text_input {
+    width: 50%;
+    margin-right: 50px;
+    margin-left: 50px;
+    height: 85%;
+    border-radius: 4px;
+    margin-top: 0;
+    border-color: #f7f7f7
+}
+
+#form_kitchen_text_input,
+#form_parking_text_input,
+#form_patio_text_input,
+#form_pool_text_input,
+#form_gym_text_input,
+#form_hottub_text_input,
+#form_pets_text_input{
+    width: 20px;
+}
+
+#form_label_kitchen,
+#form_label_parking,
+#form_label_patio,
+#form_label_pool,
+#form_label_gym,
+#form_label_hottub,
+#form_label_pets{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    height: 30px;
+}

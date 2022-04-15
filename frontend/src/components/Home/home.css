@@ -1,6 +1,5 @@
 * {
     font-family: 'Montserrat', sans-serif;
-    /* font-family: 'Roboto', sans-serif; */
   }
 
 .main_home_container {
@@ -18,6 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 #sf_view,
@@ -25,15 +25,19 @@
 #gg_bridge {
     border-radius: 20px;
     width: 90%;
+    display: flex;
+    justify-content: center;
 }
 
 
 .im_flex_container {
     position: absolute;
-    top: 97%;
+    top: 78%;
     justify-content: center;
     align-items: center;
     margin: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .not_sure_where {
@@ -41,7 +45,7 @@
     color: white;
     font-weight: 500;
     position: absolute;
-    top: 87%;
+    top: 70%;
     justify-content: center;
     align-items: center;
     margin:auto;
@@ -49,6 +53,7 @@
 
 .im_flex_button {
     background-color: white;
+    margin-top: 10px;
     padding: 16px 34px;
     border-color: white;
     border-radius: 40px;
@@ -60,23 +65,25 @@
 
 .become_host_container {
     position:absolute;
-    /* bottom: 10%; */
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center;
     margin: auto;
+    display: flex;
+    top: 87%;
+    left: 15%;
 }
+
 
 .hosting_question {
     font-size: 40px;
     color: white;
     font-weight: 500;
     position: absolute;
-    top: 328%;
+    top: 80%;
     left: 8%;
-    /* bottom: 90%; */
-    /* justify-content: center;
-    align-items: center; */
-    /* margin:auto; */
+    justify-content: center;
+    align-items: center;
+    margin:auto;
 }
 
 .become_host_button {
@@ -87,8 +94,15 @@
     font-size: 18px;
     font-weight: 620;
     color:#9d2ba4;
-    transform: translate(-165%, 590%);
+    /* position:relative;
+    justify-content: flex-start;
+    align-self: flex-start;
+    margin:auto;
+    bottom: 800%;
+    width: auto;
+    right: 300%; */
 }
+/* transform: translate(-285%, 750%); */
 
 .im_flex_button:hover,
 .become_host_button:hover {

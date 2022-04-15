@@ -50,7 +50,7 @@ function Reviews({review, spotId}) {
             <div className="all_reviews_container">
 
                 <h3>Share your review</h3>
-                <form>
+                <form id="ed_form">
                     <input
                      name="content"
                      type='text'
