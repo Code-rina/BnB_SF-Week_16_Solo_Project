@@ -81,11 +81,11 @@ const deleteButton = async (e) => {
             }
             <div id="det_information">
                 <h3 id="ic_home"><i className="fas i-list fa-home"></i>Entire Home</h3>
-                <p className="details">You'll have the entire home to yourself.</p>
+                <p className="details-spot">You'll have the entire home to yourself.</p>
                 <h3 id="ic_clean"><i className="fas i-list fa-hand-sparkles"></i>Enhanced Clean</h3>
-                <p className="details">This Host committed to BnB SF's  enhanced cleaning process.</p>
+                <p className="details-spot">This Host committed to BnB SF's  enhanced cleaning process.</p>
                 <h3 id="ic_checkin"><i className="fas i-list fa-map-marker-alt"></i>Great check-in experience</h3>
-                <p className="details">100% of recent guests gave the check-in process a 5-star rating.</p>
+                <p className="details-spot">100% of recent guests gave the check-in process a 5-star rating.</p>
                 <h3 id="ic_cancel"><i className="fas i-list fa-map-marker-alt"></i>Free cancellation for 48 hours</h3>
             </div>  
             <h2 id="desc">Description</h2> 

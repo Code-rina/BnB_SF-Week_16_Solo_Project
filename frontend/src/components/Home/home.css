@@ -1,6 +1,5 @@
 * {
     font-family: 'Montserrat', sans-serif;
-    /* font-family: 'Roboto', sans-serif; */
   }
 
 .main_home_container {
@@ -18,61 +17,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 #sf_view,
 #painted_ladies,
 #gg_bridge {
     border-radius: 20px;
-    width: auto;
+    width: 90%;
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.first_photo_container,
-.second_photo_container,
-.third_photo_container {
-    display: flex;
-    justify-content: center;
-    /* position: absolute; */
-    width: auto;
-    margin-top: 150px;
-    margin-bottom: 100px;
-
 }
 
 
 .im_flex_container {
-    /* position: absolute; */
-    /* top: 97%; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* margin: auto;
-    display: flex;
-    justify-content: center; */
-    margin: 20px 20px 30px 20px;
-    display: flex;
-    flex-direction: column;
+    position: absolute;
+    top: 78%;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .not_sure_where {
     font-size: 40px;
     color: white;
     font-weight: 500;
-    /* position: absolute;
-    top: 87%; */
-    /* justify-content: center; */
-    /* align-items: center; */
+    position: absolute;
+    top: 70%;
+    justify-content: center;
+    align-items: center;
     margin:auto;
-    /* display: flex; */
-    /* justify-content: center; */
 }
 
 .im_flex_button {
     background-color: white;
+    margin-top: 10px;
     padding: 16px 34px;
     border-color: white;
     border-radius: 40px;
@@ -84,23 +65,25 @@
 
 .become_host_container {
     position:absolute;
-    /* bottom: 10%; */
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center;
     margin: auto;
+    display: flex;
+    top: 87%;
+    left: 15%;
 }
+
 
 .hosting_question {
     font-size: 40px;
     color: white;
     font-weight: 500;
     position: absolute;
-    top: 328%;
+    top: 80%;
     left: 8%;
-    /* bottom: 90%; */
-    /* justify-content: center;
-    align-items: center; */
-    /* margin:auto; */
+    justify-content: center;
+    align-items: center;
+    margin:auto;
 }
 
 .become_host_button {
@@ -111,8 +94,15 @@
     font-size: 18px;
     font-weight: 620;
     color:#9d2ba4;
-    transform: translate(-165%, 590%);
+    /* position:relative;
+    justify-content: flex-start;
+    align-self: flex-start;
+    margin:auto;
+    bottom: 800%;
+    width: auto;
+    right: 300%; */
 }
+/* transform: translate(-285%, 750%); */
 
 .im_flex_button:hover,
 .become_host_button:hover {
