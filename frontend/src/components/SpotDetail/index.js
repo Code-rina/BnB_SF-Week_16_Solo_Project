@@ -7,7 +7,7 @@ import {useDispatch} from 'react-redux'
 import {getOneSpot} from '../../store/spots'
 import {removeSpot} from '../../store/spots'
 import Reviews from "../CreateReview/createReview";
-import EditReviewModal from "../EditReview/index";
+import EditReviewModal from "../EditReview/EditReviewModal";
 import {getReviews} from '../../store/reviews'
 import {deleteReview} from '../../store/reviews'
 import {createReview} from '../../store/reviews'
@@ -26,11 +26,11 @@ function SpotDetail(){
       // console.log(state)
         return state.reviews;
       });
-
+    console.log("reviewSt", review)
 // console.log(review)
 
       const reviewsObj = Object.values(review);
-// console.log(reviewsObj)
+console.log("reviewsObj", reviewsObj)
 
 useEffect(()=> {
     dispatch(getOneSpot(spotId))
@@ -110,19 +110,19 @@ const deleteButton = async (e) => {
       {reviewsObj.map((review) => (
         <div key={review.id}>
           {review?.review}
-          {review?.userId === userId ?
+          {review.userId === userId && (
             <div>
-              <EditReviewModal reviews={review} />
+              <EditReviewModal review={review} />
             </div>
-          : null}
-          {review?.userId === userId ?
+          )}
+          {review.userId === userId && (
             <button
               className="delete-review-button"
               onClick={() => handleDeleteReview(review?.id)}
             >
               Delete Review
             </button>
-          : null}
+          )}
         </div>
       ))}
       <div hidden={!userId}>

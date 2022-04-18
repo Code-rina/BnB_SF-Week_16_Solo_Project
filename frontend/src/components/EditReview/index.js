@@ -1,39 +1,45 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { updateReview } from "../../store/reviews";
+import { getReviews, updateReview } from "../../store/reviews";
 
-const EditReviewForm = ({ reviews, hideForm }) => {
+const EditReviewForm = ({ review, closeModal }) => {
   const dispatch = useDispatch();
-  const { spotId } = useParams();
+  const { spotId } = useParams();   
   const user = useSelector((state) => state.session.user);
-//   const spotId = useSelector((state) => state.spots[id].id);
-
-  const [rating, setRating] = useState(reviews?.rating);
-  const [review, setReview] = useState(reviews?.review);
+  //   const spotId = useSelector((state) => state.spots[id].id);
+  let rev = useSelector((state) => state?.reviews)
+  console.log("rev", rev)
+  const [rating, setRating] = useState(review?.rating);
+  const [reviews, setReviews] = useState(review?.review);
   const [errorValidator, setErrorValidator] = useState([]);
-
+  
+  // console.log("reviewId", reviewId)
+  // console.log("id", id)
+  
   useEffect(() => {
     const errors = [];
-
+    
     // if (!rating?.rate) errors.push("Please provide a rating");
-    if (!review?.length) errors.push("Please provide a review");
+    if (!reviews?.length) errors.push("Please provide a review");
     setErrorValidator(errors);
-  }, [rating, review]);
-
+  }, [rating, reviews]);
+  
   const handleSubmit = async (e) => {
+
     e.preventDefault();
-    // console.log("33333333333", reviews.id);
+    // console.log("33333333333", reviews);
     const payload = {
-      id: reviews.id,
+      id: review.id,
       userId: user.id,
-      spotId: spotId,
+      spotId: +spotId,
       rating,
-      review,
+      review: reviews,
     };
-    console.log("payload", payload);
+    // console.log("payload - 1st", payload);
     const updatedReview = await dispatch(updateReview(payload));
     if (updatedReview) {
+      closeModal(false)
     }
   };
   //   const handleRating = (rate) => {
@@ -64,11 +70,11 @@ const EditReviewForm = ({ reviews, hideForm }) => {
           <div className="review">
             <label id="ed_rev">Edit Your Review</label>
             <textarea
-            id="texty"
+              id="texty"
               type="text"
               placeholder="Review"
-              value={review}
-              onChange={(e) => setReview(e.target.value)}
+              value={reviews}
+              onChange={(e) => setReviews(e.target.value)}
             />
           </div>
           <button
@@ -78,13 +84,13 @@ const EditReviewForm = ({ reviews, hideForm }) => {
           >
             Edit Review
           </button>
-          {/* <button
+          <button
             className="cancel-edit-button"
             type="true"
-            to={`/spots/${spot.id}`}
+            onClick={ closeModal }
           >
             Cancel
-          </button> */}
+          </button>
         </form>
       </div>
     </>
