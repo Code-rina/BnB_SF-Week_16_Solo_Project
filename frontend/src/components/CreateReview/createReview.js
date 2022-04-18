@@ -55,13 +55,13 @@ function Reviews() {
               <li key={index}>{error}</li>
             ))}
           </ul>
-          <div>
+          {/* <div>
             <StarRating onChange={log} />
-          </div>
+          </div> */}
           <div className="review">
             <label id="ed_rev">Write a Review </label>
             <textarea
-            id="texty"
+              id="texty"
               type="text"
               placeholder="Write Your Review here..."
               // required

@@ -50,17 +50,17 @@ export const createReview = (payload) => async (dispatch) => {
 
 export const updateReview = (reviewId) => async (dispatch) => {
 
-  console.log('reviewId', reviewId)
-  const response = await csrfFetch(`/api/reviews/spots/${reviewId.spotId}`, {
+  console.log('reviewId- 2nd', reviewId)
+  const response = await csrfFetch(`/api/reviews/${reviewId.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(reviewId)
   });
   if (response.ok) {
-    console.log('response', response)
-    const reviewId = await response.json();
-    dispatch(editReview(reviewId));
-    return reviewId;
+    const data = await response.json();
+    console.log('data-4th', data)
+    await dispatch(editReview(data));
+    return data;
   }
 };
 
@@ -90,6 +90,7 @@ const reviewsReducer = (state = {}, action) => {
     case EDIT_REVIEW:
       const editState = { ...state };
       editState[action.reviewId.id] = action.reviewId;
+      console.log("editState", editState)
       return editState;
     case DELETE_REVIEW:
       const removeState = { ...state };

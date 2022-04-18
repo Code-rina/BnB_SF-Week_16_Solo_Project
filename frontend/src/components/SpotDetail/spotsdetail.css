@@ -84,6 +84,9 @@
     display: flex;
     justify-content: flex-end;
 }
+/* .review-div {
+    height: 100%;
+} */
 
 .edit_spot_button,
 .delete_spot_button {
