@@ -85,7 +85,7 @@ const EditReviewForm = ({ review, closeModal }) => {
             Edit Review
           </button>
           <button
-            className="cancel-edit-button"
+            className="edit-review-button"
             type="true"
             onClick={ closeModal }
           >
