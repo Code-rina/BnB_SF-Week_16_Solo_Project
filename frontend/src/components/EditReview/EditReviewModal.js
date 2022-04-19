@@ -9,8 +9,8 @@ function EditReviewModal({review}) {
     const [showModal, setShowModal] = useState(false);
 
     return (
-      <div>
-        <button className='edit-review-button'  onClick={() => setShowModal(true)}>Edit Review</button>
+      <div className="edit-review-btn-div">
+        <button className='edit-review-button'  onClick={() => setShowModal(true)}>Edit</button>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
             <EditReviewForm className='add-review-modal' review={review} closeModal={() => setShowModal(false)}/>

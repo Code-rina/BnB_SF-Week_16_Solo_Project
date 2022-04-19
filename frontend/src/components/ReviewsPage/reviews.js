@@ -38,8 +38,6 @@ function Reviews({review, spotId}) {
 
         // const create = {spotId, userId: sessionId, reviews}
         // return dispatch(createReview(create))
-
-        //Geoff's solution
         setFormData({formData, [e.target.name]: e.target.value})
     }
 
