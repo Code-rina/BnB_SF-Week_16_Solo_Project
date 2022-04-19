@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { FiUser, FiLogOut } from 'react-icons/fi';
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
@@ -31,17 +32,19 @@ function ProfileButton({ user }) {
   return (
     <>
       <button className="icon" onClick={openMenu}>
-        <i className="far fa-user-circle"></i>
+        <i className="user-icon"><FiUser/></i>
       </button>
-      {showMenu && (
+      {/* {showMenu && (
         <ul className="profile-dropdown">
-          <li>Username: {user.username}</li>
-          <li>Email: {user.email}</li>
-          {/* <li>
-          </li> */}
-            <button id="logout_button" onClick={logout}>Log Out</button>
-        </ul>
-      )}
+        <li>Username: {user.username}</li> 
+        <li>Email: {user.email}</li>
+          <li>
+          </li>
+          </ul>
+          )} */}
+        <button className="icon" onClick={logout}>
+          <i className="user-icon"><FiLogOut/></i>
+        </button>
     </>
   );
 }

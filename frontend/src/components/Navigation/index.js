@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal'
 import DemoUser from './demouser'
+import { FaBi } from 'react-icons'
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -33,7 +34,7 @@ function Navigation({ isLoaded }){
             </NavLink>
         </div>
         <div className='right_container'>
-          <ul>
+          <ul className="nav-left-ul">
                 {/* <NavLink exact to="/">Home</NavLink> */}
                 {isLoaded && sessionLinks}
           </ul>
