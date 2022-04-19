@@ -304,25 +304,25 @@
 }
 
 .edit-review-button {
-     color: white;
-     background-color: #FF5A5F;
-     padding-left: 40px;
-     padding-right: 40px;
-     padding-top: 12px;
-     padding-bottom: 12px;
-     border-color: white;
+    color: white;
+    background-color: #FF5A5F;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-color: white;
     border: 1px solid;
     border-radius: 10px; 
     margin-top: 20px;
  }
  .delete-review-button {
     color: white;
-     background-color: #FF5A5F;
-     padding-left: 370px;
-     padding-right: 370px;
-     padding-top: 10px;
-     padding-bottom: 10px;
-     border-color: white;
+    background-color: #FF5A5F;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-color: white;
     border: 1px solid;
     border-radius: 10px; 
  }
@@ -401,4 +401,10 @@ edit-review {
 .create-review-button:hover,
 .cancel-review-button:hover {
     background-color: #d93b30;
+}
+
+.review-container {
+    padding-bottom: 40px;
+    padding-top: 20px;
+    border-bottom: 1px solid  #e4e4e4;
 }

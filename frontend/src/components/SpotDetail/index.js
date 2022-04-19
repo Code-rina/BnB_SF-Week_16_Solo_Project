@@ -108,7 +108,7 @@ const deleteButton = async (e) => {
             </div>
             <h2 id="user_rev"> User Reviews</h2>
       {reviewsObj.map((review) => (
-        <div key={review.id}>
+        <div className="review-container" key={review.id}>
           {review?.review}
           {review.userId === userId && (
             <div>
