@@ -9,6 +9,7 @@ import Spots from './components/Spots'
 import SpotDetail from './components/SpotDetail'
 import HostForm from './components/HostForm'
 import EditHostForm from './components/EditHostForm'
+import UserProfile from './components/UserProfile/UserProfile.js'
 
 
 
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <Route exact path="/spots/:spotId/host">
           <EditHostForm />
+        </Route>
+        <Route exact path="/users/:userId">
+          <UserProfile />
         </Route>
         <Route>
           <h1>Page Not Found</h1>
