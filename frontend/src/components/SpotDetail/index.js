@@ -17,6 +17,8 @@ import './spotsdetail.css';
 function SpotDetail(){
     const dispatch = useDispatch()
     const userId = useSelector((state) => state.session.user?.id);
+    const allUsers = useSelector((state) => state?.session?.user)
+    console.log("allUsers", allUsers)
     const {spotId} = useParams()
     const {id} = useParams()
     const history = useHistory()
@@ -26,11 +28,11 @@ function SpotDetail(){
       // console.log(state)
         return state.reviews;
       });
-    console.log("reviewSt", review)
+    // console.log("reviewSt", review)
 // console.log(review)
 
       const reviewsObj = Object.values(review);
-console.log("reviewsObj", reviewsObj)
+// console.log("reviewsObj", reviewsObj)
 
 useEffect(()=> {
     dispatch(getOneSpot(spotId))
@@ -108,21 +110,25 @@ const deleteButton = async (e) => {
             </div>
             <h2 id="user_rev"> User Reviews</h2>
       {reviewsObj.map((review) => (
-        <div key={review.id}>
+        <div className="review-container" key={review?.id}>
           {review?.review}
+          <div className="buttons-container">
           {review.userId === userId && (
-            <div>
+            <div className="edit-review-div">
               <EditReviewModal review={review} />
             </div>
           )}
           {review.userId === userId && (
+            <div className="delete-review-btn-div">
             <button
               className="delete-review-button"
               onClick={() => handleDeleteReview(review?.id)}
             >
-              Delete Review
+              Delete
             </button>
+            </div>
           )}
+          </div>
         </div>
       ))}
       <div hidden={!userId}>

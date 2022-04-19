@@ -304,29 +304,79 @@
 }
 
 .edit-review-button {
-     color: white;
-     background-color: #FF5A5F;
-     padding-left: 40px;
-     padding-right: 40px;
-     padding-top: 12px;
-     padding-bottom: 12px;
-     border-color: white;
-    border: 1px solid;
-    border-radius: 10px; 
-    margin-top: 20px;
+    left: 50px;
+    list-style: none;
+    background: none;
+    border: none;
+    color: #d93b30;
+    border: 2px solid #d93b30;
+    /* padding: 4px 8px; */
+    text-align: center;
+    text-decoration: none;
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    margin: 6px 4px;
+    transition-duration: 0.4s;
+    margin-bottom: 5px;
+    margin-left: 28%;
+    cursor: pointer; 
+    margin-left: 0!important;
+    margin-right: 10px;
+    background-color: #FF5A5F;
+    border-radius: 10px;
+    border-color: white;
+    margin-top:2px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 17px;
+    padding-right: 17px;
  }
  .delete-review-button {
+    left: 50px;
+    list-style: none;
+    background: none;
+    border: none;
+    color: #d93b30;
+    border: 2px solid #d93b30;
+    /* padding: 4px 8px; */
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 12px;
+    margin: 6px 4px;
+    transition-duration: 0.4s;
+    margin-bottom: 5px;
+    margin-left: 28%;
+    cursor: pointer; 
+    margin-left: 0!important;
+    margin-right: 10px;
+    background-color: #FF5A5F;
+    border-radius: 10px;
+    border-color: white;
+    margin-top:2px;
     color: white;
-     background-color: #FF5A5F;
-     padding-left: 370px;
-     padding-right: 370px;
-     padding-top: 10px;
-     padding-bottom: 10px;
-     border-color: white;
-    border: 1px solid;
-    border-radius: 10px; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
  }
  
+ .edit-review-btn-div,
+ .delete-review-btn-div {
+    display: flex;
+    flex-direction: row;
+ }
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
 .reviews_form,
 edit-review {
     padding: 0;
@@ -401,4 +451,15 @@ edit-review {
 .create-review-button:hover,
 .cancel-review-button:hover {
     background-color: #d93b30;
+}
+
+.review-container {
+    padding-bottom: 40px;
+    padding-top: 20px;
+    border-bottom: 1px solid  #e4e4e4;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    inline-size: 1000px;
+    overflow-wrap:break-word;
 }
