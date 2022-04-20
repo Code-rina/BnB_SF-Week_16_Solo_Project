@@ -66,7 +66,7 @@ const hostFormValidator = [
         .withMessage('Please provide url for your image'),
     handleValidationErrors,
 ];
-
+  
 
 // Getting all spots
 router.get(
