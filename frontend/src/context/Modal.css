@@ -26,11 +26,11 @@
   
   #modal-content {
     position: fixed;
-    background-color:white;
+    /* background-color:white; */
     /* box-sizing: border-box; */
-    width: 500px;
+    /* width: 500px; */
     /* height: ; */
-    border-radius: 10px;
+    /* border-radius: 10px; */
     /* box-shadow: 0 0 10px 0; */
     /* padding: 30px; */
     /* padding-top: 60px; */
