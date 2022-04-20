@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal'
 import DemoUser from './demouser'
+import { FaBi } from 'react-icons'
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -28,11 +29,13 @@ function Navigation({ isLoaded }){
   return (
       <nav className='navBar'>
         <div className='left_container'>
-          <img id="bnb_sf_logo" src="/bnb_sf_logo_long.png" alt="bnb_sf_logo"></img>
+          <NavLink exact to="/">
+            <img id="bnb_sf_logo" src="/bnb_sf_logo_long.png" alt="bnb_sf_logo"></img>
+            </NavLink>
         </div>
         <div className='right_container'>
-          <ul>
-                <NavLink exact to="/">Home</NavLink>
+          <ul className="nav-left-ul">
+                {/* <NavLink exact to="/">Home</NavLink> */}
                 {isLoaded && sessionLinks}
           </ul>
         </div>
