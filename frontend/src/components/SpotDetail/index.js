@@ -64,8 +64,9 @@ const deleteButton = async (e) => {
 
     return (
         <div className="main_spotdetail_container">
+              <div id="title_div">
                 <h1 id="detail_title">{oneSpot?.title}</h1>
-                <div id="line_title"></div>
+              </div>
             <img className="detail_spot_image" src={oneSpot?.Images[0].url} alt="detail_img" />
             <h2 id="hosted_by">Hosted By: {oneSpot?.User?.username}</h2>
             <p id="spot_price">{`$${oneSpot?.price}`} <>/night</></p>

@@ -5,23 +5,28 @@
 #detail_title {
     padding-top: 100px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    /* padding-left: 10%; */
     font-size: 38px;
     margin-bottom: 10px;
-    margin-left: 10px; 
+    /* margin-left: 10px;  */
     font-size: 35px;
     font-weight: 600;
-    padding-left: 200px;
+    /* padding-left: 200px; */
     /* margin-left: 10px; */
     /* display: flex; */
 }
 
-#line_title {
+#title_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     border-bottom: rgb(235,235,235) 2px solid;
     /* box-shadow: 2px 2px -2px 1px lightgray; */
     width: 80%;
     margin-bottom: 40px;
-    margin-left: 90px;
+    margin-left: 10%;
 }
 
 .main_spotdetail_container {
@@ -45,6 +50,7 @@
     border-radius: 25px;
     height: 80%;
     object-fit: cover;
+    box-shadow: 0 0 5px 0 grey;
 }
 #hosted_by {
     margin-top: 65px;
@@ -184,21 +190,25 @@
     /* justify-content: flex-start; */
     padding-right: 500px; 
     font-weight: 500;
+    font-size: 25px;
 }
 #ic_clean {
     /* justify-content: flex-start; */
     padding-right: 450px; 
     font-weight: 500;
+    font-size: 25px;
 }
 #ic_checkin {
     /* justify-content: flex-start; */
     padding-right: 300px; 
     font-weight: 500;
+    font-size: 25px;
 }
 #ic_cancel {
     /* justify-content: flex-start; */
     padding-right: 250px; 
     font-weight: 500;
+    font-size: 25px;
 }
 
 #city_state {
@@ -232,18 +242,19 @@
 }
 #amen {
     font-weight: 500;
-    font-size: 30px;
+    font-size: 25px;
+    margin-right: 46%;
 }
 
 #desc {
     font-weight: 500;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 
 #user_rev {
     font-weight: 500;
-    font-size: 30px;
+    font-size: 25px;
     padding-top: 80px;
     padding-bottom: 10px;
 }

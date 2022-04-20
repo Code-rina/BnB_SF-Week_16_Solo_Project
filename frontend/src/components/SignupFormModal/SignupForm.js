@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 // import { useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import LoginFormModal from '../LoginFormModal/index'
+import DemoUser from '../Navigation/demouser'
 
 
 function SignupForm() {
@@ -30,52 +32,67 @@ function SignupForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label id="modal_signup_label_email">
-        Email
-        <input id="modal_signup_text_input"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label id="modal_signup_label_username">
-        Username
-        <input id="modal_signup_text_input"
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label id="modal_signup_label_password">
-        Password
-        <input id="modal_signup_text_input"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label id="modal_signup_label_confirmpassword">
-        Confirm Password
-        <input id="modal_signup_text_input"
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button id="modal_signup_button" type="submit">Sign Up</button>
-    </form>
+    <div className="login-main-box">
+      <h3 className="login-h3">Sign Up</h3>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => <li className="errors-modals" key={idx}>• {error}</li>)}
+        </ul>
+          <div className="login-label-input-div">
+            <label id="login_label">
+              Email
+              <input id="login_text_input"
+                type="text"
+                // placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                // required
+              />
+            </label>
+            <label id="login_label">
+              Username
+              <input id="login_text_input"
+                type="text"
+                // placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                // required
+              />
+            </label>
+            <label id="login_label">
+              Password
+              <input id="login_text_input"
+                type="password"
+                // placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                // required
+              />
+            </label>
+            <label id="login_label">
+              Confirm Password
+              <input id="login_text_input"
+                type="password"
+                // placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                // required
+              />
+            </label>
+            </div>
+            <div className="login-btn-div">
+              <button id="login_button" type="submit">Sign Up</button>
+            </div>
+            <div className="no_account_div">
+              <p id="no_account">Already have an have an account?</p>
+              <LoginFormModal />
+            </div>  
+            <div className="demo_login_div">
+              <p id="demo_login">Would like to lo in as a demo user? </p>
+              <DemoUser />
+            </div>
+      </form>
+    </div>
   );
 }
 

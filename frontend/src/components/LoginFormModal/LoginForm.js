@@ -61,10 +61,9 @@ function LoginForm() {
           <p id="no_account">Don't have an account?</p>
           <SignupFormModal />
         </div>  
-        <div>
-          <button className="login-signup-demo-button">
+        <div className="demo_login_div">
+          <p id="demo_login">Would like to lo in as a demo user? </p>
             <DemoUser />
-          </button>
         </div>
       </form>
     </div>
