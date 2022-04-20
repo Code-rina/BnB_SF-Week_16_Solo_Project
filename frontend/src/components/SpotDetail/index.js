@@ -112,6 +112,8 @@ const deleteButton = async (e) => {
             <h2 id="user_rev"> User Reviews</h2>
       {reviewsObj.map((review) => (
         <div className="review-container" key={review?.id}>
+          {/* {review?.username} 
+          <div className="review-review"> */}
           {review?.review}
           <div className="buttons-container">
           {review.userId === userId && (
@@ -130,6 +132,7 @@ const deleteButton = async (e) => {
             </div>
           )}
           </div>
+          {/* </div> */}
         </div>
       ))}
       <div hidden={!userId}>

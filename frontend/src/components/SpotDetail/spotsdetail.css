@@ -3,7 +3,7 @@
 }
 
 #detail_title {
-    padding-top: 100px;
+    padding-top: 80px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -37,7 +37,7 @@
     margin-top: 30px;
     grid-gap: 40px; */
     margin: 8% 20% ;
-    border-bottom: 1px solid rgb(221, 221, 221);
+    /* border-bottom: 1px solid rgb(221, 221, 221); */
 }
 
 .detail_spot_image {
@@ -94,7 +94,35 @@
     height: 100%;
 } */
 
-.edit_spot_button,
+.edit_spot_button{
+    left: 50px;
+    list-style: none;
+    background: none;
+    border: none;
+    color: #d93b30;
+    border: 2px solid #d93b30;
+    /* padding: 4px 8px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 6px 4px;
+    transition-duration: 0.4s;
+    margin-bottom: 5px;
+    margin-left: 28%;
+    cursor: pointer; 
+    margin-left: 0!important;
+    margin-right: 10px;
+    background-color: #FF5A5F;
+    border-radius: 10px;
+    border-color: white;
+    margin-top:2px;
+    color: white;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 18px;
+    padding-right: 18px;
+}
 .delete_spot_button {
     left: 50px;
     list-style: none;
@@ -121,8 +149,8 @@
     color: white;
     padding-top: 8px;
     padding-bottom: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 11px;
+    padding-right: 11px;
 }
 
 /* .fa-thin fa-house,
@@ -168,7 +196,7 @@
 }
 
 #detail_title {
-    margin-top: 65px;
+    /* margin-top: 65px; */
     display: flex;
     justify-content: flex-start;
     font-size: 35px;
