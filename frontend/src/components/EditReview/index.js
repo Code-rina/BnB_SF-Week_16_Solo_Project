@@ -9,7 +9,7 @@ const EditReviewForm = ({ review, closeModal }) => {
   const user = useSelector((state) => state.session.user);
   //   const spotId = useSelector((state) => state.spots[id].id);
   let rev = useSelector((state) => state?.reviews)
-  console.log("rev", rev)
+  // console.log("rev", rev)
   const [rating, setRating] = useState(review?.rating);
   const [reviews, setReviews] = useState(review?.review);
   const [errorValidator, setErrorValidator] = useState([]);

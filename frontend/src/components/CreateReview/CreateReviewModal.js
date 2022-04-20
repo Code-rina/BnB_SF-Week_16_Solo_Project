@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Modal } from '../../context/Modal';
 import Reviews from './createReview';
 import "../ReviewsPage/reviews.css"
+  
 
-
-function CreateReviewModal({review}) {
+function CreateReviewModal({ review, closeModal }) {
 //   console.log("Modal-review", review)
     const [showModal, setShowModal] = useState(false);
 
