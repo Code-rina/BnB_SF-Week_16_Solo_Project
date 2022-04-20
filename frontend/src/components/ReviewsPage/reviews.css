@@ -10,3 +10,7 @@ form {
     display:flex;
     flex-direction: column;
 }
+.create-review-btn-div {
+    display: flex;
+    justify-content: center;
+}

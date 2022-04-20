@@ -6,7 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {getOneSpot} from '../../store/spots'
 import {removeSpot} from '../../store/spots'
-import Reviews from "../CreateReview/createReview";
+import CreateReviewModal from "../CreateReview/CreateReviewModal";
 import EditReviewModal from "../EditReview/EditReviewModal";
 import {getReviews} from '../../store/reviews'
 import {deleteReview} from '../../store/reviews'
@@ -17,6 +17,7 @@ import './spotsdetail.css';
 function SpotDetail(){
     const dispatch = useDispatch()
     const userId = useSelector((state) => state.session.user?.id);
+    console.log("userId", userId)
     const allUsers = useSelector((state) => state?.session?.user)
     console.log("allUsers", allUsers)
     const {spotId} = useParams()
@@ -110,34 +111,34 @@ const deleteButton = async (e) => {
                 </div>
             </div>
             <h2 id="user_rev"> User Reviews</h2>
-      {reviewsObj.map((review) => (
-        <div className="review-container" key={review?.id}>
-          {/* {review?.username} 
-          <div className="review-review"> */}
-          {review?.review}
-          <div className="buttons-container">
-          {review.userId === userId && (
-            <div className="edit-review-div">
-              <EditReviewModal review={review} />
+            {reviewsObj.map((review) => (
+              <div className="review-container" key={review?.id}>
+                {/* {review?.username} 
+                <div className="review-review"> */}
+                {review?.review}
+                <div className="buttons-container">
+                {review.userId === userId && (
+                  <div className="edit-review-div">
+                    <EditReviewModal review={review} />
+                  </div>
+                )}
+                {review.userId === userId && (
+                  <div className="delete-review-btn-div">
+                  <button
+                    className="delete-review-button"
+                    onClick={() => handleDeleteReview(review?.id)}
+                  >
+                    Delete
+                  </button>
+                  </div>
+                )}
+                </div>
+                {/* </div> */}
+              </div>
+            ))}
+            <div hidden={!userId}>
+              <CreateReviewModal />
             </div>
-          )}
-          {review.userId === userId && (
-            <div className="delete-review-btn-div">
-            <button
-              className="delete-review-button"
-              onClick={() => handleDeleteReview(review?.id)}
-            >
-              Delete
-            </button>
-            </div>
-          )}
-          </div>
-          {/* </div> */}
-        </div>
-      ))}
-      <div hidden={!userId}>
-        <Reviews />
-      </div>
         </div>
     )
 }
