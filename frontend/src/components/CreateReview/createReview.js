@@ -29,10 +29,13 @@ function Reviews({ closeModal }) {
       rating,
       review,
     };
+    // console.log("payload", payload)
     const newReview = await dispatch(createReview(payload));
+    // console.log("newReview", newReview)
     if (newReview) {
-      history.push(`/spots/${spotId}`);
-      reset();
+      // history.push(`/spots/${spotId}`);
+      // reset();
+      closeModal(false)
     }
   };
   const reset = () => {
@@ -65,7 +68,7 @@ function Reviews({ closeModal }) {
               id="review_texty"
               type="text"
               placeholder="Write Your Review here..."
-              // required
+              required
               value={review}
               onChange={(e) => setReview(e.target.value)}
             />

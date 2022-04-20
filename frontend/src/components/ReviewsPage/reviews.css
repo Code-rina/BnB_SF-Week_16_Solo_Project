@@ -74,12 +74,16 @@ h3 {
   .cancel_review_div {
       display: flex;
       justify-content: center;
-      margin-right: 12px;
+      margin-right: 13px;
   }
   .create_review_div {
     display: flex;
     justify-content: center;
-    margin-right: 12px;
+    margin-right: 13px;
+}
+.create-review-btn-div {
+    display: flex;
+    justify-content: center;
 }
 
   #review_texty {
