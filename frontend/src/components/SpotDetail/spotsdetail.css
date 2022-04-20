@@ -481,10 +481,10 @@ edit-review {
     cursor: pointer; 
     margin-right: 16px;
     font-weight: 400;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .create-review-button:hover,
