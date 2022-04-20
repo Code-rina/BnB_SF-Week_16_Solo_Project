@@ -11,7 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    width: 100%;
 }
 /* .profile-upper-head {
     display: flex;
@@ -106,7 +106,8 @@
     border-bottom: 2px solid rgb(214,214,214);
     margin-left: 65px;
     margin-right: 65px;
-    padding-left: 300px;
+    width: 92%;
+    /* padding-left: 2%; */
     /* border-radius: 6px;
     padding-left: 30px;
     padding-right: 20px;
@@ -173,6 +174,7 @@
     flex-wrap: wrap;
     box-shadow: 0 0 5px 0 rgb(180,180,180);
     margin-bottom: 30px;
+    margin-left: 70px;
     /* margin: auto; */
 }
 .profile-title-address {
@@ -187,7 +189,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    padding-right: 150px;
+    padding-right: 60px;
 }
 
 .profile-title {
