@@ -12,6 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100;
   }
   
   #modal-background {
@@ -24,19 +25,19 @@
   }
   
   #modal-content {
-    position: relative;
+    position: fixed;
     background-color:white;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     width: 500px;
-    height: 600px;
+    /* height: ; */
     border-radius: 10px;
-    box-shadow: 0 0 10px 0;
-    padding: 30px;
-    padding-top: 60px;
-    justify-content: center;
+    /* box-shadow: 0 0 10px 0; */
+    /* padding: 30px; */
+    /* padding-top: 60px; */
+    /* justify-content: center;
     text-align: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; */
 
   }
 
