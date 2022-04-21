@@ -14,7 +14,7 @@ import {createReview} from '../../store/reviews'
 import './spotsdetail.css';
 
 
-function SpotDetail(){
+function SpotDetail({spot, user}){
     const dispatch = useDispatch()
     const userId = useSelector((state) => state.session.user?.id);
     console.log("userId", userId)
@@ -23,8 +23,10 @@ function SpotDetail(){
     const {spotId} = useParams()
     const {id} = useParams()
     const history = useHistory()
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session?.user);
+    console.log("sessionUser", sessionUser)
     const oneSpot = useSelector(state => state.spots[spotId])
+    console.log("oneSpot", oneSpot)
     const review = useSelector((state) => {
       // console.log(state)
         return state.reviews;
@@ -136,8 +138,9 @@ const deleteButton = async (e) => {
                 {/* </div> */}
               </div>
             ))}
-            <div hidden={!userId}>
-              <CreateReviewModal />
+            <div>
+              {(sessionUser?.id && sessionUser?.id !== oneSpot?.userId) &&
+              <CreateReviewModal />}
             </div>
         </div>
     )
