@@ -1,9 +1,10 @@
-const router = require("express").Router();
+const express = require('express');
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
 const csrf = require("csurf");
 const { User, Spot, Image, Review } = require("../../db/models");
 const csrfProtection = csrf({ cookie: true });
+const router = express.Router()
 
 router.get(
   "/spots/:id/",
