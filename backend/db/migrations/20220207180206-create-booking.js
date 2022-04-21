@@ -18,6 +18,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: "Users" }
       },
+      numberOfGuests: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       startDate: {
         allowNull: false,
         type: Sequelize.DATE
