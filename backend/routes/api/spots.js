@@ -10,63 +10,56 @@ const router = express.Router()
 const csrfProtection = csrf({ cookie: true });
 
 
-const hostFormValidator = [
-    check('spots.address')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .isLength({ max: 255 })
-        .withMessage('Please provide an address.'),
-    check('spots.city')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .isLength({ max: 255 })
-        .withMessage('Please provide a city.'),
-    check('spots.zipCode')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage('Please provide a zip code.'),
-    check('spots.state')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .isLength({ max: 30 })
-        .withMessage('Please provide a state.'),
-    check('spots.country') 
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .isLength({ max: 100 })
-        .withMessage('Please provide a country.'),
-    check('spots.title')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .isLength({ max: 50 })
-        .withMessage('Please provide a title.'),
-    check('spots.description')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage('Please provide a description.'),
-    check('spots.price')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage('Please provide a price.'),
-    check('spots.guests')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage('Please provide a number of guests allowed.'),
-    check('spots.bedrooms')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage('Please provide a number of bedrooms.'),
-    check('spots.bathrooms')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage('Please provide a number of bathrooms.'),
-    check('image.url')
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage('Please provide url for your image'),
-    handleValidationErrors,
-];
-  
+// const hostFormValidator = [
+//     check('address')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a value.')
+//         .isLength({ max: 255 })
+//         .withMessage('Please provide an address.'),
+//     check('city')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a value.')
+//         .isLength({ max: 255 })
+//         .withMessage('Please provide a city.'),
+//     check('zipCode')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a zip code.'),
+//     check('state')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a value.')
+//         .isLength({ max: 30 })
+//         .withMessage('Please provide a state.'),
+//     check('country') 
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a value.')
+//         .isLength({ max: 100 })
+//         .withMessage('Please provide a country.'),
+//     check('title')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a value.')
+//         .isLength({ max: 50 })
+//         .withMessage('Please provide a title.'),
+//     check('description')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a description.'),
+//     check('price')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a price.'),
+//     check('guests')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a number of guests allowed.'),
+//     check('bedrooms')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a number of bedrooms.'),
+//     check('bathrooms')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide a number of bathrooms.'),
+//     check('url')
+//         .exists({ checkFalsy: true })
+//         .withMessage('Please provide url for your image'),
+//     handleValidationErrors,
+// ];
+
 
 // Getting all spots
 router.get(
@@ -96,7 +89,7 @@ router.get(
 router.post(
     '/host',
     requireAuth,
-    hostFormValidator,
+    // hostFormValidator,
     asyncHandler(async (req, res) => {
         const {image, amenities, spots } = req.body
         const id = await Spot.create(spots)
@@ -117,13 +110,14 @@ router.post(
         }
         await Amenity.create(newListAmenity)
         return res.json({id})
+        // console.log("req.body", req.body)
     })
 )
 
 router.put(
     '/:id/host',
     requireAuth,
-    hostFormValidator,
+    // hostFormValidator,
     asyncHandler(async (req, res) => {
         const spotId = parseInt(req.params.id, 10)
         const currentSpot = await Spot.findByPk(spotId)

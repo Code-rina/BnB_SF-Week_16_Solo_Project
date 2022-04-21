@@ -38,7 +38,27 @@ function HostForm(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
+      //   payload = {
+      //     userID,
+      //     address,
+      //     city
+      //     zipCode,
+      //     state
+      //     country
+      //     title
+      //     discription
+      //     price,
+      //     guests
+      //     bedrooms
+      //     bathrooms
+      //     amenities : {
+      //         pets....
+      //     }
+      //     image : {
+      //         image: url
+      //     }
+      // }
         const payload = {
             amenities: {
                 parking,
@@ -69,6 +89,7 @@ function HostForm(){
         }
         let spotCreated;
         spotCreated = await dispatch(addSpot(payload));
+        console.log("spotCreated", spotCreated)
         // try {
         // } catch (error) {
         //     throw new Error("Something went wrong")
@@ -78,22 +99,22 @@ function HostForm(){
         }
     };
 
-useEffect(()=> {
-    const errors = []
-    if(address?.length > 255) errors.push("Address must be less than 255 characters");
-    if(city?.length > 255) errors.push("City must be less than 255 characters");
-    if(zipCode?.length > 6) errors.push("Please provide a valid Zip Code");
-    if(state?.length > 30) errors.push("Please provide a valid state name");
-    if(country?.length > 100) errors.push("Please provide a valid country name");
-    if(title?.length > 50) errors.push("Title must be less than 50 characters");
-    if(description?.length > 2000) errors.push("Description must be less than 2000 characters");
-    if(price?.length > 4) errors.push("Please provide a valid price");
-    if(guests?.length > 4) errors.push("Please provide a valid guest count");
-    if(bedrooms?.length > 4) errors.push("Please provide a valid bedroom count");
-    if(bathrooms?.length > 4) errors.push("Please provide a valid bathroom count");
-    if(url?.length > 255) errors.push("Please provide a valid Url address");
-    setErrorValidator(errors)
-}, [address, city, zipCode, state, country, title, description, price, guests, bedrooms, bathrooms, url])
+// useEffect(()=> {
+//     const errors = []
+//     if(address?.length > 255 || address?.length === 0) errors.push("Address must be less than 255 characters");
+//     if(city?.length > 255 || city?.length === 0) errors.push("City must be less than 255 characters");
+//     if((zipCode?.length > 0 && zipCode?.length > 6) || zipCode?.length === 0) errors.push("Please provide a valid Zip Code");
+//     if(state?.length > 30 || state?.length === 0) errors.push("Please provide a valid state name");
+//     if(country?.length > 100 || country?.length === 0) errors.push("Please provide a valid country name");
+//     if(title?.length > 50 || title?.length === 0) errors.push("Title must be less than 50 characters");
+//     if(description?.length === 0) errors.push("Please provide a description");
+//     if(price < 1 && price !== 0) errors.push("Please provide a valid price");
+//     if(guests < 1 && guests !== 0) errors.push("Please provide a guest count");
+//     if(bedrooms < 1 && bedrooms !== 0) errors.push("Please provide a bedroom count");
+//     if(bathrooms < 1 && bathrooms !== 0) errors.push("Please provide a bathroom count");
+//     if(url?.length > 255 || url?.length === 0 || !url?.includes("http" || "https")) errors.push("Please provide a valid Url address");
+//     setErrorValidator(errors)
+// }, [address, city, zipCode, state, country, title, description, price, guests, bedrooms, bathrooms, url])
 
 
     return (
