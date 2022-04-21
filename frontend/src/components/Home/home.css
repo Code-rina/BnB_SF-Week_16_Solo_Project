@@ -60,6 +60,7 @@
     font-size: 18px;
     font-weight: 620;
     color:#9d2ba4;
+    cursor: pointer;
 }
 
 
@@ -94,6 +95,7 @@
     font-size: 18px;
     font-weight: 620;
     color:#9d2ba4;
+    cursor: pointer;
     /* position:relative;
     justify-content: flex-start;
     align-self: flex-start;

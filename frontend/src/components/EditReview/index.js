@@ -9,7 +9,7 @@ const EditReviewForm = ({ review, closeModal }) => {
   const user = useSelector((state) => state.session.user);
   //   const spotId = useSelector((state) => state.spots[id].id);
   let rev = useSelector((state) => state?.reviews)
-  console.log("rev", rev)
+  // console.log("rev", rev)
   const [rating, setRating] = useState(review?.rating);
   const [reviews, setReviews] = useState(review?.review);
   const [errorValidator, setErrorValidator] = useState([]);
@@ -50,11 +50,12 @@ const EditReviewForm = ({ review, closeModal }) => {
   return (
     <>
       <div className="edit-review-container">
+        <h3 className="share-h3">Edit your review</h3>
         <form className="edit-review" onSubmit={handleSubmit}>
           <ul>
             {errorValidator.map((error) => (
-              <li className="error-list" key={error}>
-                {error}
+              <li className="errors-modals" key={error}>
+                • {error}
               </li>
             ))}
           </ul>
@@ -67,30 +68,34 @@ const EditReviewForm = ({ review, closeModal }) => {
               onChange={(e) => setRating(e.target.value)}
             />
           </div> */}
-          <div className="review">
-            <label id="ed_rev">Edit Your Review</label>
+          <div className="edit-review-div">
+            <label id="ed_rev"></label>
             <textarea
-              id="texty"
+              id="edit_review_texty"
               type="text"
               placeholder="Review"
               value={reviews}
               onChange={(e) => setReviews(e.target.value)}
             />
           </div>
-          <button
-            className="edit-review-button"
-            type="submit"
-            // disabled={errorValidator.length > 0}
-          >
-            Edit Review
-          </button>
-          <button
-            className="edit-review-button"
-            type="true"
-            onClick={ closeModal }
-          >
-            Cancel
-          </button>
+          <div className="edit_review_div">
+            <button
+              className="edit-review-button-edit"
+              type="submit"
+              // disabled={errorValidator.length > 0}
+            >
+              Edit Review
+            </button>
+          </div>
+          <div className="cancel_review_div">
+            <button
+              className="edit-cancel-review-button"
+              type="true"
+              onClick={ closeModal }
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </>

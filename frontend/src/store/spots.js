@@ -46,13 +46,16 @@ export const getOneSpot = (id) => async (dispatch) => {
     }
 }
 export const addSpot = (spot) => async (dispatch) => {
+    // console.log("spot", spot)
     const res = await csrfFetch(`/api/spots/host`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json' },
         body: JSON.stringify(spot)
     })
+    // console.log("res", res)
     if (!res.ok) {
         let error = await res.json();
+        console.log("error", error)
         return error;
     }
     const payload = await res.json()

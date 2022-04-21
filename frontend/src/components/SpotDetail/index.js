@@ -6,7 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {getOneSpot} from '../../store/spots'
 import {removeSpot} from '../../store/spots'
-import Reviews from "../CreateReview/createReview";
+import CreateReviewModal from "../CreateReview/CreateReviewModal";
 import EditReviewModal from "../EditReview/EditReviewModal";
 import {getReviews} from '../../store/reviews'
 import {deleteReview} from '../../store/reviews'
@@ -14,16 +14,19 @@ import {createReview} from '../../store/reviews'
 import './spotsdetail.css';
 
 
-function SpotDetail(){
+function SpotDetail({spot, user}){
     const dispatch = useDispatch()
     const userId = useSelector((state) => state.session.user?.id);
+    console.log("userId", userId)
     const allUsers = useSelector((state) => state?.session?.user)
     console.log("allUsers", allUsers)
     const {spotId} = useParams()
     const {id} = useParams()
     const history = useHistory()
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session?.user);
+    console.log("sessionUser", sessionUser)
     const oneSpot = useSelector(state => state.spots[spotId])
+    console.log("oneSpot", oneSpot)
     const review = useSelector((state) => {
       // console.log(state)
         return state.reviews;
@@ -64,8 +67,9 @@ const deleteButton = async (e) => {
 
     return (
         <div className="main_spotdetail_container">
+              <div id="title_div">
                 <h1 id="detail_title">{oneSpot?.title}</h1>
-                <div id="line_title"></div>
+              </div>
             <img className="detail_spot_image" src={oneSpot?.Images[0].url} alt="detail_img" />
             <h2 id="hosted_by">Hosted By: {oneSpot?.User?.username}</h2>
             <p id="spot_price">{`$${oneSpot?.price}`} <>/night</></p>
@@ -109,31 +113,35 @@ const deleteButton = async (e) => {
                 </div>
             </div>
             <h2 id="user_rev"> User Reviews</h2>
-      {reviewsObj.map((review) => (
-        <div className="review-container" key={review?.id}>
-          {review?.review}
-          <div className="buttons-container">
-          {review.userId === userId && (
-            <div className="edit-review-div">
-              <EditReviewModal review={review} />
+            {reviewsObj.map((review) => (
+              <div className="review-container" key={review?.id}>
+                {/* {review?.username} 
+                <div className="review-review"> */}
+                {review?.review}
+                <div className="buttons-container">
+                {review.userId === userId && (
+                  <div className="edit-review-div">
+                    <EditReviewModal review={review} />
+                  </div>
+                )}
+                {review.userId === userId && (
+                  <div className="delete-review-btn-div">
+                  <button
+                    className="delete-review-button"
+                    onClick={() => handleDeleteReview(review?.id)}
+                  >
+                    Delete
+                  </button>
+                  </div>
+                )}
+                </div>
+                {/* </div> */}
+              </div>
+            ))}
+            <div>
+              {(sessionUser?.id && sessionUser?.id !== oneSpot?.userId) &&
+              <CreateReviewModal />}
             </div>
-          )}
-          {review.userId === userId && (
-            <div className="delete-review-btn-div">
-            <button
-              className="delete-review-button"
-              onClick={() => handleDeleteReview(review?.id)}
-            >
-              Delete
-            </button>
-            </div>
-          )}
-          </div>
-        </div>
-      ))}
-      <div hidden={!userId}>
-        <Reviews />
-      </div>
         </div>
     )
 }
