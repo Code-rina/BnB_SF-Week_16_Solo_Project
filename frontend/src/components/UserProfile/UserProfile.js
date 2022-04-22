@@ -27,6 +27,9 @@ function UserProfile() {
     const allBookingsArray = Object.values(allBookings)
     console.log("allBookingsArray!!!!!", allBookingsArray)
 
+    const today = moment()
+    console.log("TODAY:::::", today.format());
+
     // const userBookings = allBookings.filter((oneBooking) => oneBooking?.userId === +oneUser.id)
     // console.log("userBookings!!!!!", userBookings)
     const [none, setNone] = useState(false)
@@ -122,45 +125,7 @@ function UserProfile() {
             {/* {userSpots && } */}
                 <div className="profile-spots">
                     <div className="profile-spots-div">
-                    {allBookingsArray.map((booking) => (
-                        <div className="profile-user-spots">
-                            <div className="profile-listing-spots-div" key={`profile-user-spot ${booking.id}`}>
-                                <NavLink className="profile-nav" key={`profile-user-spot ${spot.id}`} to={`/spots/${spot?.id}`}>
-                                    <div className="profile-spot-img-div">
-                                        <img className="profile-spot-img"
-                                        alt={spot?.id}
-                                        src={spot?.Images[0].url}
-                                        onError={(e) =>
-                                            (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
-                                            />
-                                        <div className="profile-title-address">
-                                            <div className="profile-title-div">
-                                                <p className="profile-title">{spot?.title}</p>
-                                            </div>    
-                                            <div className="profile-address-div">
-                                                <p className="profile-address">{spot?.address},</p>
-                                            </div>
-                                            <div className="profile-address-div">
-                                                <p className="profile-address">{spot?.city},</p>
-                                            </div>
-                                            <div className="profile-address-div">
-                                                <p className="profile-address">{spot?.zipCode}</p>
-                                            </div>
-                                        </div>    
-                                    </div>
-                                </NavLink>
-                            </div>
-                        </div>
-                    ))}
-                    </div>
-                </div>
-            </div>
-            <h5 className="profile-your-listings">Where you've been: </h5>
-            <div className="profile-lower-div">
-            {/* {userSpots && } */}
-                <div className="profile-spots">
-                    <div className="profile-spots-div">
-                    {userSpots.map((spot) => (
+                    {/* {allBookingsArray.map((booking) => (
                         <div className="profile-user-spots">
                             <div className="profile-listing-spots-div" key={`profile-user-spot ${spot.id}`}>
                                 <NavLink className="profile-nav" key={`profile-user-spot ${spot.id}`} to={`/spots/${spot?.id}`}>
@@ -189,7 +154,45 @@ function UserProfile() {
                                 </NavLink>
                             </div>
                         </div>
-                    ))}
+                    ))} */}
+                    </div>
+                </div>
+            </div>
+            <h5 className="profile-your-listings">Where you've been: </h5>
+            <div className="profile-lower-div">
+            {/* {userSpots && } */}
+                <div className="profile-spots">
+                    <div className="profile-spots-div">
+                    {/* {userSpots.map((spot) => (
+                        <div className="profile-user-spots">
+                            <div className="profile-listing-spots-div" key={`profile-user-spot ${spot.id}`}>
+                                <NavLink className="profile-nav" key={`profile-user-spot ${spot.id}`} to={`/spots/${spot?.id}`}>
+                                    <div className="profile-spot-img-div">
+                                        <img className="profile-spot-img"
+                                        alt={spot?.id}
+                                        src={spot?.Images[0].url}
+                                        onError={(e) =>
+                                            (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
+                                            />
+                                        <div className="profile-title-address">
+                                            <div className="profile-title-div">
+                                                <p className="profile-title">{spot?.title}</p>
+                                            </div>    
+                                            <div className="profile-address-div">
+                                                <p className="profile-address">{spot?.address},</p>
+                                            </div>
+                                            <div className="profile-address-div">
+                                                <p className="profile-address">{spot?.city},</p>
+                                            </div>
+                                            <div className="profile-address-div">
+                                                <p className="profile-address">{spot?.zipCode}</p>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </NavLink>
+                            </div>
+                        </div>
+                    ))} */}
                     </div>
                 </div>
             </div>
