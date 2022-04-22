@@ -44,6 +44,15 @@ module.exports = {
       endDate: new Date(),
       createdAt: new Date(),
       updatedAt: new Date()
+     },
+     {
+      spotId: 4,
+      userId: 1,
+      numberOfGuests: 4,
+      startDate: new Date(),
+      endDate: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
      }
   ], {});
   },

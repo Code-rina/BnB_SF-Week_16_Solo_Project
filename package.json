@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Code-rina/BnB_SF-Week_16_Solo_Project#readme",
   "dependencies": {
+    "moment": "^2.29.3",
     "react-icons": "^4.3.1"
   }
 }

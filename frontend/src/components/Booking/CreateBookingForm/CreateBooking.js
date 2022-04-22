@@ -24,7 +24,7 @@ function CreateBookingForm(){
 
 
     const toggle = () => setOpen(!open);
-
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
 

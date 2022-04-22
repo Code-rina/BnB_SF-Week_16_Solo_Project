@@ -7,6 +7,7 @@ import { getBookingsThunk } from '../../store/bookings'
 import { NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa'
 // import ErrorPage from '../components/ErrorPage/ErrorPage';
+import moment from 'moment';
 import './UserProfile.css'
 
 function UserProfile() {
@@ -121,9 +122,9 @@ function UserProfile() {
             {/* {userSpots && } */}
                 <div className="profile-spots">
                     <div className="profile-spots-div">
-                    {userSpots.map((spot) => (
+                    {allBookingsArray.map((booking) => (
                         <div className="profile-user-spots">
-                            <div className="profile-listing-spots-div" key={`profile-user-spot ${spot.id}`}>
+                            <div className="profile-listing-spots-div" key={`profile-user-spot ${booking.id}`}>
                                 <NavLink className="profile-nav" key={`profile-user-spot ${spot.id}`} to={`/spots/${spot?.id}`}>
                                     <div className="profile-spot-img-div">
                                         <img className="profile-spot-img"
