@@ -5,7 +5,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { getAllSpots } from '../../store/spots';
 import { getBookingsThunk } from '../../store/bookings'
 import { NavLink } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa'
+import { FaUserCircle, FaSuitcase } from 'react-icons/fa'
 // import ErrorPage from '../components/ErrorPage/ErrorPage';
 import moment from 'moment';
 import './UserProfile.css'
@@ -27,8 +27,30 @@ function UserProfile() {
     const allBookingsArray = Object.values(allBookings)
     console.log("allBookingsArray!!!!!", allBookingsArray)
 
-    const today = moment()
-    console.log("TODAY:::::", today.format());
+    const userBookings = allBookingsArray?.filter(booking => booking?.userId === oneUser?.id)
+    console.log("userBookings::::", userBookings)
+    // const startDate = useSelector((state) => state?.bookings?.startDate)
+    // console.log("startDate:::::", startDate);
+
+    // const endDate = useSelector((state) => state?.bookings?.endDate)
+    // console.log("endDate:::::", endDate);
+
+    // console.log("TODAY:::::", today.format());
+    
+    const pastAndFutureBookings = (pastAndFutureBooking) => {
+        const today = moment()
+        let pastBookings = []
+        let futureBookings = []
+        allBookings.filter((i) => {
+            let singleBooking = allBookings[i];
+        if(singleBooking.startDate < today) {
+            pastBookings.push([singleBooking.startDate, singleBooking])
+        } else if (singleBooking.startDate > today) {
+            futureBookings.push([singleBooking.startDate, singleBooking])
+        }
+        })
+        return { pastBookings: pastBookings, futureBookings: futureBookings}
+    }
 
     // const userBookings = allBookings.filter((oneBooking) => oneBooking?.userId === +oneUser.id)
     // console.log("userBookings!!!!!", userBookings)
@@ -125,75 +147,45 @@ function UserProfile() {
             {/* {userSpots && } */}
                 <div className="profile-spots">
                     <div className="profile-spots-div">
-                    {/* {allBookingsArray.map((booking) => (
+                    {!pastAndFutureBookings(userBookings).futureBookings.length ?
                         <div className="profile-user-spots">
-                            <div className="profile-listing-spots-div" key={`profile-user-spot ${spot.id}`}>
-                                <NavLink className="profile-nav" key={`profile-user-spot ${spot.id}`} to={`/spots/${spot?.id}`}>
-                                    <div className="profile-spot-img-div">
-                                        <img className="profile-spot-img"
-                                        alt={spot?.id}
-                                        src={spot?.Images[0].url}
-                                        onError={(e) =>
-                                            (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
-                                            />
-                                        <div className="profile-title-address">
-                                            <div className="profile-title-div">
-                                                <p className="profile-title">{spot?.title}</p>
-                                            </div>    
-                                            <div className="profile-address-div">
-                                                <p className="profile-address">{spot?.address},</p>
+                            <h4>No upcoming trips</h4>
+                                <NavLink to={'/spots'}><FaSuitcase />Explore</NavLink>
+                        </div> :
+                        <div className="profile-user-spots">
+                            {userBookings && pastAndFutureBookings(userBookings).futureBookings.map(date => {
+                                <div className="profile-listing-spots-div">
+                                    <NavLink className="profile-nav" to={`/spots/${date[1].spotId}`}>
+                                        <div className="profile-spot-img-div">
+                                            <img className="profile-booking-img"
+                                            alt="booking"
+                                            src={`${allSpots[date[1].spotId]?.Images[0]?.url}`}
+                                            onError={(e) =>
+                                                (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
+                                                />
+                                            <div className="profile-title-address">
+                                                <div className="profile-title-div">
+                                                    <p className="profile-title">{allSpots[date[1].spotId]?.title}</p>
+                                                </div>    
+                                                <div className="profile-address-div">
+                                                    <p className="profile-address">{allSpots[date[1].spotId]?.address},</p>
                                             </div>
                                             <div className="profile-address-div">
-                                                <p className="profile-address">{spot?.city},</p>
+                                                <p className="profile-address">{allSpots[date[1].spotId]?.city},</p>
                                             </div>
                                             <div className="profile-address-div">
-                                                <p className="profile-address">{spot?.zipCode}</p>
+                                                <p className="profile-address">{allSpots[date[1].spotId]?.zipCode}</p>
                                             </div>
                                         </div>    
                                     </div>
                                 </NavLink>
                             </div>
+                            })}
                         </div>
-                    ))} */}
+                    ))}
                     </div>
                 </div>
             </div>
-            <h5 className="profile-your-listings">Where you've been: </h5>
-            <div className="profile-lower-div">
-            {/* {userSpots && } */}
-                <div className="profile-spots">
-                    <div className="profile-spots-div">
-                    {/* {userSpots.map((spot) => (
-                        <div className="profile-user-spots">
-                            <div className="profile-listing-spots-div" key={`profile-user-spot ${spot.id}`}>
-                                <NavLink className="profile-nav" key={`profile-user-spot ${spot.id}`} to={`/spots/${spot?.id}`}>
-                                    <div className="profile-spot-img-div">
-                                        <img className="profile-spot-img"
-                                        alt={spot?.id}
-                                        src={spot?.Images[0].url}
-                                        onError={(e) =>
-                                            (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
-                                            />
-                                        <div className="profile-title-address">
-                                            <div className="profile-title-div">
-                                                <p className="profile-title">{spot?.title}</p>
-                                            </div>    
-                                            <div className="profile-address-div">
-                                                <p className="profile-address">{spot?.address},</p>
-                                            </div>
-                                            <div className="profile-address-div">
-                                                <p className="profile-address">{spot?.city},</p>
-                                            </div>
-                                            <div className="profile-address-div">
-                                                <p className="profile-address">{spot?.zipCode}</p>
-                                            </div>
-                                        </div>    
-                                    </div>
-                                </NavLink>
-                            </div>
-                        </div>
-                    ))} */}
-                    </div>
                 </div>
             </div>
         </div>
