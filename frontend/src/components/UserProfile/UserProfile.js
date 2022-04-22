@@ -16,7 +16,7 @@ function UserProfile() {
     const [user, setUser] = useState({});
     const oneUser = useSelector((state) => state?.session?.user)
     const allSpots = useSelector((state) => state?.spots?.list)
-    console.log("allSpots---------", allSpots)
+    // console.log("allSpots---------", allSpots)
     // const spots = useSelector((state) => state?.spots)
     // console.log("spots---------", spots)
     const { id }  = useParams();
@@ -32,6 +32,10 @@ function UserProfile() {
 
     const userBookings = allBookingsArray?.filter(booking => booking?.userId === oneUser?.id)
     console.log("userBookings::::", userBookings)
+
+    const pastBookings = userBookings.filter(past => moment(past.startDate) < moment())
+    const futureBookings = userBookings.filter(future => moment(future.startDate) > moment())
+    console.log("futureBookings*****", futureBookings)
     // const startDate = useSelector((state) => state?.bookings?.startDate)
     // console.log("startDate:::::", startDate);
 
@@ -40,23 +44,23 @@ function UserProfile() {
 
     // console.log("TODAY:::::", today.format());
     
-    const pastAndFutureBookings = (pastAndFutureBooking) => {
-        const today = moment().format()
-        console.log("today-----", today)
-        let pastBookings = []
-        let futureBookings = []
-        allBookingsArray.forEach((singleBooking) => {
-            console.log("singleBooking-------------", singleBooking.startDate < today)
-        if(singleBooking.startDate < today) {
-            pastBookings.push([singleBooking.startDate, singleBooking])
-        } else if (singleBooking.startDate > today) {
-            futureBookings.push([singleBooking.startDate, singleBooking])
-        }
-        })
-        console.log("{ pastBookings: pastBookings, futureBookings: futureBookings}", { pastBookings: pastBookings, futureBookings: futureBookings})
-        return { pastBookings: pastBookings, futureBookings: futureBookings}
-    }
-    console.log("userBookings && pastAndFutureBookings(userBookings).futureBookings", userBookings && pastAndFutureBookings(userBookings).futureBookings)
+    // const pastAndFutureBookings = (pastAndFutureBooking) => {
+    //     const today = moment().format()
+    //     // console.log("today-----", today)
+    //     let pastBookings = []
+    //     let futureBookings = []
+    //     allBookingsArray.forEach((singleBooking) => {
+    //         // console.log("singleBooking-------------", singleBooking.startDate < today)
+    //     if(singleBooking.startDate < today) {
+    //         pastBookings.push([singleBooking.startDate, singleBooking])
+    //     } else if (singleBooking.startDate > today) {
+    //         futureBookings.push([singleBooking.startDate, singleBooking])
+    //     }
+    //     })
+    //     // console.log("{ pastBookings: pastBookings, futureBookings: futureBookings}", { pastBookings: pastBookings, futureBookings: futureBookings})
+    //     return { pastBookings: pastBookings, futureBookings: futureBookings}
+    // }
+    // console.log("userBookings && pastAndFutureBookings(userBookings).futureBookings", userBookings && pastAndFutureBookings(userBookings).futureBookings)
     // const userBookings = allBookings.filter((oneBooking) => oneBooking?.userId === +oneUser.id)
     // console.log("userBookings!!!!!", userBookings)
     const [none, setNone] = useState(false)
@@ -69,7 +73,6 @@ function UserProfile() {
     useEffect(() => {
         (async () => {
         await dispatch(getAllSpots())
-        await dispatch(getBookingsThunk())
         })();
     }, [dispatch])
 
@@ -152,40 +155,40 @@ function UserProfile() {
             {/* {userSpots && } */}
                 <div className="profile-spots">
                     <div className="profile-spots-div">
-                    {!pastAndFutureBookings(userBookings).futureBookings.length ?
+                    {!futureBookings.length ?
                         <div className="profile-user-spots">
                             <h4>No upcoming trips</h4>
                                 <NavLink to={'/spots'}><FaSuitcase />Explore</NavLink>
                         </div> :
                         <div className="profile-user-spots">
-                            {userBookings && pastAndFutureBookings(userBookings).futureBookings.map(date => {
+                            {userBookings && futureBookings.map(date => (
                                 <div className="profile-listing-spots-div">
-                                    <NavLink className="profile-nav" to={`/spots/${date[0].spotId}`}>
+                                    <NavLink className="profile-nav" to={`/spots/${allSpots[date?.spotId]?.id}`}>
                                         <div className="profile-spot-img-div">
-                                            <img className="profile-booking-img"
+                                            <img className="profile-spot-img"
                                             alt="booking"
-                                            src={`${allSpots[date[0].spotId]?.Images[0]?.url}`}
+                                            src={`${allSpots[date.spotId]?.Images[0]?.url}`}
                                             onError={(e) =>
                                                 (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
                                                 />
                                             <div className="profile-title-address">
                                                 <div className="profile-title-div">
-                                                    <p className="profile-title">{allSpots[date[0].spotId]?.title}</p>
+                                                    <p className="profile-title">{allSpots[date?.spotId]?.title}</p>
                                                 </div>    
                                                 <div className="profile-address-div">
-                                                    <p className="profile-address">{allSpots[date[0].spotId]?.address},</p>
+                                                    <p className="profile-address">{allSpots[date.spotId]?.address},</p>
                                                 </div>
                                                 <div className="profile-address-div">
-                                                    <p className="profile-address">{allSpots[date[0].spotId]?.city},</p>
+                                                    <p className="profile-address">{allSpots[date.spotId]?.city},</p>
                                                 </div>
                                                 <div className="profile-address-div">
-                                                    <p className="profile-address">{allSpots[date[0].spotId]?.zipCode}</p>
+                                                    <p className="profile-address">{allSpots[date.spotId]?.zipCode}</p>
                                                 </div>
                                             </div>    
                                         </div>
                                     </NavLink>
                                 </div>
-                            })}
+                            ))}
                         </div>
                     }
                     </div>
@@ -196,40 +199,40 @@ function UserProfile() {
             {/* {userSpots && } */}
                 <div className="profile-spots">
                     <div className="profile-spots-div">
-                    {!pastAndFutureBookings(userBookings).pastBookings.length ?
+                    {!pastBookings.length ?
                         <div className="profile-user-spots">
                             <h4>No upcoming trips</h4>
                                 <NavLink to={'/spots'}><FaSuitcase />Explore</NavLink>
                         </div> :
                         <div className="profile-user-spots">
-                            {userBookings && pastAndFutureBookings(userBookings).pastBookings.map(date => {
+                            {userBookings && pastBookings.map(date => (
                                 <div className="profile-listing-spots-div">
-                                    <NavLink className="profile-nav" to={`/spots/${date[0].spotId}`}>
+                                    <NavLink className="profile-nav" to={`/spots/${allSpots[date?.spotId]?.id}`}>
                                         <div className="profile-spot-img-div">
-                                            <img className="profile-booking-img"
+                                            <img className="profile-spot-img"
                                             alt="booking"
-                                            src={`${allSpots[date[0].spotId]?.Images[0]?.url}`}
+                                            src={`${allSpots[date.spotId]?.Images[0]?.url}`}
                                             onError={(e) =>
                                                 (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
                                                 />
                                             <div className="profile-title-address">
                                                 <div className="profile-title-div">
-                                                    <p className="profile-title">{allSpots[date[0].spotId]?.title}</p>
+                                                    <p className="profile-title">{allSpots[date.spotId]?.title}</p>
                                                 </div>    
                                                 <div className="profile-address-div">
-                                                    <p className="profile-address">{allSpots[date[0].spotId]?.address},</p>
+                                                    <p className="profile-address">{allSpots[date.spotId]?.address},</p>
                                                 </div>
                                                 <div className="profile-address-div">
-                                                    <p className="profile-address">{allSpots[date[0].spotId]?.city},</p>
+                                                    <p className="profile-address">{allSpots[date.spotId]?.city},</p>
                                                 </div>
                                                 <div className="profile-address-div">
-                                                    <p className="profile-address">{allSpots[date[0].spotId]?.zipCode}</p>
+                                                    <p className="profile-address">{allSpots[date.spotId]?.zipCode}</p>
                                                 </div>
                                             </div>    
                                         </div>
                                     </NavLink>
                                 </div>
-                            })}
+                            ))}
                         </div>
                     }
                     </div>

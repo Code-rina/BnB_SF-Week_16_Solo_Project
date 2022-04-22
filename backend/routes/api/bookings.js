@@ -13,52 +13,23 @@ router.get(
     '/',
     asyncHandler(async (req, res) => {
         const bookings = await Booking.findAll()
-        console.log("3rd - back-bookings", bookings)
+        // console.log("3rd - back-bookings", bookings)
         return res.json(bookings)
     })
 )
 
 
-// // Getting one spot
-// router.get(
-//     '/:id', 
-//     asyncHandler(async (req, res) => {
-//         const spotId = parseInt(req.params.id, 10)
-//         const spot = await Spot.findByPk(spotId, {
-//             include: [Image, Amenity, User]
-//         })
-//         return res.json(spot)
-//     })
-// )
-
-// //Creating a host form
-// router.post(
-//     '/host',
-//     requireAuth,
-//     // hostFormValidator,
-//     asyncHandler(async (req, res) => {
-//         const {image, amenities, spots } = req.body
-//         const id = await Spot.create(spots)
-//         const newUrlImage = {
-//             spotId: id.id,
-//             url: image.url
-//         }
-//         await Image.create(newUrlImage)
-//         const newListAmenity = {
-//             spotId: id.id,
-//             parking: amenities.parking,
-//             kitchen: amenities.kitchen,
-//             patio: amenities.patio,
-//             gym: amenities.gym,
-//             pool: amenities.pool,
-//             hotTub: amenities.hotTub,
-//             pets: amenities.pets
-//         }
-//         await Amenity.create(newListAmenity)
-//         return res.json({id})
-//         // console.log("req.body", req.body)
-//     })
-// )
+//Creating a booking
+router.post(
+    '/',
+    requireAuth,
+    asyncHandler(async (req, res) => {
+        const { spotId, userId, numberOfGuests, startDate, endDate } = req.body
+        const booking = await Booking.create(req.body)
+        console.log("POST-backend-booking***********", booking)
+        return res.json(booking)
+    })
+)
 
 // router.put(
 //     '/:id/host',
