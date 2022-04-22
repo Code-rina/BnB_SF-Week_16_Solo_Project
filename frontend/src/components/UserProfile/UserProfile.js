@@ -25,17 +25,17 @@ function UserProfile() {
     const userSpots = allSpots.filter((spot) => spot?.userId === +oneUser.id)
 //   console.log("userSpots!!!!!", userSpots)
     const allBookings = useSelector((state) => state?.bookings)
-    console.log("1st - allBookings!!!!!", allBookings)
+    // console.log("1st - allBookings!!!!!", allBookings)
 
     const allBookingsArray = Object.values(allBookings)
-    console.log("allBookingsArray!!!!!", allBookingsArray)
+    // console.log("allBookingsArray!!!!!", allBookingsArray)
 
     const userBookings = allBookingsArray?.filter(booking => booking?.userId === oneUser?.id)
-    console.log("userBookings::::", userBookings)
+    // console.log("userBookings::::", userBookings)
 
     const pastBookings = userBookings.filter(past => moment(past.startDate) < moment())
     const futureBookings = userBookings.filter(future => moment(future.startDate) > moment())
-    console.log("futureBookings*****", futureBookings)
+    // console.log("futureBookings*****", futureBookings)
     // const startDate = useSelector((state) => state?.bookings?.startDate)
     // console.log("startDate:::::", startDate);
 

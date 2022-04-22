@@ -10,7 +10,7 @@ import { DateRangePicker, DateRange } from "mui-daterange-picker";
 import './CreateBooking.css';
 
 
-function CreateBookingForm(){
+function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
 //   const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     // const history = useHistory();

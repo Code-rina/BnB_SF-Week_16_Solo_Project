@@ -11,22 +11,23 @@ import EditReviewModal from "../EditReview/EditReviewModal";
 import {getReviews} from '../../store/reviews'
 import {deleteReview} from '../../store/reviews'
 import {createReview} from '../../store/reviews'
+import CreateBookingForm from '../Booking/CreateBookingForm/CreateBooking'
 import './spotsdetail.css';
 
 
 function SpotDetail({spot, user}){
     const dispatch = useDispatch()
     const userId = useSelector((state) => state.session.user?.id);
-    console.log("userId", userId)
+    // console.log("userId", userId)
     const allUsers = useSelector((state) => state?.session?.user)
-    console.log("allUsers", allUsers)
+    // console.log("allUsers", allUsers)
     const {spotId} = useParams()
     const {id} = useParams()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session?.user);
-    console.log("sessionUser", sessionUser)
+    // console.log("sessionUser", sessionUser)
     const oneSpot = useSelector(state => state.spots[spotId])
-    console.log("oneSpot", oneSpot)
+    // console.log("oneSpot", oneSpot)
     const review = useSelector((state) => {
       // console.log(state)
         return state.reviews;
@@ -141,6 +142,10 @@ const deleteButton = async (e) => {
             <div>
               {(sessionUser?.id && sessionUser?.id !== oneSpot?.userId) &&
               <CreateReviewModal />}
+            </div>
+            <div>
+            {(sessionUser?.id && sessionUser?.id !== oneSpot?.userId) &&
+              <CreateBookingForm spotId={spotId} oneSpot={oneSpot} sessionUser={sessionUser} reviewsObj={reviewsObj}/>}
             </div>
         </div>
     )
