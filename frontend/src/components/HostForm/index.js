@@ -89,7 +89,7 @@ function HostForm(){
         }
         let spotCreated;
         spotCreated = await dispatch(addSpot(payload));
-        console.log("spotCreated", spotCreated)
+        // console.log("spotCreated", spotCreated)
         // try {
         // } catch (error) {
         //     throw new Error("Something went wrong")

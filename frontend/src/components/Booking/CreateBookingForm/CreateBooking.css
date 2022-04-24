@@ -1,0 +1,43 @@
+.create_booking_main_div {
+    border: 1px solid white;
+    box-shadow: 0 0 5px 0 rgb(200,200,200);
+    border-radius: 25px;
+    height: 50vh;
+    width: 50vh;
+    justify-content: flex-end;
+}
+
+.react-date-picker__wrapper {
+    border: 1px solid rgb(200,200,200);
+    border-radius: 8px;
+}
+.booking-startDate-input,
+.booking-endDate-input {
+    color: rgb(200,200,200);
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid rgb(200,200,200);
+    text-align: center;
+    cursor: pointer;
+}
+
+.select_number_guests {
+    width: 200px;
+    height: 50px;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 10px;
+    align-self: center;
+    text-align: start;
+    cursor: pointer;
+}
+
+/* date picker div */
+.create_booking_sub_div {
+    display: flex;
+    justify-content: center;
+}
+
+/* .calendarIcon {
+    color: rgb(200,200,200)
+} */

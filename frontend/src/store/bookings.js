@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const GET_BOOKINGS = '/bookings/GET_BOOKINGS';
-const CREATE_BOOKING = '/bookings/CRETAE_BOOKING'
+const CREATE_BOOKING = '/bookings/CREATE_BOOKING'
 
 
 
@@ -36,9 +36,9 @@ export const getBookingsThunk = (bookings) => async (dispatch) => {
   };
 
   export const createBookingThunk = (booking) => async (dispatch) => {
-    console.log("POST-booking********", booking)
+    console.log("POST-booking--------", booking)
     const response = await csrfFetch(`/api/bookings/`);
-    console.log("POST-response********", response)
+    console.log("POST-response--------", response)
     if(response.ok) {
       const data = await response.json();
       dispatch(createBookingAction(data))
