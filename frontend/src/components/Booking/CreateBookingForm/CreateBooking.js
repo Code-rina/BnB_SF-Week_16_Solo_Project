@@ -77,7 +77,7 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                     selected={startDate}
                     selectsStart
                     // closeCalendar={true}
-                    placeholderText='Check-in Date'
+                    // placeholderText='Check-in Date'
                     // autoFocus={true}
                     minDate={new Date ()}
                     onChange={(range) => setStartDate(range)}
@@ -92,11 +92,13 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                     selectsEnd
                     // closeCalendar={true}
                     // calendarIcon={null}
-                    placeholderText='Check-out Date'
+                    // placeholderText='Check-out Date'
                     minDate={new Date(+1)}
                     onChange={(range) => setEndDate(range)}
                     />
                 </div>
+                <div className="booking-guests"></div>
+                <label>Guests</label>
                 <select  
                 className="select_number_guests"
                 defaultValue={numberOfGuests}
