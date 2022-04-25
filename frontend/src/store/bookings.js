@@ -37,11 +37,16 @@ export const getBookingsThunk = (bookings) => async (dispatch) => {
 
   export const createBookingThunk = (booking) => async (dispatch) => {
     console.log("POST-booking--------", booking)
-    const response = await csrfFetch(`/api/bookings/`);
+    const response = await csrfFetch(`/api/bookings`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(booking)
+    });
     console.log("POST-response--------", response)
     if(response.ok) {
       const data = await response.json();
       dispatch(createBookingAction(data))
+      return data
     }
   }
 
@@ -59,7 +64,7 @@ export const getBookingsThunk = (bookings) => async (dispatch) => {
         return newState;
         case CREATE_BOOKING:
           newState = { ...state };
-          newState[action.booking.id] = action.bookings;
+          newState[action.booking.id] = action.booking;
           console.log("POST-newState*****", newState)
         return newState;
     //   case EDIT_REVIEW:

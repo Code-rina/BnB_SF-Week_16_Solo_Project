@@ -6,9 +6,10 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 // import {addSpot} from '../../store/spots'
 import {useEffect} from 'react'
-import DatePicker from 'react-date-picker'
+import DatePicker from "react-datepicker";
 import { createBookingThunk } from '../../../store/bookings'
 import moment from 'moment';
+import "react-datepicker/dist/react-datepicker.css";
 import './CreateBooking.css';
 
 
@@ -18,17 +19,20 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
     
     const allBookings = useSelector(state => state?.bookings)
     // console.log("allBookings!!!!!", allBookings)
-
+    console.log("OneSpot", oneSpot)
     const [open, setOpen] = useState(false);
     const [date, setDate] = useState(false);
-    const [numberOfGuests, setNumberOfGuests] = useState("");
+    const [numberOfGuests, setNumberOfGuests] = useState(1);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
 
 
+    // console.log("array", [...Array(oneSpot?.guests).keys()])
+    console.log("sessionUser", sessionUser)
 //    const today = moment().format()
    const today = new Date()
    console.log("today------",today)
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -47,6 +51,7 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
             history.push(`/users/${sessionUser?.id}`)
         }
     };
+
 
     return (
         <div className="create_booking_main_div">
@@ -71,9 +76,9 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                     endDate={endDate}
                     selected={startDate}
                     selectsStart
-                    closeCalendar={true}
+                    // closeCalendar={true}
                     placeholderText='Check-in Date'
-                    autoFocus={true}
+                    // autoFocus={true}
                     minDate={new Date ()}
                     onChange={(range) => setStartDate(range)}
                     />
@@ -85,22 +90,25 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                     endDate={endDate}
                     selected={endDate}
                     selectsEnd
-                    closeCalendar={true}
+                    // closeCalendar={true}
                     // calendarIcon={null}
                     placeholderText='Check-out Date'
+                    minDate={new Date(+1)}
                     onChange={(range) => setEndDate(range)}
                     />
                 </div>
-                {sessionUser &&
-                <button className="booking-reserve-button">Reserve</button>
-                }
-                {/* <select  
+                <select  
                 className="select_number_guests"
-                onChange={event => setNumberOfGuests(event.target.value)}
-                value={numberOfGuests}
-                >
-                </select> */}
+                defaultValue={numberOfGuests}
+                onChange={event => setNumberOfGuests(event.target.value)}>
+                {[...Array(oneSpot?.guests).keys()].map((number, i) => (
+                    <option key={i}>{number + 1}</option>
+                    ))}
+                </select>
                 </>}
+                {sessionUser &&
+                <button className="booking-reserve-button" type="submit">Reserve</button>
+                }
             </form>
         </div>
          
