@@ -31,7 +31,11 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
     console.log("sessionUser", sessionUser)
 //    const today = moment().format()
    const today = new Date()
+   const tomorrow = new Date()
+   tomorrow.setDate(today.getDate() + 1)
+
    console.log("today------",today)
+   console.log("tomorrow------",tomorrow)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -77,7 +81,7 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                     selected={startDate}
                     selectsStart
                     // closeCalendar={true}
-                    // placeholderText='Check-in Date'
+                    placeholderText='Check-in Date'
                     // autoFocus={true}
                     minDate={new Date ()}
                     onChange={(range) => setStartDate(range)}
@@ -92,8 +96,8 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                     selectsEnd
                     // closeCalendar={true}
                     // calendarIcon={null}
-                    // placeholderText='Check-out Date'
-                    minDate={new Date(+1)}
+                    placeholderText='Check-out Date'
+                    minDate={tomorrow}
                     onChange={(range) => setEndDate(range)}
                     />
                 </div>
