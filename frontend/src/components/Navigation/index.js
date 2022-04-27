@@ -35,7 +35,6 @@ function Navigation({ isLoaded }){
         </div>
         <div className='right_container'>
           <ul className="nav-left-ul">
-                {/* <NavLink exact to="/">Home</NavLink> */}
                 {isLoaded && sessionLinks}
           </ul>
         </div>

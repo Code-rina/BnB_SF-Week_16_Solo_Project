@@ -1,7 +1,8 @@
 .create_booking_main_div {
     position: sticky;
+    top: 150;
     bottom: 150;
-    left: 1070;
+    left: 2000;
     justify-content: flex-end;
     position: -webkit-sticky;
     background-color: white;
@@ -11,8 +12,6 @@
     height: fit-content;
     width: fit-content;
     padding: 20px;
-    /* margin-left:50px;  */
-    /* justify-content: flex-end; */
 }
 
 
@@ -54,18 +53,12 @@
 .create_booking_form {
     height: auto;
 }
-/* date picker div */
 .create_booking_sub_div {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-}
-.booking-startdate-input {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center; */
 }
 .booking-guests {
     display: flex;
@@ -112,20 +105,13 @@
     border-color: white;
     border: 1px solid;
     border-radius: 10px; 
-    /* text-align:left; */
     text-decoration: none;
-    /* display: inline-block; */
-    /* font-size: 12px;
-    margin: 6px 4px; */
     transition-duration: 0.4s;
     margin-top: 5px;
-    /* margin-bottom: 20px; */
     margin-left: 30%;
     cursor: pointer; 
     margin-right: 30%;
     font-weight: 400;
-    /* padding-left: 20px; */
-    /* padding-right: 20px; */
     padding-top: 10px;
     padding-bottom: 10px;
 }

@@ -2,7 +2,6 @@
     font-size: 13px;
     display: flex;
     justify-content: flex-start;
-    /* padding-left: 30%; */
     color: #d93b30;
     margin-bottom: 3px;
 }
@@ -20,7 +19,6 @@
 .edit-review {
     display: flex;
     flex-direction:column;
-    /* padding: 30px 50px; */
     justify-content: center;
 }
 #edit_review_texty {
@@ -36,7 +34,6 @@
 }
 .edit-review-button-edit,
 .edit-cancel-review-button {
-    /* left: 70px; */
     list-style: none;
     background: none;
     color: white;
@@ -44,14 +41,9 @@
     border-color: white;
     border: 1px solid;
     border-radius: 10px; 
-    /* text-align:left; */
     text-decoration: none;
-    /* display: inline-block; */
-    /* font-size: 12px;
-    margin: 6px 4px; */
     transition-duration: 0.4s;
     margin-top: 20px;
-    /* margin-bottom: 20px; */
     margin-left: 12%;
     cursor: pointer; 
     margin-right: 16px;

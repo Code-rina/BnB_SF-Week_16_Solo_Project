@@ -3,13 +3,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-// import {addSpot} from '../../store/spots'
-import {useEffect} from 'react'
 import DatePicker from "react-datepicker";
 import { IoCalendarClearOutline } from 'react-icons/io5'
 import { createBookingThunk } from '../../../store/bookings'
-import moment from 'moment';
 import "react-datepicker/dist/react-datepicker.css";
 import './CreateBooking.css';
 
@@ -19,24 +15,15 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
     const history = useHistory();
     
     const allBookings = useSelector(state => state?.bookings)
-    // console.log("allBookings!!!!!", allBookings)
-    console.log("OneSpot", oneSpot)
     const [open, setOpen] = useState(false);
     const [date, setDate] = useState(false);
     const [numberOfGuests, setNumberOfGuests] = useState(1);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
 
-
-    // console.log("array", [...Array(oneSpot?.guests).keys()])
-    console.log("sessionUser", sessionUser)
-//    const today = moment().format()
    const today = new Date()
    const tomorrow = new Date()
    tomorrow.setDate(today.getDate() + 1)
-
-   console.log("today------",today)
-   console.log("tomorrow------",tomorrow)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -48,10 +35,8 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
             endDate: endDate,
             numberOfGuests: +numberOfGuests
         }
-        console.log("payload------",payload)
         let response;
         response = await dispatch(createBookingThunk(payload))
-        console.log("response------",response)
         if (response) {
             history.push(`/users/${sessionUser?.id}`)
         }
@@ -64,14 +49,6 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                 <h4 className="booking-spot-price">${oneSpot?.price} /night</h4>
             </div>
             <form className="create_booking_form" onSubmit={handleSubmit}>
-                {/* <div className="create_booking_sub_div"> */}
-                        {/* <ul>
-                            {errorValidator.map(error => (
-                            <li className="error_list" key={error}>{error}</li>
-                            ))}
-                        </ul> */}
-                {/* </div> */}
-
             {sessionUser && 
                 <>
                 <div className="create_booking_sub_div">
@@ -83,9 +60,7 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                     endDate={endDate}
                     selected={startDate}
                     selectsStart
-                    // closeCalendar={true}
                     placeholderText='Check-in Date'
-                    // autoFocus={true}
                     minDate={new Date ()}
                     onChange={(range) => setStartDate(range)}
                     />
@@ -97,8 +72,6 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                     endDate={endDate}
                     selected={endDate}
                     selectsEnd
-                    // closeCalendar={true}
-                    // calendarIcon={null}
                     placeholderText='Check-out Date'
                     minDate={tomorrow}
                     onChange={(range) => setEndDate(range)}

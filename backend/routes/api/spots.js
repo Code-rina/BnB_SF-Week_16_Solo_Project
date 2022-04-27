@@ -110,7 +110,7 @@ router.post(
         }
         await Amenity.create(newListAmenity)
         return res.json({id})
-        // console.log("req.body", req.body)
+
     })
 )
 
@@ -157,25 +157,19 @@ router.put(
     asyncHandler(async (req, res) => {
         const {id, Images, Amenities} = req.body
         const spotId = parseInt(req.params.id, 10)
-        // const imageId = Images[0].id;
-        // const amenitiesId = Amenities[0].id;
+
 
         const currentSpot = await Spot.findByPk(spotId)
-        // const currentImage = await Image.findByPk(imageId)
-        // const currentAmenity = await Amenity.findByPk(amenitiesId)
 
-        // console.log(currentSpot, currentImage, currentAmenity)
         if(currentSpot) {
-            // await currentAmenity.destroy();
-            // await currentImage.destroy();
+
             await currentSpot.destroy();
 
             res.json({message: "Successfuly deleted"});
-        // } else {
-        //     console.log("We could not delete your form")
+
         } 
         res.json({message: "Deleting was unsuccessful"})
-        // }
+
     }))
 
 //Creating a new review on a specific spot

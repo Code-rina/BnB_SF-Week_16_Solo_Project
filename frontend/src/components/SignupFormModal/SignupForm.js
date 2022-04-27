@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux";
-// import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import LoginFormModal from '../LoginFormModal/index'
 import DemoUser from '../Navigation/demouser'
@@ -9,14 +7,11 @@ import DemoUser from '../Navigation/demouser'
 
 function SignupForm() {
   const dispatch = useDispatch();
-  // const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
-  // if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,40 +38,32 @@ function SignupForm() {
               Email
               <input id="login_text_input"
                 type="text"
-                // placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                // required
               />
             </label>
             <label id="login_label">
               Username
               <input id="login_text_input"
                 type="text"
-                // placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                // required
               />
             </label>
             <label id="login_label">
               Password
               <input id="login_text_input"
                 type="password"
-                // placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                // required
               />
             </label>
             <label id="login_label">
               Confirm Password
               <input id="login_text_input"
                 type="password"
-                // placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                // required
               />
             </label>
             </div>

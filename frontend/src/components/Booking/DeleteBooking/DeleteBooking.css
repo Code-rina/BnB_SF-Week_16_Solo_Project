@@ -1,0 +1,41 @@
+.booking-delete-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 70px;
+    padding-bottom: 10px;
+}
+
+.delete-booking-button {
+    left: 50px;
+    list-style: none;
+    background: none;
+    border: none;
+    color: #d93b30;
+    border: 2px solid #d93b30;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    margin: 6px 4px;
+    transition-duration: 0.4s;
+    margin-bottom: 5px;
+    margin-left: 28%;
+    cursor: pointer; 
+    margin-left: 0!important;
+    margin-right: 10px;
+    background-color: #FF5A5F;
+    border-radius: 10px;
+    border-color: white;
+    margin-top:2px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 17px;
+    padding-right: 17px;
+}
+
+ .delete-booking-button:hover {
+     background-color: #d93b30;
+ }

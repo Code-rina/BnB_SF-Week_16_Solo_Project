@@ -3,15 +3,12 @@ import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import { FiUser, FiLogOut } from 'react-icons/fi';
 import * as sessionActions from '../../store/session';
-// import UserProfile from '../UserProfile'
+
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   
-  // const openMenu = () => {
-  //   if (showMenu) return;
-  //   setShowMenu(true);
-  // };
+
   
   useEffect(() => {
     if (!showMenu) return;
@@ -39,14 +36,6 @@ function ProfileButton({ user }) {
           </button>
         </NavLink>
       </div>
-      {/* {showMenu && (
-        <ul className="profile-dropdown">
-        <li>Username: {user.username}</li> 
-        <li>Email: {user.email}</li>
-          <li>
-          </li>
-          </ul>
-          )} */}
         <div className="nav-li">
           <button className="icon" onClick={logout}>
             <i className="user-icon"><FiLogOut/></i>

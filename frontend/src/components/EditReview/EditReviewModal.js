@@ -5,7 +5,6 @@ import "./EditReview.css"
 
 
 function EditReviewModal({review}) {
-  console.log("Modal-review", review)
     const [showModal, setShowModal] = useState(false);
 
     return (

@@ -31,85 +31,25 @@ router.post(
     })
 )
 
-// router.put(
-//     '/:id/host',
-//     requireAuth,
-//     // hostFormValidator,
-//     asyncHandler(async (req, res) => {
-//         const spotId = parseInt(req.params.id, 10)
-//         const currentSpot = await Spot.findByPk(spotId)
+//Delete a booking
+router.delete(
+    '/:bookingId',
+    requireAuth,
+    asyncHandler(async (req, res) => {
+        const {id, Bookings} = req.body
+        const bookingId = parseInt(req.params.bookingId, 10)
+        console.log("POST ROUTE - bookingId---------", bookingId)
+        const currentBooking = await Booking.findByPk(bookingId)
+ 
+        if(currentBooking) {
+            await currentBooking.destroy();
 
-//         const {image, spots, amenities} = req.body
+            return res.json({message: "Successfuly deleted"});
+       
+        }
+        return res.json({message: "Deleting was unsuccessful"})
 
-//         const id = await currentSpot.update(spots)
-
-//         const newUrlImage = {
-//             id: image.id,
-//             spotId: id.id,
-//             url: image.url
-//         }
-//         const currentImage = await Image.findByPk(image.id);
-
-//         await currentImage.update(newUrlImage)
-
-//         const newListAmenity = {
-//             id: amenities.id,
-//             spotId: id.id,
-//             parking: amenities.parking,
-//             kitchen: amenities.kitchen,
-//             patio: amenities.patio,
-//             gym: amenities.gym,
-//             pool: amenities.pool,
-//             hotTub: amenities.hotTub,
-//             pets: amenities.pets
-//         }
-//         const currentAmenity = await Amenity.findByPk(amenities.id)
-//         await currentAmenity.update(newListAmenity)
-
-//         return res.json({id})
-//     }))
-
-//     router.delete(
-//     '/:id',
-//     asyncHandler(async (req, res) => {
-//         const {id, Images, Amenities} = req.body
-//         const spotId = parseInt(req.params.id, 10)
-//         // const imageId = Images[0].id;
-//         // const amenitiesId = Amenities[0].id;
-
-//         const currentSpot = await Spot.findByPk(spotId)
-//         // const currentImage = await Image.findByPk(imageId)
-//         // const currentAmenity = await Amenity.findByPk(amenitiesId)
-
-//         // console.log(currentSpot, currentImage, currentAmenity)
-//         if(currentSpot) {
-//             // await currentAmenity.destroy();
-//             // await currentImage.destroy();
-//             await currentSpot.destroy();
-
-//             res.json({message: "Successfuly deleted"});
-//         // } else {
-//         //     console.log("We could not delete your form")
-//         } 
-//         res.json({message: "Deleting was unsuccessful"})
-//         // }
-//     }))
-
-// //Creating a new review on a specific spot
-// router.post(
-//     "/spots/:id",
-//     asyncHandler(async (req, res) => {
-//       const review = await Review.create(req.body);
-  
-//       console.log;
-  
-//       const newReview = await Review.findByPk(review.id, {
-//         include: [User],
-//       });
-//       res.json(newReview);
-//     })
-//   );
-  
+}))
 
 
 

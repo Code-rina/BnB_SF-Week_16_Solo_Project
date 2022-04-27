@@ -37,20 +37,16 @@ function LoginForm() {
             Email
             <input id="login_text_input"
               type="text"
-              // placeholder="Please provide your email..."
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
-              // required
             />
           </label>
           <label id="login_label">
             Password
             <input id="login_text_input"
               type="password"
-              // placeholder="Your password here..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              // required
             />
           </label>
         </div>

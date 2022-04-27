@@ -27,20 +27,23 @@ const removeReview = (reviewId) => ({
 });
 
 export const getReviews = (spotId) => async (dispatch) => {
+
   const response = await csrfFetch(`/api/reviews/spots/${spotId}`);
+
   if (response.ok) {
     const reviews = await response.json();
     dispatch(getAllReviews(reviews));
-    console.log("spotId", spotId)
   }
 };
 
 export const createReview = (payload) => async (dispatch) => {
+
   const response = await csrfFetch(`/api/reviews/spots/${payload.spotId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
+
   if (response.ok) {
     const review = await response.json();
     dispatch(create(review));
@@ -50,24 +53,25 @@ export const createReview = (payload) => async (dispatch) => {
 
 export const updateReview = (reviewId) => async (dispatch) => {
 
-  console.log('reviewId- 2nd', reviewId)
   const response = await csrfFetch(`/api/reviews/${reviewId.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(reviewId)
   });
+
   if (response.ok) {
     const data = await response.json();
-    console.log('data-4th', data)
     await dispatch(editReview(data));
     return data;
   }
 };
 
 export const deleteReview = (reviewId) => async (dispatch) => {
+
   const response = await csrfFetch(`/api/reviews/spots/${reviewId}`, {
     method: "DELETE",
   });
+
   if (response.ok) {
     const reviewId = await response.json();
     dispatch(removeReview(reviewId));
@@ -90,7 +94,6 @@ const reviewsReducer = (state = {}, action) => {
     case EDIT_REVIEW:
       const editState = { ...state };
       editState[action.reviewId.id] = action.reviewId;
-      console.log("editState", editState)
       return editState;
     case DELETE_REVIEW:
       const removeState = { ...state };
