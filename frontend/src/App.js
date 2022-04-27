@@ -10,6 +10,7 @@ import SpotDetail from './components/SpotDetail'
 import HostForm from './components/HostForm'
 import EditHostForm from './components/EditHostForm'
 import UserProfile from './components/UserProfile/UserProfile.js'
+import {getBookingsThunk} from './store/bookings'
 
 
 
@@ -17,6 +18,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
+    dispatch(getBookingsThunk())
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 

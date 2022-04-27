@@ -6,91 +6,119 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 // import {addSpot} from '../../store/spots'
 import {useEffect} from 'react'
-import { DateRangePicker, DateRange } from "mui-daterange-picker";
+import DatePicker from "react-datepicker";
+import { IoCalendarClearOutline } from 'react-icons/io5'
+import { createBookingThunk } from '../../../store/bookings'
+import moment from 'moment';
+import "react-datepicker/dist/react-datepicker.css";
 import './CreateBooking.css';
 
 
-function CreateBookingForm(){
-//   const sessionUser = useSelector(state => state.session.user);
+function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
     const dispatch = useDispatch();
-    // const history = useHistory();
-    // const session = useSelector(state => state.session)
+    const history = useHistory();
     
+    const allBookings = useSelector(state => state?.bookings)
+    // console.log("allBookings!!!!!", allBookings)
+    console.log("OneSpot", oneSpot)
     const [open, setOpen] = useState(false);
-    const [dateRange, setDateRange] = useState(false);
-    const [numberOfGuests, setNumberOfGuests] = useState("");
+    const [date, setDate] = useState(false);
+    const [numberOfGuests, setNumberOfGuests] = useState(1);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
 
 
-    const toggle = () => setOpen(!open);
+    // console.log("array", [...Array(oneSpot?.guests).keys()])
+    console.log("sessionUser", sessionUser)
+//    const today = moment().format()
+   const today = new Date()
+   const tomorrow = new Date()
+   tomorrow.setDate(today.getDate() + 1)
+
+   console.log("today------",today)
+   console.log("tomorrow------",tomorrow)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // const payload = {
-        //     amenities: {
-        //         parking,
-        //         kitchen,
-        //         patio,
-        //         gym,
-        //         pool,
-        //         hotTub,
-        //         pets
-        //     },
-        //     spots: {
-        //         userId: session.user.id,
-        //         address,
-        //         city,
-        //         zipCode,
-        //         state,
-        //         country,
-        //         title,
-        //         description,
-        //         price,
-        //         guests,
-        //         bedrooms,
-        //         bathrooms
-        //     },
-        //     image: {
-        //         url
-        //     }
-        // }
-        // let spotCreated;
-        // spotCreated = await dispatch(addSpot(payload));
-        // console.log("spotCreated", spotCreated)
-        // try {
-        // } catch (error) {
-        //     throw new Error("Something went wrong")
-        // }
-        // if (spotCreated) {
-        //     history.push(`/spots/${spotCreated.id.id}`)
-        // }
+        const payload = {
+            spotId: +spotId,
+            userId: sessionUser?.id,
+            startDate: startDate,
+            endDate: endDate,
+            numberOfGuests: +numberOfGuests
+        }
+        console.log("payload------",payload)
+        let response;
+        response = await dispatch(createBookingThunk(payload))
+        console.log("response------",response)
+        if (response) {
+            history.push(`/users/${sessionUser?.id}`)
+        }
     };
+
 
     return (
         <div className="create_booking_main_div">
+            <div className="create_booking_upper_div">
+                <h4 className="booking-spot-price">${oneSpot?.price} /night</h4>
+            </div>
             <form className="create_booking_form" onSubmit={handleSubmit}>
-              {/* <div className="create_booking_sub_div"> */}
-                    {/* <ul>
-                        {errorValidator.map(error => (
-                        <li className="error_list" key={error}>{error}</li>
-                        ))}
-                    </ul> */}
-            {/* </div> */}
+                {/* <div className="create_booking_sub_div"> */}
+                        {/* <ul>
+                            {errorValidator.map(error => (
+                            <li className="error_list" key={error}>{error}</li>
+                            ))}
+                        </ul> */}
+                {/* </div> */}
+
+            {sessionUser && 
+                <>
                 <div className="create_booking_sub_div">
-                    <DateRangePicker
-                    open={open}
-                    toggle={toggle}
-                    onChange={(range) => setDateRange(range)}
+                    <label className="booking-calendar-icon">
+                        <IoCalendarClearOutline/></label>
+                    <DatePicker
+                    className="booking-startDate-input"
+                    startDate={startDate}
+                    endDate={endDate}
+                    selected={startDate}
+                    selectsStart
+                    // closeCalendar={true}
+                    placeholderText='Check-in Date'
+                    // autoFocus={true}
+                    minDate={new Date ()}
+                    onChange={(range) => setStartDate(range)}
+                    />
+                    <label className="booking-calendar-icon2">
+                        <IoCalendarClearOutline/></label>
+                    <DatePicker
+                    className="booking-endDate-input"
+                    startDate={startDate}
+                    endDate={endDate}
+                    selected={endDate}
+                    selectsEnd
+                    // closeCalendar={true}
+                    // calendarIcon={null}
+                    placeholderText='Check-out Date'
+                    minDate={tomorrow}
+                    onChange={(range) => setEndDate(range)}
                     />
                 </div>
-                <select 
-                className="select_number_guests"
-                onChange={event => setNumberOfGuests(event.target.value)}
-                value={numberOfGuests}
-                >
-                </select>
+                <div className="booking-guests">
+                    <label className="booking-guests-label">Guests</label>
+                        <select  
+                        className="select_number_guests"
+                        defaultValue={numberOfGuests}
+                        onChange={event => setNumberOfGuests(event.target.value)}>
+                        {[...Array(oneSpot?.guests).keys()].map((number, i) => (
+                            <option key={i}>{number + 1}</option>
+                            ))}
+                        </select>
+                </div>
+                </>}
+                {sessionUser &&
+                <button className="booking-reserve-button" type="submit">Reserve</button>
+                }
             </form>
         </div>
          

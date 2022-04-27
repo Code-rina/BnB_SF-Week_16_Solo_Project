@@ -1,0 +1,135 @@
+.create_booking_main_div {
+    position: sticky;
+    bottom: 150;
+    left: 1070;
+    justify-content: flex-end;
+    position: -webkit-sticky;
+    background-color: white;
+    border: 1px solid white;
+    box-shadow: 0 0 5px 0 rgb(200,200,200);
+    border-radius: 25px;
+    height: fit-content;
+    width: fit-content;
+    padding: 20px;
+    /* margin-left:50px;  */
+    /* justify-content: flex-end; */
+}
+
+
+.react-date-picker__wrapper {
+    border: 1px solid rgb(200,200,200);
+    border-radius: 8px;
+}
+.booking-spot-price {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.booking-startDate-input,
+.booking-endDate-input {
+    color: rgb(150,150,150);
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid rgb(200,200,200);
+    text-align: center;
+    cursor: pointer;
+}
+.booking-most-outer-div {
+    display: unset
+}
+
+.select_number_guests {
+    width: 60px;
+    height: 35px;
+    color: rgb(50,50,50);
+    border: 1px solid rgb(200,200,200);
+    border-radius: 10px;
+    align-self: center;
+    text-align: center;
+    cursor: pointer;
+}
+.create_booking_form {
+    height: auto;
+}
+/* date picker div */
+.create_booking_sub_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.booking-startdate-input {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+}
+.booking-guests {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.booking-guests-label {
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+}
+
+.react-datepicker__input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+.booking-calendar-icon {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size: 35px;
+}
+.booking-calendar-icon2 {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-left: 0px;
+    padding-left: 30px;
+    margin-right: 0px;
+    font-size: 35px;
+}
+
+.booking-reserve-button {
+    list-style: none;
+    background: none;
+    color: white;
+    background-color: #FF5A5F;
+    border-color: white;
+    border: 1px solid;
+    border-radius: 10px; 
+    /* text-align:left; */
+    text-decoration: none;
+    /* display: inline-block; */
+    /* font-size: 12px;
+    margin: 6px 4px; */
+    transition-duration: 0.4s;
+    margin-top: 5px;
+    /* margin-bottom: 20px; */
+    margin-left: 30%;
+    cursor: pointer; 
+    margin-right: 30%;
+    font-weight: 400;
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.booking-reserve-button:hover {
+    background-color: #d93b30;
+}
