@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_BOOKINGS = '/bookings/GET_BOOKINGS';
 const CREATE_BOOKING = '/bookings/CREATE_BOOKING'
-
+const DELETE_BOOKING = '/bookings/DELETE_BOOKING'
 
 
 // ---------------------------------
@@ -20,33 +20,54 @@ const createBookingAction = (booking) => {
   }
 }
 
+const deleteBookingAction = (booking) => {
+  return {
+    type: DELETE_BOOKING,
+    booking,
+  }
+}
+
 
 
 // ---------------------------------
 
 export const getBookingsThunk = (bookings) => async (dispatch) => {
-    // console.log("2nd - bookings", bookings)
+
     const response = await csrfFetch(`/api/bookings/`);
-    // console.log("4th - response", response)
+
     if (response.ok) {
       const data = await response.json();
       dispatch(getAllBookingsAction(data));
-      // console.log("5th - bookings-data", data)
+
     }
   };
 
   export const createBookingThunk = (booking) => async (dispatch) => {
-    console.log("POST-booking--------", booking)
+   
     const response = await csrfFetch(`/api/bookings`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(booking)
     });
-    console.log("POST-response--------", response)
+    
     if(response.ok) {
       const data = await response.json();
       dispatch(createBookingAction(data))
       return data
+    }
+  }
+
+  export const deleteBookingThunk = (bookingId) => async (dispatch) => {
+    console.log("THUNK - bookingId-----", bookingId)
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, {
+      method: "DELETE",
+    });
+    console.log("response-----", response)
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(deleteBookingAction(bookingId));
+      console.log("data----", data)
+      return data;
     }
   }
 
@@ -64,18 +85,13 @@ export const getBookingsThunk = (bookings) => async (dispatch) => {
         return newState;
         case CREATE_BOOKING:
           newState = { ...state };
-          newState[action.booking.id] = action.booking;
-          console.log("POST-newState*****", newState)
+          newState[action.booking.id] = action.booking;     
         return newState;
-    //   case EDIT_REVIEW:
-    //     const editState = { ...state };
-    //     editState[action.reviewId.id] = action.reviewId;
-    //     console.log("editState", editState)
-    //     return editState;
-    //   case DELETE_REVIEW:
-    //     const removeState = { ...state };
-    //     delete removeState[action.reviewId];
-    //     return removeState;
+      case DELETE_BOOKING:
+        const removeState = { ...state };
+        delete removeState[action.booking];
+        console.log("removeState-----", removeState)
+        return removeState;
       default:
         return { ...state };
     }

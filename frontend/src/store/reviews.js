@@ -90,7 +90,6 @@ const reviewsReducer = (state = {}, action) => {
     case EDIT_REVIEW:
       const editState = { ...state };
       editState[action.reviewId.id] = action.reviewId;
-      console.log("editState", editState)
       return editState;
     case DELETE_REVIEW:
       const removeState = { ...state };

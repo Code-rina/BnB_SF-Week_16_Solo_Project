@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getAllSpots } from '../../store/spots';
-import { getBookingsThunk } from '../../store/bookings'
+import { getBookingsThunk, deleteBookingThunk } from '../../store/bookings'
 import { NavLink } from 'react-router-dom';
 import { FaUserCircle, FaSuitcase } from 'react-icons/fa'
+import DeleteBooking from '../Booking/DeleteBooking/DeleteBooking.js'
 // import ErrorPage from '../components/ErrorPage/ErrorPage';
 import moment from 'moment';
 import './UserProfile.css'
@@ -25,7 +26,8 @@ function UserProfile() {
     const userSpots = allSpots.filter((spot) => spot?.userId === +oneUser.id)
 //   console.log("userSpots!!!!!", userSpots)
     const allBookings = useSelector((state) => state?.bookings)
-    // console.log("1st - allBookings!!!!!", allBookings)
+    const bookingId = useSelector((state) => state?.bookings?.id)
+    console.log("bookingId!!!!!", bookingId)
 
     const allBookingsArray = Object.values(allBookings)
     // console.log("allBookingsArray!!!!!", allBookingsArray)
@@ -77,7 +79,6 @@ function UserProfile() {
     }, [dispatch])
 
 
-
   // useEffect(() => {
   //   if (!userId) {
   //     return;
@@ -125,8 +126,8 @@ function UserProfile() {
                                         <img className="profile-spot-img"
                                         alt={spot?.id}
                                         src={spot?.Images[0].url}
-                                        onError={(e) =>
-                                            (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
+                                        // onError={(e) =>
+                                        //     (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
                                             />
                                         <div className="profile-title-address">
                                             <div className="profile-title-div">
@@ -158,7 +159,7 @@ function UserProfile() {
                     {!futureBookings.length ?
                         <div className="profile-user-spots">
                             <h4>No upcoming trips</h4>
-                                <NavLink to={'/spots'}><FaSuitcase />Explore</NavLink>
+                                <NavLink to={'/spots'}>...Explore</NavLink>
                         </div> :
                         <div className="profile-user-spots">
                             {userBookings && futureBookings.map(date => (
@@ -168,8 +169,8 @@ function UserProfile() {
                                             <img className="profile-spot-img"
                                             alt="booking"
                                             src={`${allSpots[date.spotId]?.Images[0]?.url}`}
-                                            onError={(e) =>
-                                                (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
+                                            // onError={(e) =>
+                                            //     (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
                                                 />
                                             <div className="profile-title-address">
                                                 <div className="profile-title-div">
@@ -187,6 +188,7 @@ function UserProfile() {
                                             </div>    
                                         </div>
                                     </NavLink>
+                                        <DeleteBooking booking={date?.id}/>
                                 </div>
                             ))}
                         </div>
@@ -212,8 +214,8 @@ function UserProfile() {
                                             <img className="profile-spot-img"
                                             alt="booking"
                                             src={`${allSpots[date.spotId]?.Images[0]?.url}`}
-                                            onError={(e) =>
-                                                (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
+                                            // onError={(e) =>
+                                            //     (e.target.src = "https://i.gyazo.com/953eaecab771a2f8f4e514e5750531cb.jpg")} 
                                                 />
                                             <div className="profile-title-address">
                                                 <div className="profile-title-div">
