@@ -111,6 +111,7 @@ const deleteButton = async (e) => {
                     <p>{(oneSpot?.Amenities[0]?.hotTub) ? <p><i className="fas symb fa-water"></i>   Hot Tub</p>: ''}</p>
                 
             </div>
+            <div className="rev-outer-div">
             <h2 id="user_rev"> User Reviews</h2>
             {reviewsObj.map((review) => (
               <div className="review-container" key={review?.id}>
@@ -137,9 +138,10 @@ const deleteButton = async (e) => {
               </div>
             
             ))}
-            <div>
-              {(sessionUser?.id && sessionUser?.id !== oneSpot?.userId) &&
-              <CreateReviewModal />}
+              <div>
+                {(sessionUser?.id && sessionUser?.id !== oneSpot?.userId) &&
+                <CreateReviewModal />}
+              </div>
             </div>
             {(sessionUser?.id && sessionUser?.id !== oneSpot?.userId) &&
             <div className="booking-most-outer-div">

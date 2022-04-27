@@ -1,7 +1,8 @@
 .create_booking_main_div {
     position: sticky;
+    top: 150;
     bottom: 150;
-    left: 1070;
+    left: 2000;
     justify-content: flex-end;
     position: -webkit-sticky;
     background-color: white;
