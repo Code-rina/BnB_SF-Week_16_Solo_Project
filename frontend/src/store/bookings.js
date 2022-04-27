@@ -58,15 +58,14 @@ export const getBookingsThunk = (bookings) => async (dispatch) => {
   }
 
   export const deleteBookingThunk = (bookingId) => async (dispatch) => {
-    console.log("THUNK - bookingId-----", bookingId)
+
     const response = await csrfFetch(`/api/bookings/${bookingId}`, {
       method: "DELETE",
     });
-    console.log("response-----", response)
+
     if (response.ok) {
       const data = await response.json();
       dispatch(deleteBookingAction(bookingId));
-      console.log("data----", data)
       return data;
     }
   }
@@ -90,7 +89,6 @@ export const getBookingsThunk = (bookings) => async (dispatch) => {
       case DELETE_BOOKING:
         const removeState = { ...state };
         delete removeState[action.booking];
-        console.log("removeState-----", removeState)
         return removeState;
       default:
         return { ...state };

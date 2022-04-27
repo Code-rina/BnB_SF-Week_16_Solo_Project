@@ -5,7 +5,6 @@ import "../ReviewsPage/reviews.css"
   
 
 function CreateReviewModal({ review, closeModal }) {
-//   console.log("Modal-review", review)
     const [showModal, setShowModal] = useState(false);
 
     return (

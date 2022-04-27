@@ -21,12 +21,12 @@ function Spots() {
                     <div key={`${spot?.title}1`} className="spots_container">
                         <div key={`${spot?.title}2`} className="image_container">
                             <Link key={`${spot?.title}13`} to={`/spots/${spot.id}`}>
-                                <img key={`${spot?.title}3`} crossOrigin="anonymous" id='spot_image' key={spot?.id} src={spot?.Images[0]?.url} />
+                                <img crossOrigin="anonymous" alt="spot_img" id='spot_image' key={spot?.id} src={spot?.Images[0]?.url} />
                             </Link>
                         </div>
                         <div key={`${spot?.title}4`} className="information">
                             <Link key={`${spot?.title}5`}  to={`/spots/${spot.id}`}>
-                                <h2 key={`${spot?.title}6`} id="spot_name" key={spot?.title}>{spot?.title}</h2>
+                                <h2 id="spot_name" key={spot?.title}>{spot?.title}</h2>
                                 <div id="line"></div>
                             </Link>
                                 <div className="detail_container_all">
@@ -43,9 +43,9 @@ function Spots() {
                                        {(spot?.Amenities[0]?.hotTub) ? 'Hot tub' : (spot?.Amenities[0]?.kitchen) ? 'Kitchen' : ''}</p>
                                </div>
                                </div>
-                            <ul key={`${spot?.title}7`} className="details">
-                                <li id="price" key={`${spot?.title}8`}>${spot?.price} / night</li>
-                            </ul>
+                                <ul key={`${spot?.title}7`} className="details">
+                                    <li id="price" key={`${spot?.title}8`}>${spot?.price} / night</li>
+                                </ul>
                             </div>
                     </div>
                 ))}

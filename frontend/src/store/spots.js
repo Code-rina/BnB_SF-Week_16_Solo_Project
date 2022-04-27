@@ -46,13 +46,13 @@ export const getOneSpot = (id) => async (dispatch) => {
     }
 }
 export const addSpot = (spot) => async (dispatch) => {
-    // console.log("spot", spot)
+
     const res = await csrfFetch(`/api/spots/host`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json' },
         body: JSON.stringify(spot)
     })
-    // console.log("res", res)
+
     if (!res.ok) {
         let error = await res.json();
         console.log("error", error)
@@ -64,11 +64,13 @@ export const addSpot = (spot) => async (dispatch) => {
 }
 
 export const editSpot = (spot, id) => async (dispatch) => {
+
     const res = await csrfFetch(`/api/spots/${id}/host`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(spot)
     })
+
     if(!res.ok) {
         let error = await res.json();
         return error
@@ -80,11 +82,13 @@ export const editSpot = (spot, id) => async (dispatch) => {
 }
 
 export const removeSpot = (payload, id) => async (dispatch) => {
+
     const res = await csrfFetch(`/api/spots/${id}`, {
         method: 'DELETE',
         headers: {'Content-Type': "application/json"},
         body: JSON.stringify(payload,id)
     })
+    
     if (res.ok) {
         const spot = await res.json()
         await dispatch(removeOneSpot(id))

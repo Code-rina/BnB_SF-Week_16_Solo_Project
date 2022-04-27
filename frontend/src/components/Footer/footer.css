@@ -1,19 +1,9 @@
 * {
     font-family: 'Montserrat', sans-serif;
-    /* font-family: 'Roboto', sans-serif; */
+
   }
 
 .footer_container {
-    /* background-color: #f7f7f7;
-    /* box-sizing: border-box;
-    border-style: hidden; */
-    /* box-shadow: 0px 10px 15px -8px rgb(238, 237, 237);
-    height: 50px;
-    width: 100%;
-    margin: auto;
-    bottom: 0;
-    position: fixed;
-    z-index: 100; */ 
     box-shadow: 0px 10px 15px -8px rgb(238, 237, 237);
     position:fixed;
     width: 100%;
@@ -32,9 +22,6 @@ p {
 
 #github_icon,
 #linkedin_icon {
-    /* text-align: center; */
-    /* justify-content: center; */
-    /* justify-content: center; */
     padding-top: 6px;
     padding-left: 40px;
     font-size: 35px;

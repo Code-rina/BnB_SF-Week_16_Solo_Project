@@ -1,26 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { getReviews, updateReview } from "../../store/reviews";
+import { useParams } from "react-router-dom";
+import { updateReview } from "../../store/reviews";
 
 const EditReviewForm = ({ review, closeModal }) => {
   const dispatch = useDispatch();
   const { spotId } = useParams();   
   const user = useSelector((state) => state.session.user);
-  //   const spotId = useSelector((state) => state.spots[id].id);
-  let rev = useSelector((state) => state?.reviews)
-  // console.log("rev", rev)
+
   const [rating, setRating] = useState(review?.rating);
   const [reviews, setReviews] = useState(review?.review);
   const [errorValidator, setErrorValidator] = useState([]);
-  
-  // console.log("reviewId", reviewId)
-  // console.log("id", id)
-  
+
   useEffect(() => {
     const errors = [];
     
-    // if (!rating?.rate) errors.push("Please provide a rating");
     if (!reviews?.length) errors.push("Please provide a review");
     setErrorValidator(errors);
   }, [rating, reviews]);
@@ -28,7 +22,6 @@ const EditReviewForm = ({ review, closeModal }) => {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-    // console.log("33333333333", reviews);
     const payload = {
       id: review.id,
       userId: user.id,
@@ -36,7 +29,6 @@ const EditReviewForm = ({ review, closeModal }) => {
       rating,
       review: reviews,
     };
-    // console.log("payload - 1st", payload);
     const updatedReview = await dispatch(updateReview(payload));
     if (updatedReview) {
       closeModal(false)

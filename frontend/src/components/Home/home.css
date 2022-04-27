@@ -96,15 +96,8 @@
     font-weight: 620;
     color:#9d2ba4;
     cursor: pointer;
-    /* position:relative;
-    justify-content: flex-start;
-    align-self: flex-start;
-    margin:auto;
-    bottom: 800%;
-    width: auto;
-    right: 300%; */
 }
-/* transform: translate(-285%, 750%); */
+
 
 .im_flex_button:hover,
 .become_host_button:hover {

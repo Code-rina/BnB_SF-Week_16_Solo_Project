@@ -1,27 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createReview } from "../../store/reviews";
-// import StarRating from "../StarComponent/starRating";
 import '../ReviewsPage/reviews.css'
 
 function Reviews({ closeModal }) {
   const dispatch = useDispatch();
-  const { spotId } = useParams();
-  const userId = useSelector((state) => state.session.user?.id);
-//   const spotId = useSelector((state) => state?.spots[spotId]?.spotId);
-//   console.log("id!!!!!!!!!!!!!!!!",id)
   const history = useHistory();
-  const [errors, setErrors] = useState([]);
+  const { spotId } = useParams();
 
+  const userId = useSelector((state) => state.session.user?.id);
+  const [errors, setErrors] = useState([]);
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
 
 
-
   const handleSubmit = async (e) => {
-    // console.log(spotId)
+
     e.preventDefault();
     const payload = {
       userId,
@@ -29,29 +25,17 @@ function Reviews({ closeModal }) {
       rating,
       review,
     };
-    // console.log("payload", payload)
+
     const newReview = await dispatch(createReview(payload));
-    // console.log("newReview", newReview)
+
     if (newReview) {
-      // history.push(`/spots/${spotId}`);
-      // reset();
       closeModal(false)
     }
   };
-  const reset = () => {
-    // setRating(0);
-    setReview("");
-  };
 
-  const cancelButton = (e) => {
-    history.push(`/spots/`);
-  };
-  function log(value) {
-    console.log(value);
-  }
+
   return (
     <div className="reviews_main_container">
-      {/* <div className="all_reviews_container"> */}
         <h3 className="share-h3">Share your review</h3>
         <form className="reviews_form" onSubmit={handleSubmit}>
           <ul>
@@ -92,7 +76,6 @@ function Reviews({ closeModal }) {
             </button>
           </div>
         </form>
-      {/* </div> */}
     </div>
   );
 }

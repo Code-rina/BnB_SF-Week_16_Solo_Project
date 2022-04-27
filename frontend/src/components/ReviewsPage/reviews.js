@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-// import {useParams} from 'react-router-dom'
 import {useSelector} from 'react-redux'
-// import { getReviews } from '../../store/reviews';
-;
+
 
 
 function Reviews({review, spotId}) {
-    // const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user)
     const [sessionId, setSessionId] = useState()
-    // const [reviews, setReviews] = useState("")
     const [formData, setFormData] = useState({ reviews: "" })
-    // const [errors, setErrors] = useState([])
-
-    // const dispatch = useDispatch();
 
     const user = useSelector((state) => state.session.user);
     useEffect(() => {
@@ -23,21 +15,8 @@ function Reviews({review, spotId}) {
         }
     }, [sessionUser])
 
-    // const reviews = useSelector((state) => {
-    //     return state.reviews;
-    // })
-    // const reviewsObj = Object.values(reviews)
-    // useEffect(() => {
-    //     dispatch(getReviews());
-    //   }, [dispatch]);
-
-    // console.log('*********************************',reviewsObj)
 
     const handleReview = (e) => {
-        // e.preventDefault();
-
-        // const create = {spotId, userId: sessionId, reviews}
-        // return dispatch(createReview(create))
         setFormData({formData, [e.target.name]: e.target.value})
     }
 
