@@ -37,6 +37,7 @@ function SpotDetail({spot, user}){
 
       const reviewsObj = Object.values(review);
 // console.log("reviewsObj", reviewsObj)
+window.scrollTo(0, 0);
 
 useEffect(()=> {
     dispatch(getOneSpot(spotId))
@@ -93,8 +94,7 @@ const deleteButton = async (e) => {
                 <p className="details-spot">This Host committed to BnB SF's  enhanced cleaning process.</p>
                 <h3 id="ic_checkin"><i className="fas i-list fa-map-marker-alt"></i>Great check-in experience</h3>
                 <p className="details-spot">100% of recent guests gave the check-in process a 5-star rating.</p>
-                <h3 id="ic_cancel"><i className="fas i-list fa-map-marker-alt"></i>Free cancellation for 48 hours</h3>
-            </div>  
+                <h3 id="ic_cancel"><i className="fas i-list fa-map-marker-alt"></i>Free cancellation for 48 hours</h3> 
             <h2 id="desc">Description</h2> 
             <p id="description">{oneSpot?.description}
             <h2 id="spot"></h2></p> 
@@ -127,12 +127,12 @@ const deleteButton = async (e) => {
                 )}
                 {review.userId === userId && (
                   <div className="delete-review-btn-div">
-                  <button
-                    className="delete-review-button"
-                    onClick={() => handleDeleteReview(review?.id)}
-                  >
-                    Delete
-                  </button>
+                    <button
+                      className="delete-review-button"
+                      onClick={() => handleDeleteReview(review?.id)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 )}
                 </div>
@@ -143,10 +143,11 @@ const deleteButton = async (e) => {
               {(sessionUser?.id && sessionUser?.id !== oneSpot?.userId) &&
               <CreateReviewModal />}
             </div>
-            <div>
             {(sessionUser?.id && sessionUser?.id !== oneSpot?.userId) &&
-              <CreateBookingForm spotId={spotId} oneSpot={oneSpot} sessionUser={sessionUser} reviewsObj={reviewsObj}/>}
-            </div>
+            <div className="booking-most-outer-div">
+              <CreateBookingForm spotId={spotId} oneSpot={oneSpot} sessionUser={sessionUser} reviewsObj={reviewsObj}/>
+            </div>}
+          </div> 
         </div>
     )
 }

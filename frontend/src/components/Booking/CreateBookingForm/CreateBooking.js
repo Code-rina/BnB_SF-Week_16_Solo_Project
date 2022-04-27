@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 // import {addSpot} from '../../store/spots'
 import {useEffect} from 'react'
 import DatePicker from "react-datepicker";
+import { IoCalendarClearOutline } from 'react-icons/io5'
 import { createBookingThunk } from '../../../store/bookings'
 import moment from 'moment';
 import "react-datepicker/dist/react-datepicker.css";
@@ -60,7 +61,7 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
     return (
         <div className="create_booking_main_div">
             <div className="create_booking_upper_div">
-                <h4 className="booking-spot-price">${oneSpot?.price}/night</h4>
+                <h4 className="booking-spot-price">${oneSpot?.price} /night</h4>
             </div>
             <form className="create_booking_form" onSubmit={handleSubmit}>
                 {/* <div className="create_booking_sub_div"> */}
@@ -74,6 +75,8 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
             {sessionUser && 
                 <>
                 <div className="create_booking_sub_div">
+                    <label className="booking-calendar-icon">
+                        <IoCalendarClearOutline/></label>
                     <DatePicker
                     className="booking-startDate-input"
                     startDate={startDate}
@@ -86,8 +89,8 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                     minDate={new Date ()}
                     onChange={(range) => setStartDate(range)}
                     />
-                </div>
-                <div className="create_booking_sub_div">
+                    <label className="booking-calendar-icon2">
+                        <IoCalendarClearOutline/></label>
                     <DatePicker
                     className="booking-endDate-input"
                     startDate={startDate}
@@ -101,16 +104,17 @@ function CreateBookingForm({spotId, oneSpot, sessionUser, reviewsObj}){
                     onChange={(range) => setEndDate(range)}
                     />
                 </div>
-                <div className="booking-guests"></div>
-                <label>Guests</label>
-                <select  
-                className="select_number_guests"
-                defaultValue={numberOfGuests}
-                onChange={event => setNumberOfGuests(event.target.value)}>
-                {[...Array(oneSpot?.guests).keys()].map((number, i) => (
-                    <option key={i}>{number + 1}</option>
-                    ))}
-                </select>
+                <div className="booking-guests">
+                    <label className="booking-guests-label">Guests</label>
+                        <select  
+                        className="select_number_guests"
+                        defaultValue={numberOfGuests}
+                        onChange={event => setNumberOfGuests(event.target.value)}>
+                        {[...Array(oneSpot?.guests).keys()].map((number, i) => (
+                            <option key={i}>{number + 1}</option>
+                            ))}
+                        </select>
+                </div>
                 </>}
                 {sessionUser &&
                 <button className="booking-reserve-button" type="submit">Reserve</button>
